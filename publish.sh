@@ -5,18 +5,12 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 TEX_FILE="SISPAD_Template_Latex.tex"
 REMOTE_NAME="origin"
-TARGET_BRANCH="draft"
 
 cd "$SCRIPT_DIR"
 
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 if [ "$CURRENT_BRANCH" = "HEAD" ]; then
   echo "Detached HEAD is not supported for publish."
-  exit 1
-fi
-
-if [ "$CURRENT_BRANCH" != "$TARGET_BRANCH" ]; then
-  echo "Publish is restricted to '$TARGET_BRANCH'. Current branch: $CURRENT_BRANCH"
   exit 1
 fi
 
