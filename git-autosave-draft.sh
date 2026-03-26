@@ -2,11 +2,11 @@
 
 set -u
 
-REPO_DIR="/mnt/c/Users/giung/OneDrive/바탕 화면/PhysAgent/SISPAD 2026/SISPAD_Template_Latex_2026"
 TARGET_BRANCH="draft"
 REMOTE_NAME="origin"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 
-cd "$REPO_DIR" || exit 1
+cd "$SCRIPT_DIR" || exit 1
 
 CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
 if [ "$CURRENT_BRANCH" != "$TARGET_BRANCH" ]; then
