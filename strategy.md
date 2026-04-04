@@ -142,6 +142,12 @@ III. PROPOSED FRAMEWORK (= Methodology)
       - 온톨로지 그래프 탐색으로 관련 물리 모델/파라미터 서브그래프 추출
       - LLM 프롬프트에 structured context로 주입
       - Physically grounded Sdevice 파일 생성
+   E. Ontology Expansion and Validation
+      - Spec → Plan → Impl 방향성 동기화 워크플로우
+      - 새 물리 모델/재료 추가 시 retraining 없이 온톨로지만 확장
+      - Shared Node Registry + 자동 검증으로 일관성 유지
+      - Fig: 확장/검증 모델 다이어그램
+      - SFT 대비 핵심 차별점: 확장성과 유지보수성
 
 IV. RESULT
    - 생성된 Sdevice 파일의 물리적 타당성 평가

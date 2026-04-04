@@ -13,6 +13,7 @@
 \usepackage{fancyhdr}
 \usepackage[hidelinks]{hyperref}
 \usepackage{lipsum}
+\usepackage{xcolor}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -30,8 +31,7 @@
 
 \begin{document}
 
-\title{PhysAgent: Physics informed ontology grounded Modeling and file generator\\
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\title{PhysAgent: Physics-Informed SDevice Code Generation via Ontology-Guided LLM\\
 }
 
 % 저자 정보를 정의하는 부분
@@ -69,14 +69,26 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \section{Result}
 \input{sections/04_result}
 
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=\columnwidth]{Fig/framework.jpg}}
+    \caption{PhysAgent framework overview.}
+    \label{fig:all}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.8\columnwidth]{Fig/ontology.jpg}}
+    \caption{Ontology system architecture.}
+    \label{fig:ontology}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=0.8\columnwidth]{Fig/expansion.validation_model.jpg}}
+    \caption{Expansion and validation workflow.}
+    \label{fig:expansion}
+\end{figure}
+
 \section{Conclusion}
 \input{sections/05_conclusion}
-
-\begin{figure*}[htbp]
-    \centerline{\includegraphics[width=0.5\textwidth]{Fig/sispad2026.jpg}}
-    \caption{Example of a figure caption.}
-    \label{fig}
-\end{figure*}
 
 \begin{thebibliography}{00}
 \bibitem{b1} SISPAD Comittee, ''SISPAD Website''. [Online]. Available: https://sispad2026.jp/
