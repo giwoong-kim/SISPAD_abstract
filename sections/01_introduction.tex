@@ -1,5 +1,24 @@
 As semiconductor scaling approaches its limits, DTCO and TCAD simulation become increasingly critical. However, the core challenge of TCAD automation lies not in structure generation, but in configuring SDevice physics models and parameter files, which require deep domain expertise.
 
-Recent LLM-based TCAD approaches have focused primarily on SDE structure generation through supervised fine-tuning (SFT) on synthetic datasets. Yet these methods face fundamental limitations: publicly available TCAD data is scarce, and physics model selection remains either hardcoded or implicitly learned. Meanwhile, high-performance general-purpose LLMs are rapidly advancing---rather than fine-tuning separate models, the key is to build a knowledge structure that enables these LLMs to operate correctly in the TCAD context.
+Recent LLM-based TCAD approaches have focused primarily on SDE structure generation through supervised fine-tuning (SFT) on synthetic datasets. Yet these methods face fundamental limitations: publicly available TCAD data is scarce, and physics model selection remains either hardcoded or implicitly learned. Meanwhile, high-performance general-purpose LLMs are rapidly advancing---rather than fine-tuning separate models, the key is to build a knowledge structure that enables these LLMs to operate correctly in the TCAD context. Table~\ref{tab:comparison} summarizes the key differences between SFT-based approaches and PhysAgent.
+
+\begin{table}[htbp]
+\caption{Comparison of SFT-based approaches and PhysAgent.}
+\label{tab:comparison}
+\centering
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & \textbf{SFT-based} & \textbf{PhysAgent} \\
+\midrule
+Training data required     & Large synthetic  & None \\
+Target scope               & SDE structure    & SDevice physics \\
+Physics model selection    & Implicit / fixed & Explicit (ontology) \\
+Material-specific knowledge & Not addressed   & Literature-driven \\
+LLM dependency             & Domain-specific  & General-purpose \\
+Knowledge updatability     & Retrain needed   & Ontology update \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 We propose PhysAgent, which combines a Sentaurus TCAD guide-based ontology with literature-driven domain knowledge to generate physically grounded SDevice files, going beyond template-level generation toward expert-level modeling for specific semiconductor materials.
