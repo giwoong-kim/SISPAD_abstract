@@ -94,7 +94,7 @@
 | IV. Result | `sections/04_result.tex` | TODO | ~30 |
 | V. Conclusion | `sections/05_conclusion.tex` | Draft | ~40 |
 | **Total** | | | **~610** |
-| Main | `SISPAD_Template_Latex.tex` | OK | - |
+| Main | `SISPAD_abstract.tex` | OK | - |
 
 ---
 

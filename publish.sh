@@ -3,7 +3,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
-TEX_FILE="SISPAD_Template_Latex.tex"
+TEX_FILE="SISPAD_abstract.tex"
 REMOTE_NAME="origin"
 
 cd "$SCRIPT_DIR"
