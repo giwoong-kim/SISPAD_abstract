@@ -1,5 +1,3 @@
-The International Conference on Simulation of Semiconductor Processes and Devices (SISPAD) \cite{b1} provides an international forum for the presentation of leading-edge research and development results in the area of process and device simulation. SISPAD is one of the longest-running conferences devoted to technology computer-aided design (TCAD) and advanced modeling of novel semiconductor devices and nano electronic structures. SISPAD 2026 will be held in-person in Kumamoto, Japan, from September 28 to 30, 2026.
+TCAD simulation involves two main components: SDE for device geometry and meshing, and SDevice for physics models, boundary conditions, and solver settings. While SDE code generation has been widely explored with LLMs, SDevice configuration---selecting and parameterizing physics models such as mobility, recombination, and bandgap narrowing for specific materials---remains largely unaddressed due to its high domain expertise requirements.
 
-A satellite workshop will be offered on the day before the main conference starts (September 27).
-
-We hope to see you in Kumamoto, Japan in September.
+LLMs have shown strong code generation capabilities in EDA tasks including RTL synthesis and circuit optimization. In TCAD, existing works have applied fine-tuned LLMs or in-context learning to generate structural code, but none systematically address physics-aware SDevice configuration grounded in explicit domain knowledge.
