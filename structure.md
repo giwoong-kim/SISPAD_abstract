@@ -60,8 +60,15 @@
 │  │  [C] Ontology-Guided Generation                             │    │
 │  │  ontology subgraph + literature → structured LLM context    │    │
 │  │  → physically grounded SDevice file                         │    │
-│  │                    ┌──── Fig: pipeline diagram ────┐         │    │
-│  └────────────────────┴──────────────────────────────┘         │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+│                         ↓                                           │
+│  ┌─────────────────────────────────────────────────────────────┐    │
+│  │  [D] Ontology Expansion and Validation                      │    │
+│  │  Spec → Plan → Impl 방향성 동기화 워크플로우                 │    │
+│  │  새 모델/재료 추가 시 retraining 없이 온톨로지만 확장         │    │
+│  │  Shared Node Registry + 자동 검증으로 일관성 유지             │    │
+│  │                    ┌──── Fig: expansion model ────┐          │    │
+│  └────────────────────┴──────────────────────────────┘          │    │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │
 ┌──────────────────────────────▼──────────────────────────────────────┐
@@ -102,8 +109,9 @@
 
 | Fig | 위치 | 내용 | 파일 |
 |-----|------|------|------|
-| Fig 1 | Sec III | PhysAgent 전체 파이프라인 (Ontology + Literature → LLM → SDevice) | `Fig/pipeline.png` |
-| Fig 2 | Sec III | 온톨로지 서브그래프 (bandgap → density → recombination) | `Fig/ontology.png` |
+| Fig 1 | Sec III | PhysAgent 전체 파이프라인 (Ontology + Literature → LLM → SDevice) | `Fig/framework.jpg` |
+| Fig 2 | Sec III | 온톨로지 시스템 아키텍처 (Collection → Data → Visualization → App) | `Fig/ontology.jpg` |
+| Fig 3 | Sec III | 온톨로지 확장/검증 모델 (Spec → Plan → Impl 동기화) | `Fig/expansion.validation_model.jpg` |
 
 ---
 

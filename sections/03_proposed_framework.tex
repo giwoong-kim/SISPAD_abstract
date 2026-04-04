@@ -1,24 +1,13 @@
-%\subsection{Overview}
-
-PhysAgent combines two knowledge sources to guide LLM-based SDevice file generation: a TCAD physics ontology and literature-driven domain knowledge (Fig.~\ref{fig:pipeline}).
-
-%\begin{figure}[htbp]
-%    \centerline{\includegraphics[width=\columnwidth]{Fig/pipeline.png}}
-%    \caption{Overview of the PhysAgent framework.}
-%    \label{fig:pipeline}
-%\end{figure}
+PhysAgent combines a TCAD physics ontology and literature-driven domain knowledge to guide LLM-based SDevice file generation ({\color{red}Fig.~\ref{fig:all}}).
 
 \subsection{TCAD Physics Ontology}
-We construct a physics ontology from the Sentaurus TCAD guide as a directed graph with three node types (\textit{equation}, \textit{parameter}, \textit{constant}) and three edge types (\textit{input}, \textit{specialCase}, \textit{pairwise}). This ontology captures inter-model dependencies---for example, how bandgap narrowing models affect intrinsic carrier density, which in turn influences recombination rates---providing a structured map that would otherwise remain implicit in simulator manuals.
-
-%\begin{figure}[htbp]
-%    \centerline{\includegraphics[width=\columnwidth]{Fig/ontology.png}}
-%    \caption{Subgraph of the TCAD physics ontology.}
-%    \label{fig:ontology}
-%\end{figure}
+We construct a directed graph from the Sentaurus TCAD guide with three node types (\textit{equation}, \textit{parameter}, \textit{constant}) and three edge types (\textit{input}, \textit{specialCase}, \textit{pairwise}), capturing inter-model dependencies such as bandgap narrowing affecting intrinsic carrier density and recombination rates ({\color{red}Fig.~\ref{fig:ontology}}).
 
 \subsection{Literature-Driven Domain Knowledge}
-The ontology captures model structure but not material-specific expertise. PhysAgent supplements it with literature-driven knowledge---validated model combinations and calibrated parameters for specific materials (e.g., SiC, GaN)---bridging the gap between general simulator documentation and practical modeling practice.
+The ontology captures model structure but not material-specific expertise. PhysAgent supplements it with literature-driven knowledge---validated model combinations and calibrated parameters for specific materials (e.g., SiC, GaN).
 
 \subsection{Ontology-Guided Generation}
-Given a target device and material, PhysAgent traverses the ontology to extract a relevant subgraph of models and parameters, combines it with literature knowledge, and provides this as structured context to the LLM. This explicit grounding reduces hallucination and produces physically justified SDevice configurations.
+Given a target device and material, PhysAgent extracts a relevant ontology subgraph, combines it with literature knowledge, and provides this as structured context to the LLM, producing physically justified SDevice configurations.
+
+\subsection{Ontology Expansion and Validation}
+Unlike SFT-based approaches requiring retraining for new models or materials, PhysAgent uses a directional synchronization workflow ({\color{red}Fig.~\ref{fig:expansion}}) with three artifact layers---Spec, Plan, and Impl---where changes propagate automatically from the source of truth while reverse modifications require explicit approval, ensuring incremental expansion without retraining.
