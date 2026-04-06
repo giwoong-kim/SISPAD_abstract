@@ -1,7 +1,35 @@
 PhysAgent combines a TCAD physics ontology and literature-driven domain knowledge to guide LLM-based SDevice file generation ({\color{red}Fig.~\ref{fig:all}}).
 
 \subsection{TCAD Physics Ontology}
-We construct a directed graph from the Sentaurus TCAD guide with three node types (\textit{equation}, \textit{parameter}, \textit{constant}) and three edge types (\textit{input}, \textit{specialCase}, \textit{pairwise}), capturing inter-model dependencies such as bandgap narrowing affecting intrinsic carrier density and recombination rates ({\color{red}Fig.~\ref{fig:ontology}}).
+We construct a directed graph from the Sentaurus TCAD guide with three node types (\textit{equation}, \textit{parameter}, \textit{constant}) and three edge types (\textit{input}, \textit{specialCase}, \textit{pairwise}), capturing inter-model dependencies such as bandgap narrowing affecting intrinsic carrier density and recombination rates ({\color{red}Fig.~\ref{fig:ontology}}). Table~\ref{tab:ontology_mapping} summarizes the ontology components.
+
+\begin{table}[htbp]
+\caption{TCAD physics ontology components.}
+\label{tab:ontology_mapping}
+\centering
+\renewcommand{\arraystretch}{1.15}
+\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Component} & \textbf{Type} & \textbf{Description} \\
+\midrule
+\multirow{2}{*}{Node} & \texttt{equation} & Physical model equations \\
+ & \texttt{parameter} & Constants, variables, control flags \\
+\midrule
+\multirow{3}{*}{Edge} & \texttt{uses} & Equation consumes a parameter \\
+ & \texttt{controls} & Flag determines model activation \\
+ & \texttt{routed\_by} & Conditional branching path \\
+\midrule
+\multirow{3}{*}{Group} & \texttt{fundamental} & Core physics (bandgap, $n_i$) \\
+ & \texttt{physicsModel} & Specific models (Masetti, SRH) \\
+ & \texttt{auxiliary} & Corrections and helpers \\
+\midrule
+\multirow{3}{*}{Relation} & \texttt{exclusive} & Choose one among alternatives \\
+ & \texttt{compatible} & Can coexist \\
+ & \texttt{incompatible} & Cannot be combined \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Literature-Driven Domain Knowledge}
 The ontology captures model structure but not material-specific expertise. PhysAgent supplements it with literature-driven knowledge---validated model combinations and calibrated parameters for specific materials (e.g., SiC, GaN).
