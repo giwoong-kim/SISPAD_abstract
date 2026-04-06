@@ -1,22 +1,3 @@
-Recent LLM-based TCAD approaches rely on supervised fine-tuning (SFT) with synthetic datasets, focusing primarily on SDE structure generation. However, publicly available TCAD data is scarce, and physics model selection remains implicit. Rather than fine-tuning domain-specific models, we argue that building a knowledge structure for general-purpose LLMs is more effective. {\color{red}Table~\ref{tab:comparison}} summarizes the key differences.
+Recent studies have applied LLMs to automate TCAD code generation, primarily targeting SDE structure files. These approaches rely on supervised fine-tuning (SFT) with synthetic datasets constructed by varying numerical parameters in a small number of baseline scripts \cite{nguyen, chattcad, malts, agentictcad}. However, this limits generalization to unseen device architectures or materials. More critically, none adequately addresses physics model selection or parameter file generation for SDevice---the core of physically meaningful TCAD simulation. Even AgenticTCAD \cite{agentictcad}, which generates SDevice code, uses only 2--3 fixed physics configurations and omits parameter files entirely.
 
-\begin{table}[htbp]
-\caption{Comparison of SFT-based approaches and PhysAgent.}
-\label{tab:comparison}
-\centering
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{@{}lcc@{}}
-\toprule
- & \textbf{SFT-based} & \textbf{PhysAgent} \\
-\midrule
-Training data required     & Large synthetic  & None \\
-Target scope               & SDE structure    & SDevice physics \\
-Physics model selection    & Implicit / fixed & Explicit (ontology) \\
-Material-specific knowledge & Not addressed   & Literature-driven \\
-LLM dependency             & Domain-specific  & General-purpose \\
-Knowledge updatability     & Retrain needed   & Ontology update \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-We propose PhysAgent, which combines a Sentaurus TCAD guide-based ontology with literature-driven domain knowledge to generate physically grounded SDevice files for specific semiconductor materials.
+We propose PhysAgent, which constructs a Sentaurus TCAD guide-based ontology encoding physical models, equations, and their interdependencies, complemented by literature-driven material-specific knowledge. By providing this structured context to general-purpose LLMs, PhysAgent generates physically grounded SDevice files with explicit reasoning about model selection and parameter settings---without domain-specific fine-tuning.

@@ -245,3 +245,50 @@ Ours                (X)         (X)   O    O    Explicit    O           O
 ## 6. 핵심 메시지 (한 줄 요약)
 
 > **TCAD의 핵심 챌린지는 구조 생성이 아니라 Sdevice 물리 모델 설정과 파라미터 파일 생성이다. PhysAgent는 synthetic training data 대신 Sentaurus TCAD 가이드 기반 온톨로지와 문헌 기반 도메인 지식을 결합하여, template 수준을 넘어 특정 반도체 재료에 대한 expert-level 모델링 워크플로우를 지원하는 physically grounded Sdevice 파일을 생성한다.**
+
+---
+
+## 7. Introduction 전략 및 기존 연구 비교 논거
+
+### 7.1 기존 4개 논문의 근본적 한계 정리
+
+#### A. SFT의 확장성 문제: Synthetic Training Data의 본질적 한계
+
+기존 연구들(Nguyen, ChatTCAD, AgenticTCAD)은 모두 Supervised Fine-Tuning(SFT)에 의존하며, 합성 학습 데이터를 다음과 같이 생성한다:
+
+- **Nguyen**: 단 1개의 nanowire 템플릿에서 18개 파라미터(두께, 도핑 농도, 재료 등)의 숫자만 랜덤하게 바꿔 7,000쌍을 생성
+- **ChatTCAD**: GPT-4o로 합성 데이터 ~10,000쌍을 생성하되, 5개 기능 블록(Region, Doping, Contact, Mesh)별로 분리 생성
+- **AgenticTCAD**: 전문가 작성 baseline 스크립트 22개를 기반으로 파라미터 variation을 통해 30,000쌍으로 확장 (code augmentation)
+
+**핵심 문제**: 이 방식은 결국 소수의 baseline 코드에서 숫자만 조금씩 바꿔 뻥튀기하는 것이다. 구조적으로 새로운 디바이스 유형이나 재료를 다루려면 매번 전문가가 새 baseline을 작성하고 다시 augmentation → fine-tuning을 반복해야 한다. **특정 분야에 한정적이고 확장성이 없다.**
+
+#### B. 물리 모델과 파라미터 파일의 부재
+
+기존 연구들의 커버리지를 보면:
+
+| 논문 | SDE (구조) | Mesh | SDevice (시뮬) | Physics Model 선택 | Parameter File |
+|------|-----------|------|---------------|-------------------|----------------|
+| Nguyen | ✅ | ❌ | ❌ | ❌ | ❌ |
+| ChatTCAD | ✅ | ✅ | ❌ | ❌ | ❌ |
+| MALTS | ✅ | ✅ | ❌ | ❌ | ❌ |
+| AgenticTCAD | ✅ | ✅ | ✅ (SDevice) | **Implicit** (2-3개 고정) | ❌ |
+
+- **AgenticTCAD**는 유일하게 SDevice를 건드리지만, **물리 모델(Physical Model)과 파라미터 파일(Parameter File)은 절대 건드리지 않는다.** SDevice 학습 데이터를 보면 physics 모델은 2-3개의 고정 조합만 있고, 파라미터 파일은 아예 포함되지 않는다. 즉, "어떤 물리 모델을 왜 선택하는가", "재료별 파라미터를 어떻게 설정하는가"는 전혀 다루지 않는다.
+- **나머지 3개 논문**은 SDE(구조) 생성에만 집중하며 SDevice 자체를 다루지 않는다.
+
+#### C. TCAD의 본질과의 괴리
+
+TCAD의 존재 이유는 **소자의 물리적 거동을 해석하고 예측하는 것**이다. 이를 위해서는:
+
+1. **적절한 물리 모델 선택**: 디바이스 유형, 재료, 동작 조건에 따라 mobility model, recombination model, bandgap model 등을 올바르게 선택해야 한다
+2. **정확한 파라미터 설정**: 재료별 물리 파라미터(effective mass, lattice constant, affinity 등)를 문헌/실험 기반으로 정확히 설정해야 한다
+3. **물리 모델 간 일관성**: bandgap narrowing → intrinsic density → recombination 등 모델 간 의존 관계를 이해하고 일관되게 설정해야 한다
+
+**기존 논문들은 이 중 어느 것도 다루지 않는다.** 구조를 예쁘게 만들어도 물리 모델이 잘못되면 시뮬레이션 결과는 의미가 없다. 이것이 PhysAgent가 SDE가 아닌 SDevice의 물리 모델 설정과 파라미터 파일 생성에 집중하는 이유다.
+
+#### D. Introduction 논거 흐름 (요약)
+
+1. **상투적 도입**: 반도체 스케일링 한계 → DTCO 중요성 → TCAD 필수 → 그러나 전문성 요구 → LLM 활용 가능성
+2. **기존 연구 요약**: 최근 LLM-TCAD 연구들은 SDE 코드 생성(구조, 메싱)에 집중. SFT 기반으로 소수 baseline에서 숫자만 변형한 합성 데이터로 학습. 특정 구조에 한정적이고 확장성 부족.
+3. **핵심 Gap 지적**: 그러나 TCAD의 본질은 물리 해석/예측이며, 이를 위한 **SDevice 물리 모델 선택과 파라미터 파일 생성**은 기존 연구에서 전혀 다루지 않음. AgenticTCAD만 SDevice를 일부 다루나 물리 모델과 파라미터는 고정.
+4. **우리의 제안**: PhysAgent는 SFT 대신 TCAD 가이드 기반 온톨로지와 문헌 지식을 결합하여, LLM이 물리적으로 근거 있는 SDevice 설정과 파라미터 파일을 생성할 수 있도록 한다. 재료나 디바이스가 바뀌어도 온톨로지 확장만으로 대응 가능.
