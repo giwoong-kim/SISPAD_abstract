@@ -74,10 +74,19 @@
 ┌──────────────────────────────▼──────────────────────────────────────┐
 │                     IV. RESULT (04_result.tex)                       │
 │                                                                     │
-│  - 특정 반도체 재료 case study                                       │
-│  - w/ ontology vs w/o ontology 비교                                  │
-│  - 생성된 SDevice 파일의 물리적 타당성 평가                           │
-│  TODO: 실험 결과 채우기                                              │
+│  [실험 1] 특정 재료 SDevice 파일 생성                                │
+│    - Library 재료 (SiC, GaN): TCAD Library 모델과 비교 → 정확도 검증 │
+│    - Non-library 재료 (IGZO): 확장적 적용 가능성 시연                │
+│    → Fig 4: 생성 결과 비교 테이블 + 파일 예시                        │
+│                                                                     │
+│  [실험 2] Ontology 유무 비교 (Ablation)                              │
+│    - Baseline: Guide PDF + LLM (ontology/MCP 없이)                  │
+│    - Ours: LLM + ontology (MCP subgraph) + literature               │
+│    - 메트릭: 모델 완전성, 파라미터 정확도, 물리적 타당성             │
+│                                                                     │
+│  [실험 3] File Validation (자동 검증)                                │
+│    - ontology compliance + syntax + physics validation               │
+│    → Fig 5: 자동 검증 파이프라인                                     │
 └──────────────────────────────┬──────────────────────────────────────┘
                                │
 ┌──────────────────────────────▼──────────────────────────────────────┐
@@ -105,13 +114,15 @@
 
 ---
 
-## Figures (TODO)
+## Figures
 
-| Fig | 위치 | 내용 | 파일 |
-|-----|------|------|------|
-| Fig 1 | Sec III | PhysAgent 전체 파이프라인 (Ontology + Literature → LLM → SDevice) | `Fig/framework.jpg` |
-| Fig 2 | Sec III | 온톨로지 시스템 아키텍처 (Collection → Data → Visualization → App) | `Fig/ontology.jpg` |
-| Fig 3 | Sec III | 온톨로지 확장/검증 모델 (Spec → Plan → Impl 동기화) | `Fig/expansion.validation_model.jpg` |
+| Fig | 위치 | 내용 | 파일 | 상태 |
+|-----|------|------|------|------|
+| Fig 1 | Sec III | PhysAgent 전체 파이프라인 (Input → Ontology → MCP Tool → .par File) | `Fig/framework.jpg` | 간략화 필요 |
+| Fig 2 | Sec III | 온톨로지 서브그래프 (Bandgap 중심 노드-엣지 관계도) | `Fig/ontology.jpg` | 간략화 필요 |
+| Fig 3 | Sec III | 온톨로지 확장/검증 모델 (Spec → Plan → Impl 동기화) | `Fig/expansion.validation_model.jpg` | 간략화 필요 |
+| Fig 4 | Sec IV | 생성 결과: Library 재료 비교 + IGZO 파라미터 파일 예시 | TBD | 실험 후 |
+| Fig 5 | Sec IV | 자동 검증 파이프라인 (ontology + syntax + physics) | TBD | 실험 후 |
 
 ---
 

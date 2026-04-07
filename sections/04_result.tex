@@ -1,4 +1,10 @@
-% TODO: Add experimental results
-% - Case study on specific semiconductor material
-% - Comparison: with vs without ontology guidance
-% - Physical validity assessment of generated SDevice files
+We evaluate PhysAgent through three experiments.
+
+\textbf{Experiment 1: Material-Specific Generation.}
+We generate SDevice parameter files for two library materials (SiC, GaN) and one non-library material (IGZO). For SiC and GaN, we compare the generated files against Sentaurus TCAD's built-in library models to assess physical accuracy ({\color{red}Fig.~\ref{fig:exp1}}). For IGZO, which has no library model, we demonstrate PhysAgent's ability to construct parameter files from literature alone, validating extensibility beyond pre-existing templates.
+
+\textbf{Experiment 2: Ablation Study.}
+We compare two configurations: (1) a baseline where the LLM receives only the Sentaurus guide text without ontology or MCP tools, and (2) PhysAgent with ontology-guided subgraph extraction via MCP and literature-driven knowledge. We measure model completeness (fraction of required physics models included), parameter accuracy (deviation from literature values), and inter-model consistency ({\color{red}Fig.~\ref{fig:exp2}}).
+
+\textbf{Experiment 3: Automated Validation.}
+We verify generated files through three automated checks: ontology compliance (no missing required parameters), syntax validation (executable by Sentaurus), and physics validation (parameter ranges and model compatibility within ontology constraints).

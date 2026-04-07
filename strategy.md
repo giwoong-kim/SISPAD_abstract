@@ -180,29 +180,33 @@ Ours                (X)         (X)   O    O    Explicit    O           O
 
 **핵심 포지셔닝**: 기존 연구들은 SFT 기반으로 구조(SDE) 코드 생성에 집중했다면, PhysAgent는 synthetic training data 없이 온톨로지 + 문헌 지식으로 physically grounded Sdevice 파일 생성에 집중. 고성능 범용 LLM이 빠르게 발전하는 상황에서, 별도 모델을 fine-tuning하는 것보다 TCAD 도메인의 knowledge structure를 구축하는 것이 핵심.
 
-### 4.5 실험 설계 제안
+### 4.5 실험 설계
 
-#### 실험 1: 특정 반도체 재료에 대한 Sdevice 파일 생성
-- 특정 재료(예: SiC, GaN 등)에 대해 PhysAgent로 Sdevice 파일 생성
-- 온톨로지 기반 물리 모델 선택 + 문헌 기반 파라미터 설정의 타당성 평가
-- Template 수준 생성 vs expert-level 모델링 워크플로우 비교
+#### 실험 1: 특정 반도체 재료에 대한 SDevice 파일 생성
+- **Library 재료 (SiC, GaN)**: PhysAgent로 생성한 모델을 Sentaurus TCAD Library의 기존 모델과 비교 → 물리적 타당성 및 정확도 검증
+- **Non-library 재료 (IGZO)**: Library에 없는 재료에 대해 모델 생성 → 온톨로지 + 문헌 기반으로 확장적 적용 가능성 시연
+- → **Fig 4**: 생성된 파라미터 파일 예시 + Library 대비 비교 테이블
 
-#### 실험 2: Ontology 유무에 따른 비교
-- **Baseline**: LLM에 자연어 설명만 제공 (ontology/literature 없이)
-- **Ours**: 온톨로지 + 문헌 지식을 structured context로 함께 제공
-- **메트릭**: 물리 모델 완전성, 파라미터 정확도, 생성 파일의 물리적 타당성
+#### 실험 2: Ontology 유무에 따른 비교 (Ablation)
+- **Baseline**: Sentaurus Guide PDF + LLM (온톨로지/MCP 없이 직접 프롬프트)
+- **Ours**: LLM + 온톨로지 (MCP tool로 서브그래프 추출) + 문헌 지식
+- **메트릭**: 물리 모델 완전성 (필수 모델 포함 비율), 파라미터 정확도 (문헌 대비 오차), 물리적 타당성 (모델 간 일관성)
 
-#### 실험 3: End-to-End Simulation (가능한 경우)
-- 생성된 Sdevice 파일로 실제 Sentaurus 시뮬레이션 실행
-- 기존 전문가 작성 파일 대비 결과 비교
+#### 실험 3: File Validation (자동 검증)
+- 생성된 파일이 온톨로지 구조를 준수하는지 (필수 파라미터 누락 없음)
+- Sentaurus에서 실행 가능한지 (문법/구문 검증)
+- 물리적으로 타당한지 (파라미터 범위, 모델 간 호환성)
+- → **Fig 5**: 자동 검증 파이프라인 다이어그램
 
 ### 4.6 Figure 계획
 
-| Fig # | 내용 | 목적 |
+| Fig # | 내용 | 위치 |
 |-------|------|------|
-| Fig 1 | 온톨로지 서브그래프 시각화 (물리 모델-수식-파라미터 관계) | 온톨로지 구조 설명 (Section III) |
-| Fig 2 | PhysAgent 전체 파이프라인 (Ontology + Literature → LLM → Sdevice File) | 방법론 개요 (Section IV) |
-| Fig 3 | 특정 재료에 대한 생성 Sdevice 파일 예시 및 물리적 근거 | 결과 설명 (Section V) |
+| Fig 1 | PhysAgent 전체 파이프라인 (Input → Ontology Graph → MCP Tool → .par File) | Sec III |
+| Fig 2 | 온톨로지 서브그래프 시각화 (Bandgap 중심 노드-엣지 관계도) | Sec III |
+| Fig 3 | 온톨로지 확장/검증 모델 (Spec → Plan → Impl 동기화) | Sec III |
+| Fig 4 | 생성 결과: Library 재료 비교 + IGZO 파라미터 파일 예시 | Sec IV |
+| Fig 5 | 자동 검증 파이프라인 (ontology compliance + syntax + physics validation) | Sec IV |
 
 ### 4.7 예상 리뷰어 질문 및 대비
 
