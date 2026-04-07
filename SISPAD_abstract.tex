@@ -36,14 +36,15 @@
 
 % 저자 정보를 정의하는 부분
 \author{
-\begin{tabular}{c@{\hspace{1.6cm}}c}
-Shinbin Kim$^{*}$ & Giung Kim$^{*}$ \\
-\textit{Semiconductor Engineering Department} & \textit{Semiconductor Engineering Department} \\
-\textit{POSTECH} & \textit{POSTECH} \\
-Pohang, Republic of Korea & Pohang, Republic of Korea \\
-\href{mailto:sinbin0701@postech.ac.kr}{sinbin0701@postech.ac.kr} & \href{mailto:giung0408@postech.ac.kr}{giung0408@postech.ac.kr}
+\begin{tabular}{c@{\hspace{0.4cm}}c@{\hspace{0.4cm}}c@{\hspace{0.4cm}}c}
+\small Shinbin Kim$^{*}$ & \small Giung Kim$^{*}$ & \small Dae-Hwan Kang$^{\dagger}$ & \small Jiwon Lee$^{\dagger}$ \\
+\small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} \\
+\small\textit{POSTECH} & \small\textit{POSTECH} & \small\textit{POSTECH} & \small\textit{POSTECH} \\
+\small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea \\
+\small\href{mailto:sinbin0701@postech.ac.kr}{sinbin0701@postech.ac.kr} & \small\href{mailto:giung0408@postech.ac.kr}{giung0408@postech.ac.kr} & \small\href{mailto:daehwankang@postech.ac.kr}{daehwankang@postech.ac.kr} & \small\href{mailto:jiwonlee@postech.ac.kr}{jiwonlee@postech.ac.kr}
 \end{tabular}
 \thanks{$^{*}$These authors contributed equally to this work.}
+\thanks{$^{\dagger}$Corresponding authors.}
 }
 
 \maketitle
@@ -69,26 +70,47 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \section{Result}
 \input{sections/04_result}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=\columnwidth]{Fig/framework.jpg}}
-    \caption{PhysAgent framework overview.}
-    \label{fig:all}
-\end{figure}
+\section{Conclusion}
+\input{sections/05_conclusion}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.8\columnwidth]{Fig/ontology.jpg}}
+% ===== All figures placed after Conclusion =====
+\setlength{\textfloatsep}{4pt plus 1pt minus 1pt}
+\setlength{\floatsep}{4pt plus 1pt minus 1pt}
+\setlength{\intextsep}{4pt plus 1pt minus 1pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+
+\begin{figure}[!h]
+    \centerline{\includegraphics[width=0.85\columnwidth]{Fig/ontology_fig1.png}}
     \caption{Ontology system architecture.}
     \label{fig:ontology}
 \end{figure}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.8\columnwidth]{Fig/expansion.validation_model.jpg}}
+\begin{figure}[!h]
+    \centerline{\includegraphics[width=\columnwidth]{Fig/framework_small.png}}
+    \caption{PhysAgent framework: LLM agents access the ontology graph via MCP tool calls to generate physically grounded parameter files.}
+    \label{fig:framework}
+\end{figure}
+
+\begin{figure}[!h]
+    \centerline{\includegraphics[width=0.85\columnwidth]{Fig/expansion.validation_model.jpg}}
     \caption{Expansion and validation workflow.}
     \label{fig:expansion}
 \end{figure}
 
-\section{Conclusion}
-\input{sections/05_conclusion}
+\begin{figure}[!h]
+    \centering
+    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Experiment 1 --- SiC, GaN, IGZO parameter files vs library models]}}}
+    \caption{Experiment 1: Material-specific parameter file generation.}
+    \label{fig:exp1}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Experiment 2 --- baseline vs PhysAgent ablation results]}}}
+    \caption{Experiment 2: Ablation study comparing baseline LLM and PhysAgent.}
+    \label{fig:exp2}
+\end{figure}
 
 \begin{thebibliography}{00}
 \bibitem{dtco} Z. Ji \textit{et al.}, ``Toward reliability- and variability-aware design-technology co-optimization at advanced nodes,'' \textit{IEEE Trans. Electron Devices}, vol.~71, no.~1, pp.~138--150, 2024.
@@ -97,6 +119,7 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \bibitem{chattcad} Z.~Zhang, S.~Nassif, and M.~Tahoori, ``ChatTCAD: Leveraging large language models for automated TCAD simulation file generation,'' in \textit{Proc. ISVLSI}, 2025, pp.~1--6.
 \bibitem{malts} J.~Dou \textit{et al.}, ``MALTS: A multi-agent large language model-based layout-to-TCAD structure synthesizer,'' in \textit{Proc. ISEDA}, 2025, pp.~795--800.
 \bibitem{agentictcad} G.~Fan \textit{et al.}, ``AgenticTCAD: A LLM-based multi-agent framework for automated TCAD code generation and device optimization,'' \textit{arXiv:2512.23742}, 2026.
+\bibitem{ontology_tcad} PhysAgent Team, ``TCAD Physics Ontology,'' 2026. [Online]. Available: \url{https://ontology-tcad.vercel.app/}
 \end{thebibliography}
 
 \end{document}
