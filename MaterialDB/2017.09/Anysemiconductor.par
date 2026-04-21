@@ -1,0 +1,92 @@
+* Copyright (c) 1994-2017 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* SpectralConversion
+* { * Spectral Conversion Model
+*   No default model, user has to define.
+*   All wavelength parameters should be in nanometers.
+*   Choice of Analytic or NumericalTable selected in Physics section of region
+*  
+*   ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+*   AbsorptionScaling = float        * scale absorption
+*   EmissionScaling = float          * scale emission
+*   Analytic (
+*     AbsorptionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*     EmissionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*   )
+*   NumericalTable (
+*     AbsorptionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+*     EmissionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+
+*   ConversionEfficiency = 1.0
+* }
+
+SchroedingerParameters:
+{ * For the hole masses for Schroedinger equation you can
+  * use different formulas.
+  * 0: use the isotropic density of states effective mass
+  * 1: (for materials with Si-like hole band structure)
+  *    m(k)/m0=1/(A+-sqrt(B+C*((xy)^2+(yz)^2+(zx)^2)))
+  *    where k=(x,y,z) is unit normal vector in reziprocal
+  *    space.  '+' for light hole band, '-' for heavy hole band
+  * 2: Heavy hole mass mh and light hole mass ml are
+  *    specified explicitly.
+  *    Use me as electron mass for free-carrier effect in 
+  *    the refractive index model.
+  * For electron masses, the following formula options exist:
+  * 0: use the isotropic density of states effective mass
+  * 1: (for materials with Si-like hole band structure)
+  *    use the a, ml, and mm parameters from eDOSMass.
+  *    Typically, this leads to anisotropy.
+	formula	= 0 ,	2	# [1]
+  * Formula(hole) 2 parameters:
+	ml	= 0.26	# [1]
+	mh	= 0.5	# [1]
+	me	= 0.0000e+00	# [1]
+  * Lifting of degeneracy of bulk valleys. The value for
+  * electrons is added to the band edge for the subband
+  * ladder of lower degeneracy if positive, and subtracted
+  * from the band edge for the ladder of higher degeneracy
+  * if negative. (that is, the value of the band edge is
+  * always increased).  For holes, the value is subtracted from
+  * the band edge for the heavy hole band is positive,
+  * add added tp that of the light hole band if
+  * negative.  The signs are such that the shift always
+  * moves the band edges 'outward', away from midgap.  The
+  * gap itself is defined as the separation of the
+  * unshifted band edges and remains unaffected.
+	offset	= 0.0000e+00 ,	0.0000e+00	# [eV]
+  * Alternative to the specification of formula, offset,
+  * and masses, you can make an arbitrary number of ladder
+  * specification, 'eLadder(mz, mxy, deg, dE) and hLadder(...)
+  * Here, mz is the quantization mass, mxy an in-plane DOS mass,
+  * deg the ladder degeneracy, and dE an shift of the band edge
+  * for the ladder (non-negative; the shift is always outward,
+  * away from midgap).  When present, we solve the Schroedinger
+  * equation separately for each ladder
+
+  * Temperatures in rescaling of the mxy for eLadder and hLadder
+	ShiftTemperature	= 1.0000e+10 ,	1.0000e+10	# [K]
+}
+

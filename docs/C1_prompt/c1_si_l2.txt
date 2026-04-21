@@ -1,0 +1,6 @@
+Produce only the `Physics { ... }` section of a Sentaurus SDevice .cmd
+file and the matching .par file for a Si nMOSFET with Lg = 65 nm and
+EOT = 1.2 nm. Pick appropriate mobility, bandgap narrowing, and
+recombination models for silicon at room temperature, and put the
+numerical values in the .par file. Do not generate any other SDevice
+sections — the rest of the deck and the .tdr are fixed.

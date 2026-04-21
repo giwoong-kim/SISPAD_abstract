@@ -1,0 +1,79 @@
+* Copyright (c) 1994-2014 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* SpectralConversion
+* { * Spectral Conversion Model
+*   No default model, user has to define.
+*   All wavelength parameters should be in nanometers.
+*   Choice of Analytic or NumericalTable selected in Physics section of region
+*  
+*   ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+*   AbsorptionScaling = float        * scale absorption
+*   EmissionScaling = float          * scale emission
+*   Analytic (
+*     AbsorptionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*     EmissionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*   )
+*   NumericalTable (
+*     AbsorptionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+*     EmissionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+
+*   ConversionEfficiency = 1.0
+* }
+
+
+Kappa
+{ *  Lattice thermal conductivity
+
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+	kappa	= 0.192	# [W/(K cm)]
+	kappa_b	= 0.0000e+00	# [W/(K^2 cm)]
+	kappa_c	= 0.0000e+00	# [W/(K^3 cm)]
+}
+
+
+Kappa_aniso
+{ *  Lattice thermal conductivity
+
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+	kappa	= 0.192	# [W/(K cm)]
+	kappa_b	= 0.0000e+00	# [W/(K^2 cm)]
+	kappa_c	= 0.0000e+00	# [W/(K^3 cm)]
+}
+
+Bandgap
+{ * For conductors Band Gap is zero and the following parameters are used:
+	WorkFunction	= 4.66	# [eV]
+	FermiEnergy	= 11.7	# [eV]
+  * for backward compatibility Chi0 could be used to define the work function.
+}
+
+Resistivity
+{ * Resist(T) = Resist0 * ( 1 + TempCoef * ( T - 273 ) )
+	Resist0	= 1.1000e-05	# [ohm*cm]
+	TempCoef	= 4.2000e-03	# [1/K]
+}
+

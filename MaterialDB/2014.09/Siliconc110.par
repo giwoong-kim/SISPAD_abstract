@@ -1,0 +1,337 @@
+* Copyright (c) 1994-2014 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+#[01Sch] Schaffler, Properties of Advanced Semiconductor Materials GaN, AlN, InN, BN, SiC, Sige,
+#John Wiley & Sons, Inc., New York, pp. 149-188, 2001
+#[64Gla] Glasbrenner and Slack, Phys. Rev., 164, 4A, pp 1058-1069, 1964
+#[58BRA] Braunstein, Moore, and Herman in C. Penn, T. Frommherz, and G. Bauer, Properties
+#of Silicon Germanium and SiGe: Carbon EMIS Datareviews Series, no. 24, chapter 4.1
+
+Epsilon
+        {
+                epsilon                 =       11.7                    #[01Sch]
+        }
+
+Epsilon_aniso
+        {
+                epsilon                 =       11.7                    #no anisotropic behavior considered
+        }
+
+LatticeHeatCapacity
+        {
+                cv                      =       1.63
+                cv_b                    =       0.0000e+00
+                cv_c                    =       0.0000e+00
+                cv_d                    =       0.0000e+00
+        }
+
+Kappa
+        {
+                Formula                 =       0
+
+                1/kappa                 =       -3.800e-03              #[64Gla]
+                1/kappa_b               =       1.5500e-03
+                1/kappa_c               =       1.8200e-06
+
+                #1/kappa                =       0.03                    #default
+                #1/kappa_b              =       1.5600e-03              #default
+                #1/kappa_c              =       1.6500e-06              #default
+        }
+
+Bandgap
+        {
+                Bgn2Chi                 =       0.5
+                dEg0(OldSlotboom)       =       0.0000e+00
+                beta                    =       0.00e+00
+                Eg0                     =       1.124                   #[58BRA] - 1.16964 at 0 degC
+                alpha                   =       4.7300e-04
+                beta                    =       6.3600e+02
+                Chi0                    =       4.05                    #[58BRA]
+                Tpar                    =       3.0e+02
+        }
+
+OldSlotboom
+        {
+                Ebgn                    =       9.0000e-03
+                Nref                    =       1.0000e+17
+        }
+
+eDOSMass
+        {
+                #Formula                =       2
+                #Nc300                  =       2.89e+19                #ioffe database: 2.75E19-3.22E19
+
+                Formula                 =       1
+                a                       =       0.1905
+                ml                      =       0.9163
+                mm                      =       0.0000e+00
+        }
+
+hDOSMass
+        {
+                #Formula                =       2
+                #Nv300                  =       3.14e+19                #ioffe database: 1.82E19
+                #Nv300                  =       1.819e+19
+
+                Formula                 =       1
+                a                       =       0.443587
+                b                       =       0.003609528
+                c                       =       0.0001173515
+                d                       =       1.263218e-06
+                e                       =       3.025581e-09
+                f                       =       0.004683382
+                g                       =       0.0002286895
+                h                       =       7.469271e-07
+                i                       =       1.727481e-09
+                mm                      =       0
+        }
+
+QuantumPotentialParameters "100"
+        {
+                gamma                   =       4.5,    7.3             #for Nv=1.82E19
+                #gamma                  =       4.5,    4.5             #for Nv=3.14E19
+        }
+
+QuantumPotentialParameters "110"
+        {
+                gamma                   =       6.35,   3.3             #for Nv=1.82E19
+                #gamma                  =       6.35,   1.6             #for Nv=3.14E19
+        }
+
+QuantumPotentialParameters "111"
+        {
+                gamma                   =       6.65,   4.3
+        }
+
+###for <110> and <100> channel
+IALMob "100":
+        {
+                EnormMinimum            =       0
+                mumax                   =       1417.0, 486.0
+                mumin                   =       56.0,   46.0
+                alpha                   =       0.68,   0.719
+                theta                   =       2.285,  2.247
+                n_ref                   =       9.68e16,2.23e17
+                me_over_m0              =       1.0
+                mh_over_m0              =       1.258
+                B                       =       9.0e5,  8.1e5
+                C                       =       4.84e4, 8.36e3
+                delta                   =       7.15e14,2.58e14
+                eta                     =       1.0e50, 1.0e50
+                N1                      =       1.0,    1.0
+                N2                      =       1.0,    1.0
+                lambda                  =       0.0,    0.0
+                lambda_sr               =       0.0,    0.0
+                A                       =       2.0,    2.0
+                alpha_sr                =       5.0e-22,0.0
+                k                       =       1.0,    1.0
+                nu                      =       0.0,    0.0
+                D1_inv                  =       300.0,  150.0
+                D2_inv                  =       300.0,  150.0
+                nu0_inv                 =       1.5,    1.5
+                nu1_inv                 =       2.0,    2.0
+                nu2_inv                 =       0.5,    0.5
+                alpha1_inv              =       0.0,    0.0
+                alpha2_inv              =       0.0,    0.0
+                l_crit                  =       1.0e-6, 1.0e-6
+                l_crit_c                =       1.0e-6, 1.0e-6
+        }
+
+###for <110> channel
+IALMob "110":
+        {
+                EnormMinimum            =       0
+                mumax                   =       1417.0, 486.0
+                mumin                   =       56.0,   46.0
+                alpha                   =       0.68,   0.719
+                theta                   =       2.285,  2.247
+                n_ref                   =       9.68e16,2.23e17
+                me_over_m0              =       1.0
+                mh_over_m0              =       1.258
+                B                       =       9.0e5,  9.0e5
+                C                       =       2.18e4, 3.08e4
+                delta                   =       1.07e14, 7.15e14
+                eta                     =       1.0e50, 1.0e50
+                N1                      =       1.0,    1.0
+                N2                      =       1.0,    1.0
+                lambda                  =       0.0,    0.0
+                lambda_sr               =       0.0,    0.0
+                A                       =       2.0,    2.0
+                alpha_sr                =       5.0e-22,0.0
+                k                       =       1.0,    1.0
+                nu                      =       0.0,    0.0
+                D1_inv                  =       350.0,  175.0
+                D2_inv                  =       350.0,  175.0
+                nu0_inv                 =       1.5,    1.5
+                nu1_inv                 =       2.0,    2.0
+                nu2_inv                 =       0.5,    0.5
+                alpha1_inv              =       0.0,    0.0
+                alpha2_inv              =       0.0,    0.0
+                l_crit                  =       1.0e-6, 1.0e-6
+                l_crit_c                =       1.0e-6, 1.0e-6
+        }
+
+##for <110> channel - sband calculation <112> channel
+IALMob "111":
+        {
+                EnormMinimum            =       0
+                mumax                   =       1417.0, 486.0
+                mumin                   =       56.0,   46.0
+                alpha                   =       0.68,   0.719
+                theta                   =       2.285,  2.247
+                n_ref                   =       9.68e16,2.23e17
+                me_over_m0              =       1.0
+                mh_over_m0              =       1.258
+                B                       =       1.40e6, 1.02e6
+                C                       =       3.50e4, 1.05e4
+                delta                   =       1.75e14, 3.25e14
+                eta                     =       1.0e50, 1.0e50
+                N1                      =       1.0,    1.0
+                N2                      =       1.0,    1.0
+                lambda                  =       0.0,    0.0
+                lambda_sr               =       0.0,    0.0
+                A                       =       2.0,    2.0
+                alpha_sr                =       5.0e-22,0.0
+                k                       =       1.0,    1.0
+                nu                      =       0.0,    0.0
+                D1_inv                  =       350.0,  175.0
+                D2_inv                  =       350.0,  175.0
+                nu0_inv                 =       1.5,    1.5
+                nu1_inv                 =       2.0,    2.0
+                nu2_inv                 =       0.5,    0.7
+                alpha1_inv              =       0.0,    0.0
+                alpha2_inv              =       0.0,    0.0
+                l_crit                  =       1.0e-6, 1.0e-6
+                l_crit_c                =       1.0e-6, 1.0e-6
+        }
+
+ThinLayerMobility "100":
+        {
+                beta            =       4.0,            4.0
+                zeta            =       2.88,           1.05
+                p1              =       0.55,           0.0
+                p2              =       400.0,          0.66
+                p3              =       1.44,           1.0
+                mz1             =       0.916,          0.29
+                mz2             =       0.19,           0.25
+                wt01            =       3.0e-06,        0.0
+                wt02            =       3.5e-07,        0.0
+                muac01          =       315.0,          30.2
+                muac02          =       6.4,            69.0
+                mutf0           =       0.15,           0.28
+                musp0           =       1.145e-8,       1.6e-10
+                tsp0            =       1.0e-04,        1.0e-04
+                ftf0            =       6.25e+03,       1.0e+100
+                tmin            =       2.00e-03,       2.00e-03
+                eta1            =       6.0,            6.0
+                eta2            =       1.0,            1.0
+                mutfh0          =       1.0e+06,        1.0e6
+                ftfh0           =       1.0e+100,       1.0e+100
+        }
+
+ThinLayerMobility "110":
+        {
+                beta            =       4.0,            4.0
+                zeta            =       0.15,           8.2
+                p1              =       0.4,            0.1
+                p2              =       50.0,           2.0e6
+                p3              =       7.0,            4.0
+                mz1             =       0.315,          1.8
+                mz2             =       0.19,           0.23
+                wt01            =       3.5e-07,        3.0e-7
+                wt02            =       3.0e-06,        1.0e-5
+                muac01          =       85.0,           1300.0
+                muac02          =       300.0,          100.0
+                mutf0           =       6.9e-5,         0.0051
+                musp0           =       2.8e-3,         5.0e-5
+                tsp0            =       2.7e-04,        1.5e-04
+                ftf0            =       6.25e+03,       6.25e+03
+                tmin            =       2.00e-03,       2.00e-03
+                eta1            =       9.5,            7.5
+                eta2            =       1.5,            1.5
+                mutfh0          =       1.0e+06,        5.1
+                ftfh0           =       1.0e+100,       6.25e+04
+        }
+
+#copied from (110)
+ThinLayerMobility "111":
+        {
+                beta            =       4.0,            4.0
+                zeta            =       0.15,           8.2
+                p1              =       0.4,            0.1
+                p2              =       50.0,           2.0e6
+                p3              =       7.0,            4.0
+                mz1             =       0.315,          1.8
+                mz2             =       0.19,           0.23
+                wt01            =       3.5e-07,        3.0e-7
+                wt02            =       3.0e-06,        1.0e-5
+                muac01          =       85.0,           1300.0
+                muac02          =       300.0,          100.0
+                mutf0           =       6.9e-5,         0.0051
+                musp0           =       2.8e-3,         5.0e-5
+                tsp0            =       2.7e-04,        1.5e-04
+                ftf0            =       6.25e+03,       6.25e+03
+                tmin            =       2.00e-03,       2.00e-03
+                eta1            =       9.5,            7.5
+                eta2            =       1.5,            1.5
+                mutfh0          =       1.0e+06,        5.1
+                ftfh0           =       1.0e+100,       6.25e+04
+        }
+
+RCSMobility
+        {
+                d_crit          =       1.0e-7,         1.0e-7
+                l_crit          =       7.7e-8,         7.7e-8
+        }
+
+RPSMobility
+        {
+                murps0          =       124.18,         124.18
+                d_crit          =       1.0e-7,         1.0e-7
+                l_crit          =       7.7e-8,         7.7e-8
+        }
+
+Lombardi_highk:
+        {
+                alpha_lom_e             =       0.0
+                alpha_lom_h             =       0.0
+                alpha_rcs_e             =       0.0
+                alpha_rcs_h             =       0.0
+                alpha_rps_e             =       4.0
+                alpha_rps_h             =       4.0
+                d_crit_rcs_e            =       1.0e-7
+                d_crit_rcs_h            =       1.0e-7
+                l_crit_rcs_e            =       7.7e-8
+                l_crit_rcs_h            =       7.7e-8
+                d_crit_rps_e            =       1.0e-7
+                d_crit_rps_h            =       1.0e-7
+                l_crit_rps_e            =       7.7e-8
+                l_crit_rps_h            =       7.7e-8
+        }
+
+NegInterfaceChargeMobility:
+        {
+                E0                      =       1.0e-6, 1.0e-6
+                mu1                     =       250.0,  250.0
+                c_exp                   =       0.5,    0.5
+                l_crit                  =       7.7e-8, 7.7e-8
+        }
+
+PosInterfaceChargeMobility:
+        {
+                E0                      =       1.0e-6, 1.0e-6
+                mu1                     =       250.0,  250.0
+                c_exp                   =       0.5,    0.5
+                l_crit                  =       7.7e-8, 7.7e-8
+        }
+
+HighFieldDependence:
+       {
+                beta0                   =       1.109,  1.213
+                vsat0                   =       1.07e+7,0.84e+7
+       }

@@ -1,0 +1,566 @@
+* Copyright (c) 1994-2015 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+* [16hla] Slah Hlali, Neila Hizem, Adel Kalboussi, Физика и техника полупроводников, 2017, том 51, вып. 12
+* [09mor] Mathieu Moreau, Daniela Munteanu, Jean-Luc Autran et al., Quantum Simulation Of CV and IV Characteristics
+*         in Ge and III–V Materials /High-k Mos Devices, MRS Proceedings (Cambridge University Press, 2009), 1194-A02-02
+* [19wik] Wikipaedia: de
+* [xxacc] https://accuratus.com/alumox.html
+* [xxpan] http://www-ferp.ucsd.edu/LIB/PROPS/PANOS/al2o3.html
+* [67tou] Y. S. Touloukian, Thermophysical Properties of High Temperature Solid Materials, The Macmillian Company, New York, Collier-Macmillian Ltd., 1967
+* [87abd] M.A. Abdou, M.S. Tillack, A.R. Raffray, Modeling, analysis and experiments for fusion nuclear technology: FNT progress report: Modeling and FINESSE, INIS, vol. 19, no., 1987
+* [Hig16] M. Higashiwaki, K. Sasaki, H. Murakami, Y. Kumagai, A. Koukitu, A. Kuramata, T. Masui and S. Yamakoshi,
+*         Semiconductor Science and Technology. 31, 3 (2016)
+
+Epsilon
+  {
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 9 #[1], [16Hla], [09mor]
+  }
+
+Epsilon_aniso
+  {
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 10 #[1], [16Hla], [09mor]
+  }
+
+Epsilon_Inf
+  {
+    * Ratio of the high frequency limit of permittivities of material and vacuum
+
+    epsilon_inf = 9.0 #[1], copied from low frequency epsilon
+  }
+
+Epsilon_Inf_aniso
+{ *  Ratio of the high frequency limit of permittivities of material and vacuum
+
+  * epsilon_inf() = epsilon_inf
+	epsilon_inf	= 9	# [1]
+}
+
+RefractiveIndex
+  { 
+    * Optical Refractive Index
+    * refractiveindex() = refractiveindex * (1 + alpha * (T-Tpar))
+
+    Tpar = 3.0000e+02 #[K]
+    refractiveindex = 1.46 #[1]
+    alpha = 2.0000e-04 #[1/K]
+
+    * Gain dependence of refractive index in active region:
+    * a) Linear model: delta n = a0 * ((n+p)/2 - N0)
+    * b) Logarithmic model: delta n = a0 * log ((n+p)/(2 * N0))
+    * where n/p are the carrier densities in the active region. 
+
+    a0 = 0.0000e+00 #[cm^3 or 1]
+    N0 = 1.0000e+18 #[1/cm^3]
+  }
+
+ComplexRefractiveIndex
+  { 
+    * Complex refractive index model: n_complex = n + i*k (unitless)  
+    *  with n = n_0 + delta_n_lambda + delta_n_T + delta_n_carr + delta_n_gain 
+    *  k = k_0 + delta_k_lambda + delta_k_carr                
+    * Base refractive index and extinction coefficient: 
+    *  n_0, k_0 
+
+    n_0 = 1.46 #[1]
+    k_0 = 0.0000e+00 #[1]
+  
+    * Wavelength dependence (real and imag): 
+    *  Formula 0: delta_n_lambda = Cn_lambda * lambda + Dn_lambda * lambda^2 
+    *             delta_k_lambda = Ck_lambda * lambda + Dk_lambda * lambda^2 
+    *  Formula 1: Read tabulated values 
+    *             NumericalTable (...)  
+    *  Formula 2: Read tabulated values from file 
+    *             NumericalTable = <string> 
+    *  Formula 3: Read tabulated values from ODB Table
+
+    Formula = 3
+    Cn_lambda = 0.0000e+00 #[um^-1]
+    Dn_lambda = 0.0000e+00 #[um^-2]
+    Ck_lambda = 0.0000e+00 #[um^-1]
+    Dk_lambda = 0.0000e+00 #[um^-2]
+    NumericalTable ( 
+      0.05100 0.80400 0.3220000;
+      0.05300 0.81100 0.3660000;
+      0.05500 0.82200 0.4080000;
+      0.05600 0.82900 0.4300000;
+      0.05800 0.84300 0.4700000;
+      0.05900 0.85100 0.4820000;
+      0.06360 0.87900 0.6130000;
+      0.06530 0.90200 0.6450000;
+      0.06700 0.92700 0.6770000;
+      0.06890 0.95700 0.7120000;
+      0.06990 0.97500 0.7310000;
+      0.07090 0.99900 0.7500000;
+      0.07190 1.03000 0.7630000;
+      0.07290 1.07200 0.7680000;
+      0.07400 1.12400 0.7650000;
+      0.07510 1.13700 0.7550000;
+      0.07630 1.15600 0.7370000;
+      0.07750 1.17200 0.7170000;
+      0.07870 1.17800 0.7030000;
+      0.08000 1.17200 0.6960000;
+      0.08130 1.16700 0.6990000;
+      0.08270 1.16800 0.7110000;
+      0.08410 1.17500 0.7390000;
+      0.08550 1.19500 0.7710000;
+      0.08700 1.22500 0.7990000;
+      0.08860 1.26500 0.8080000;
+      0.09020 1.32000 0.7950000;
+      0.09190 1.36300 0.7750000;
+      0.09360 1.37100 0.7550000;
+      0.09540 1.36800 0.7470000;
+      0.09720 1.37200 0.7660000;
+      0.09920 1.38300 0.7930000;
+      0.10120 1.41000 0.8240000;
+      0.10330 1.47500 0.8610000;
+      0.10510 1.55400 0.8740000;
+      0.10690 1.63500 0.8590000;
+      0.10880 1.71600 0.8100000;
+      0.11270 1.73900 0.5690000;
+      0.11370 1.68700 0.5650000;
+      0.11480 1.58700 0.6180000;
+      0.11590 1.51300 0.7250000;
+      0.11700 1.49200 0.9140000;
+      0.11810 1.56700 1.1100000;
+      0.11870 1.64500 1.1360000;
+      0.11920 1.77200 1.1300000;
+      0.11980 1.91900 1.0450000;
+      0.12040 2.04800 0.9250000;
+      0.12100 2.15200 0.8100000;
+      0.12150 2.24000 0.7150000;
+      0.12280 2.33200 0.4600000;
+      0.12400 2.33000 0.3230000;
+      0.12520 2.29200 0.2360000;
+      0.12650 2.24300 0.1680000;
+      0.12780 2.19000 0.1190000;
+      0.12910 2.14000 0.0770000;
+      0.13190 2.04700 0.0430000;
+      0.13330 2.00600 0.0339000;
+      0.13480 1.96900 0.0271000;
+      0.13620 1.93500 0.0228000;
+      0.13780 1.90400 0.0189000;
+      0.13930 1.87600 0.0156000;
+      0.14090 1.85000 0.0132000;
+      0.14250 1.82500 0.0109000;
+      0.14420 1.80300 0.0083800;
+      0.14590 1.78300 0.0055700;
+      0.14760 1.76400 0.0031700;
+      0.14940 1.74700 0.0014000;
+      0.15120 1.73000 0.0004630;
+      0.15310 1.71600 0.0001220;
+      0.15500 1.70200 0.0000320;
+      0.15900 1.67600 0.0000047;
+      0.16310 1.65300 0.0000000;
+      0.16750 1.63300 0.0000000;
+      0.17220 1.61600 0.0000000;
+      0.17710 1.60000 0.0000000;
+      0.18370 1.58200 0.0000000;
+      0.19070 1.56700 0.0000000;
+      0.19840 1.55400 0.0000000;
+      0.20660 1.54300 0.0000000;
+      0.21440 1.53371 0.0000000;
+      0.22670 1.52276 0.0000000;
+      0.23020 1.52009 0.0000000;
+      0.23780 1.51474 0.0000000;
+      0.23990 1.51338 0.0000000;
+      0.24830 1.50841 0.0000000;
+      0.26520 1.50004 0.0000000;
+      0.26990 1.49805 0.0000000;
+      0.27530 1.49592 0.0000000;
+      0.28030 1.49404 0.0000000;
+      0.28940 1.49099 0.0000000;
+      0.29670 1.48873 0.0000000;
+      0.30215 1.48719 0.0000000;
+      0.33030 1.48053 0.0000000;
+      0.33415 1.47976 0.0000000;
+      0.34040 1.47858 0.0000000;
+      0.34660 1.47746 0.0000000;
+      0.36105 1.47512 0.0000000;
+      0.36500 1.47453 0.0000000;
+      0.40465 1.46961 0.0000000;
+      0.43580 1.46669 0.0000000;
+      0.46780 1.46429 0.0000000;
+      0.48610 1.46313 0.0000000;
+      0.50860 1.46197 0.0000000;
+      0.54610 1.46008 0.0000000;
+      0.57700 1.45885 0.0000000;
+      0.57910 1.45877 0.0000000;
+      0.58760 1.45847 0.0000000;
+      0.58930 1.45841 0.0000000;
+      0.64385 1.45671 0.0000000;
+      0.65630 1.45637 0.0000000;
+      0.66780 1.45608 0.0000000;
+      0.70650 1.45515 0.0000000;
+      0.85210 1.45248 0.0000000;
+      0.89435 1.45185 0.0000000;
+      1.01400 1.45025 0.0000000;
+      1.08290 1.44941 0.0000000;
+      1.12870 1.44888 0.0000000;
+      1.36220 1.44621 0.0000000;
+      1.39510 1.44584 0.0000000;
+      1.46950 1.44497 0.0000000;
+      1.52950 1.44427 0.0000000;
+      1.66060 1.44267 0.0000000;
+      1.68100 1.44241 0.0000000;
+      1.69320 1.44226 0.0000000;
+      1.70910 1.44205 0.0000000;
+      1.81310 1.44069 0.0000000;
+      1.97010 1.43851 0.0000000;
+      2.05810 1.43722 0.0000000;
+      2.15260 1.43576 0.0000000;
+      2.32540 1.43292 0.0000000;
+      2.43740 1.43095 0.0000000;
+      3.24390 1.41314 0.0000000;
+      3.26680 1.41253 0.0000000;
+      3.30260 1.41155 0.0000000;
+      3.42200 1.40819 0.0000000;
+      3.50700 1.40568 0.0000000;
+      3.55640 1.40418 0.0000000;
+      10.0000 1.40000 0.0000000;
+      10.0010 1.40000 0.0000000;
+      10.0020 1.40000 0.0000000;
+    ) 
+ 
+    * Temperature dependence (real): delta_n_T = n_0 * ( Cn_temp * (T-Tpar)) 
+    Cn_temp = 2.0000e-04 #[K^-1]
+    Tpar = 3.0000e+02 #[K]
+ 
+    * Carrier dependence (real): delta_n_carr = - Cn_carr * (const.) * (n/m_e + p/m_h) 
+    Cn_carr = 1 #[1]
+  
+    * Carrier dependence (imag): delta_k_carr = wavelength / (4*PI) * (Ck_carr_n*n + Ck_carr_p*p) 
+    Ck_carr = 0.0000e+00, 0.0000e+00 #[cm^2]
+  
+    * Gain dependence (real) 
+    * lin: delta_n_gain = Cn_gain * ( (n+p)/2 - Npar ) 
+    * log: delta_n_gain = Cn_gain * log ( (n+p)/(2 - Npar ) )
+    Cn_gain = 0.0000e+00 #[cm^3]
+    Npar = 1.0000e+18 #[cm^-3]
+  } 
+
+SpectralConversion
+  { 
+    * Spectral Conversion Model
+    * No default model, user has to define.
+    * All wavelength parameters should be in nanometers.
+    * Choice of Analytic or NumericalTable selected in Physics section of region
+    * ConversionEfficiency = float #ratio of absorbed photons that are reemitted.
+    * AbsorptionScaling = float #scale absorption
+    * EmissionScaling = float #scale emission
+    * Analytic (
+    *     AbsorptionProfile = (
+    *         Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+    *         Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+    *         ...
+    *       )
+    *     EmissionProfile = (
+    *         Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+    *         Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+    *         ...
+    *       )
+    *   )
+    * NumericalTable (
+    *     AbsorptionProfile = (
+    *       lambda0 value0
+    *       lambda1 value1
+    *       ...
+    *   )
+    *     EmissionProfile = (
+    *       lambda0 value0
+    *       lambda1 value1
+    *       ...
+    *   )
+
+    ConversionEfficiency = 1.0
+  }
+
+LatticeHeatCapacity
+  {
+    * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+    * lumped electron-hole-lattice heat capacity
+
+    * Density 3.94 g/cm3 #[19wik]
+    * Specific heat 0.88 J*g^-1*K^-1 [xxacc]
+    * cv = specific heat * density = 0.88 * 3.94 J/K/cm3
+
+    cv = 3.47 #[J/(K cm^3)], 
+    cv_b = 0.0000e+00 #[J/(K^2 cm^3)]
+    cv_c = 0.0000e+00 #[J/(K^3 cm^3)]
+    cv_d = 0.0000e+00 #[J/(K^4 cm^3)]
+  }
+
+Kappa
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * thermal resistivity = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * thermal conductivity = kappa + kappa_b * T + kappa_c * T^2
+
+    Formula = 1
+    kappa = 0.315 #[W/cm*K], [xxpan],  
+    kappa_b = 0.0
+    kappa_c = 0.0
+  }
+
+Kappa_aniso
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * thermal resistivity = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * thermal conductivity = kappa + kappa_b * T + kappa_c * T^2
+
+    Formula = 1
+    kappa = 0.315 #[W/cm*K], [xxpan],  
+    kappa_b = 0.0
+    kappa_c = 0.0
+  }
+
+* EnergyRelaxationTime {}
+
+* AvalancheFactors {}
+
+Bandgap
+  { 
+    * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+    * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+    * an appropriate BGN model, if this BGN model is chosen in Physics section 
+    * Parameter 'Tpar' specifies the value of lattice 
+    * temperature, at which parameters below are defined
+    * Chi0 is electron affinity.
+	
+    Chi0 = 3.6128 #[eV], [Lay01], 3.7eV at 300K 
+    Bgn2Chi = 0.5 #[1] 
+    Eg0	= 6.1 #[eV], [16Hla], [09mor], 6.1 at 300K
+    Tpar = 300.0 #[K] 
+    alpha = 0.0 #[eV/K]
+
+    * alpha = 4.45e-3 #[eV/K]
+    * beta = 2.0e3 #[K]
+  }
+
+FreeCarrierAbsorption
+  {
+    * Coefficients for free carrier absorption:
+    * fcaalpha_n for electrons,
+    * fcaalpha_p for holes
+    * FCA = (alpha_n * n + alpha_p * p) * Light Intensity
+
+    fcaalpha_n = 4.0000e-18 #[cm^2]
+    fcaalpha_p = 8.0000e-18 #[cm^2]
+  }
+
+* BandstructureParameters {}
+
+QWStrain
+{
+  * Zincblende crystals:
+  *   Parameters: a_nu, a_c, b, C_12, C_11
+  *   StrainConstant eps (formula = 1) or lattice constant
+  *   a0 (formula = 2) for energy shift of quantum-well
+  *   subbands.
+  *   a0(T) = a0 + alpha (T-Tpar)
+
+  * Wurtzite crystals:
+  *   Parameters: a_c, D1, D2, D3, D4, C_13, C_33
+  *   Lattice constants a0 and c0 (formula 2 must be used)
+  *   a0(T) = a0 + alpha (T-Tpar)
+  *   c0(T) = c0 + alpha (T-Tpar)
+
+	  * Default formula	= 1	# [1]
+	eps	= 0.0000e+00	# [1]
+	a0	= 3.1890e-10	# [cm]
+	alpha	= 0.0000e+00	# [cm/K]
+	Tpar	= 3.0000e+02	# [K]
+	a_nu	= 0.0000e+00	# [eV]
+	a_c	= -4.0800e+00	# [eV]
+	b_shear	= 0.0000e+00	# [eV]
+	c_11	= 0.0000e+00	# [1e-2 GPa]
+	c_12	= 0.0000e+00	# [1e-2 GPa]
+	d1	= -8.9000e-01	# [eV]
+	d2	= 4.27	# [eV]
+	d3	= 5.18	# [eV]
+	d4	= -2.5900e+00	# [eV]
+	c_13	= 1	# [1e-2 GPa]
+	c_33	= 3.92	# [1e-2 GPa]
+	c0	= 5.1850e-10	# [cm]
+}
+
+eDOSMass
+  {
+    * For effective mass specificatition Formula1 (me approximation)
+    * or Formula2 (Nc300) can be used.
+    * Formula 1: me/m0 = 0.28 = ((Nc300)/2.5094e19)^(2/3)
+    * me/m0 = [ (6 * mt)^2 *  ml ]^(1/3) + mm
+    * mt = a[Eg(0)/Eg(T)] 
+    * Formula 2: Nc(T) = (Nc300)*((T/300))^3/2 
+
+    Formula = 1 #[1]
+    a	= 0.0000e+00	# [1]
+    ml	= 0.0000e+00	# [1]
+    mm	= 0.28	# [1]
+
+    * Nc300 = 3.7180e+18 #[1/cm^3], [Jan11], this value is reverse-calculated based on me = 0.28*m0 (isotropic, 300K)
+
+  }
+
+* hDOSMass {}
+
+*  SchroedingerParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(AlN) + (1-x) * P(GaN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+QuantumPotentialParameters
+{ * gamma:  weighting factor for quantum potential
+  * theta:  weight for quadratic term
+  * xi:     weight for quasi Fermi potential
+  * eta:    weight for electrostatic potential
+  * nu :    weight for DOS mass change from stress
+	gamma	= 1 ,	1	# [1]
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 0.0000e+00 ,	0.0000e+00	# [1]
+	eta	= 0.0000e+00 ,	0.0000e+00	# [1]
+	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+ConstantMobility:
+  { 
+    * mu_const = mumax (T/T0)^(-Exponent)
+
+    mumax = 300, 1e-6 #[cm^2/(Vs)], [16Hig], no data for holes
+    Exponent = 0.0, 0.0 #no data
+  }
+
+* ConstantMobility_aniso{...}
+
+* PhuMob{...} 
+
+* EnormalDependence{...}
+
+* EnormalDependence_aniso{...}
+
+* NegInterfaceChargeMobility{...}
+
+* NegInterfaceChargeMobility_aniso{...}
+
+* PosInterfaceChargeMobility{...}
+
+* PosInterfaceChargeMobility_aniso{...}
+
+* Coulomb2DMobility{...}
+
+* Coulomb2DMobility_aniso{...}
+
+HydrogenDiffusion
+  {
+    HydrogenAtom
+      {
+        d0 = 3.8000e-13 #[cm^2/s]
+        Ed = 0.0000e+00 #[eV]
+        n0 = 0.0000e+00 #[/cm^3]
+        krec = 0.0000e+00 #[s^-1 or cm*s^-1]
+      }
+    HydrogenMolecule
+      {
+        d0 = 1.8000e-14 #[cm^2/s]
+        Ed = 0.0000e+00 #[eV]
+        n0 = 0.0000e+00 #[/cm^3]
+        krec = 0.0000e+00 #[s^-1 or cm*s^-1]
+      }
+    HydrogenIon
+      {
+        d0 = 3.8000e-13	#[cm^2/s]
+        Ed = 0.0000e+00	#[eV]
+        n0 = 0.0000e+00	#[/cm^3]
+        krec = 0.0000e+00 #[s^-1 or cm*s^-1]
+      }
+  }
+
+RadiativeRecombination:
+  {
+    * R_Radiative = C * (T/Tpar)^alpha * (n p - ni_eff^2)
+
+    C = 0.0000e+00 #[cm^3/s]
+    alpha = 0.0000e+00 #[1]
+  }
+
+Radiation
+  { 
+    * G = g * D * ((E+E0)/(E+E1))^m - the generation term, 
+    *  where E is the electric field, E0, E1, m are constants to account for the recombination. 
+    *  g is the electron-hole creation rate. 
+    *  D is the dose rate defined in the input file. 
+
+    g = 7.6000e+12 #[1/(rad*cm^3)]
+    E0 = 0.1 #[V/cm]
+    E1 = 1.3500e+06 #[V/cm]
+    m = 0.9 #[1]
+  }
+
+HighFieldDependence:
+  {
+    * Caughey-Thomas model:
+    * mu_highfield = ( (alpha+1)*mu_lowfield ) / ( alpha + ( 1 + ( (alpha+1)*mu_lowfield*E/vsat)^beta )^(1/beta) ) 
+    * beta = beta0 (T/T0)^betaexp.
+    * NO temperature dependence data
+
+    beta0 = 1.0, 1.0 #[1], no data for holes
+    betaexp = 0.0, 0.0 #[1]
+    alpha = 0.0000e+00,	0.0000e+00 #[1]
+
+    * For vsat either Formula1 or Formula2 can be used.
+    Vsat_Formula = 1, 1
+
+    * Formula1 for saturation velocity: vsat = vsat0 (T/T0)^(-Vsatexp)
+    * (Parameter Vsat_Formula has to be not equal to 2)
+    vsat0 = 2e+07, 1e+07 #[cm/2], no data for holes
+    vsatexp = 0.0, 0.0 #[1]
+  }
+
+* HighFieldDependence_aniso{...}
+
+* TransferredElectronEffect2 {}
+
+* TransferredElectronEffect2_aniso {}
+
+vanOverstraetendeMan * Impact Ionization:
+  {
+    * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+    * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+    *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+    * no data for holes. No data for E0 and hbaromega
+    * Electron data are for z-direction from [Ghosh17].
+    * For x-direction, a = 7.9E+05/cm, b = 2.92E+07V/cm
+
+    a(low) = 7.0600e+05, 7.0600e+05 #[1/cm], electron data for holes
+    a(high) = 7.0600e+05,	7.0600e+05 #[1/cm]
+    b(low) = 2.1000e+07, 2.1000e+07 #[V/cm]
+    b(high) = 2.1000e+07,	2.1000e+07 #[V/cm]
+    E0 = 4.0000e+05, 4.0000e+05 #[V/cm]
+    hbarOmega = 0.063, 0.063 #[eV], Silicon data
+  }
+
+Ionization
+  {
+    * no critical doping data
+
+    E_NDopant_0	= 0.06 #[eV] [16Hig], for Sn. Range 60meV to 80meV
+    g_NDopant	= 2
+  }
+

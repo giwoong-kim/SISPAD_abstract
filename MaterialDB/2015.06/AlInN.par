@@ -1,0 +1,412 @@
+* Copyright (c) 1994-2015 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+*  Mole dependent material: AlInN (x=0) = AlN
+*  Mole dependent material: AlInN (x=1) = InN
+
+*  Epsilon{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Epsilon_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  refractiveindex{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  ComplexRefractiveIndex { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+SpectralConversion
+{ * Spectral Conversion Model
+  * No default model, user has to define.
+  * All wavelength parameters should be in nanometers.
+  * Choice of Analytic or NumericalTable selected in Physics section of region
+  *
+  * ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+  * AbsorptionScaling = float        * scale absorption
+  * EmissionScaling = float          * scale emission
+  * Analytic (
+  *   AbsorptionProfile = (
+  *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+  *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+  *      ...
+  *   )
+  *   EmissionProfile = (
+  *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+  *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+  *      ...
+  *   )
+  * )
+  * NumericalTable (
+  *   AbsorptionProfile = (
+  *      lambda0 value0
+  *      lambda1 value1
+  *      ...
+  *   )
+  *   EmissionProfile = (
+  *      lambda0 value0
+  *      lambda1 value1
+  *      ...
+  *   )
+
+  ConversionEfficiency = 1.0
+}
+
+*  LatticeHeatCapacity{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Kappa{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Kappa_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnergyRelaxationTime{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Bandgap{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  FreeCarrierAbsorption{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  BandstructureParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  QWstrain{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  eDOSMass{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  hDOSMass{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  SchroedingerParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  QuantumPotentialParameters { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  ConstantMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  ConstantMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  DopingDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  DopingDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  PhuMob{...} 
+*  Philips Unified Mobility Model:
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence "100" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence_aniso "100" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence "110" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence_aniso "110" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence "111" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence_aniso "111" {...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  NegInterfaceChargeMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  NegInterfaceChargeMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  PosInterfaceChargeMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  PosInterfaceChargeMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Coulomb2DMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Coulomb2DMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  HighFieldDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  HighFieldDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(InN) + (1-x) * P(AlN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*******************************************************************
+*  Parameters for the recombination models below were taken 
+*  from GaAs and require calibration for accurate simulations
+*******************************************************************
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-09 ,	1.0000e-09	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+	A	= 1.0000e-30 ,	1.0000e-30	# [cm^6/s]
+	B	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	C	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	H	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N0	= 1.0000e+18 ,	1.0000e+18	# [cm^(-3)]
+}
+
+RadiativeRecombination * coefficients:
+{ * R_Radiative = C (n p - ni_eff^2)
+	C	= 2.0000e-10	# [cm^3/s]
+}

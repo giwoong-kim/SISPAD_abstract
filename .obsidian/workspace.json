@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "strategy.md",
+                "file": "docs/experiment.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "strategy"
+              "title": "experiment"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#his",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -183,27 +183,43 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "425cb46852755151",
+  "active": "5c2ae2baf7a0712a",
   "lastOpenFiles": [
+    "무제.md",
+    "part2_table_structure.md",
+    "c1_si_all_answers (1).md",
+    "무제",
+    "docs/experiment.md",
+    "docs/Ontology_expansion.md",
+    "docs/possibly-accessible-references.md",
+    "docs/reviewer.md",
+    "docs/structure.md",
+    "docs/strategy.md",
+    "docs/part2.mmd",
+    "docs/C1_prompt.zip",
+    "docs/C1_prompt/c1_si_l3.txt",
+    "docs/C1_prompt/c1_si_l2.txt",
+    "docs/C1_prompt/c1_si_l1.txt",
+    "docs/C1_prompt",
+    "docs/prompts/prompts/c1_si_l3.txt",
+    "docs/prompts/prompts/c1_si_l2.txt",
+    "docs/prompts/prompts/c1_si_l1.txt",
+    "guide/sdevice_ug_TOC_hierarchical.md",
+    "sdevice_ug_TOC_hierarchical.md",
+    "experiment.md",
+    "reviewer.md",
+    "strategy.md",
+    "Fig/framework_small.png",
+    "Fig/ontology_fig1.png",
     "Fig/framework.png",
     "Fig/gemini_prompt_fig2.md",
     "Fig/gemini_prompt_fig1_ontology.md",
-    "SISPAD_abstract.tex.tmp.905.1775480838644",
-    "Fig/table1_ontology.tex",
     "Fig/gemini_prompt_fig1.md",
     "Fig/gemini_prompt_framework.md",
     "Fig/gemini_prompt_standard.md",
     "Fig/gemini_prompt_simple.md",
-    "Fig/fig3_expansion.tex",
     "Fig/fig2_ontology-1.png",
-    "Fig/fig2_ontology.pdf",
-    "Fig/fig2_ontology.aux",
-    "Fig/fig2_ontology.log",
-    "Fig/fig2_ontology.tex",
     "Fig/fig1_framework-1.png",
-    "Fig/fig1_framework.pdf",
-    "Fig/fig1_framework.aux",
-    "Fig/fig1_framework.log",
     "Fig/table_2.md"
   ]
 }

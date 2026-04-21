@@ -1,0 +1,453 @@
+* Copyright (c) 1994-2014 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+#[70Pat]  L. Patrick, W.J. Choyke, "Static Dielectric Constant of SiC", Physical Review B, vol. 2, pp.2255-2256, 1970.
+#[94Nin]  S. Ninomiya, S. Adachi, "Optical Constants of 6H-SiC Single Crystals", Jpn.J.Appl.Phys. vol. 33, pp.2479-2482, 1994.
+#[05Pen]  G. Pensl et al., "SiC Material Properties", International Journal of High Speed Electronics and Systems, vol. 15, No. 4 pp.705-745, 2005.
+#[06Zha]  H. Zahng, L.M.Tolbert, B. Ozpineci, 2006 IEEE COMPEL Workshop, Ransselaer Polytechnic Institute, Troy, NY, pp.199-204, 2006.
+#[70Tou1] Y. S. Touloukian and C. Y. Ho (eds.), Thermal Conductivity-Nonmetallic Solids,Thermophysical Properties of Matter, TPRC Data Series, vol. 2, 
+#         IFI/Plenum: New York,1970.
+#[70Tou2] Y. S. Touloukian and E. H. Buyco, Specific Heat-Nonmetallic Solids, Thermophysical Properties of Matter, TPRC Data Series, vol. 5, 
+#         IFI/Plenum: New York, 1970.
+#[79Bur]  E. A. Burgemeister, W. von Muench, and E. Pettenpaul, "Thermal conductivity and electrical properties of 6H silicon carbide", 
+#         Journal of Applied Physics, vol. 50, no. 9, pp.5790-5794, 1979.
+#[93Mor2] D. T. Morelli et al., "Phonon-electron scattering in single crystal silicon carbide", Appl. Phys. Lett., vol. 63, no. 23, pp.3143-3145, 1993.
+#[00Lad]  M. Lades, Modeling and Simulation of Wide Bandgap Semiconductor Devices: 4H/6H-SiC, Ph.D.thesis, Technishen Universitaet Munich, Germany, 2000.
+#{97Nil]  O.Nillson et al., High Temperatures-High Presures, vol. 29, pp.73-79, 1997. The data are cited in http://www.ioffe.ru/SVA/NSM/Semicond/SiC.
+#[12Asa]  Y. Asahi, Physical parameters for 4H-SiC and 6H-SiC, Internal Report, Mountain View, California: Synopsys, Inc., November 2012.
+#[96Mot]  J.Mottok, "Numerische Simulation und Analyse bipolar 4H-Leistungsbauelemente", Ph.D. thesis, Naturwissenschaftliche Fakulaet der Unicersitaet 
+#         Elrangen-Nurnberg, 1996. The formula is cited in [00Lad].                              
+#[04Aya]  Tesfaye Ayalew, SiC Semiconductor Devices, Technology, Modeling, and Simulation,  Ph.D.thesis, Technishen Universiaet Wien, Austria, 2004. 
+#[64Cho]  W. J.Choyke, L.Patrick, D.R.Hamilton, "Optical properties of 4H SiC: Absorption and luminescence", Proc. Int. Conf. on Semiconductor Physics
+#         (ed. Hulin), pp.751-758, Vieweg & Sohn, Braunschweing, 1964.
+#[65Pat]  L.Patrik, W.J. Choyke, D.R.Hamilton, "Liminescence of 4H SiC, and Location of Conduction-Band Minima in SiC Polytypes", Physical Review, 
+#         vol. 137, pp.A1515-A1520, 1965.
+#[07Dav]  S. Yu. Davydov, "On the electron Affinity of SiliconCarbide Polytypes", Semiconductors, vol. 41, pp.696-698, 2007. 
+#[02Lan]  Landolt-Boernstein, New Series, III/41A1b, Condensed Matter Semiconductors SemiConducters GroupIV Elements, IV-IV and III-V Compounds.
+#         Part b - Electronic, Transport, Optical and Semiconductors and Other Properties, pp.35, Springer, 2002
+#[76Dub]  G.B.Dubroskii, V.I.Sankin, "Structure of exciton electroabsorption in 4H SiC", Soviet Physics Solid State, pp.1847-1848, 1976
+#[98Lin]  U. Lindefelt,"Doping-induced band edge displacements and band gap narrowing in3C-, 4H-, 6H-SiC, and Si", Journal of Applied Physics, vol. 84,
+#         no. 5, pp. 2628-2637, 1998.
+#[99Per]  C. Persson, U. Lindefelt, and B. E. Sernelius, "Band gap narrowing in n-type and p-type 3C-, 2H-, 4H-, 6H-SiC, and Si", Journal of Applied Physics, 
+#         vol. 86, no. 8, pp. 4419-4427, 1999.
+#[96Vol]  D. Volm et al., "Determination of the electron effective-mass tensor in 4H SiC", Physical Review B, vol. 53, pp.15409-15412, 1996
+#[97Wel]  G.Wellenhofer and U. Roessler, " Global Band Structure and Near-Band=Edge States", Physica Status Solidi (b), vol. 202, pp.107-123
+#[96Per]  C.Persson, U.Lindefelt, "Detailed band structure for 3C-, 2H-, 4H-, 6H-SiC , and Si around the fundamental band gap, Physical Review B, vol.54, 
+#         pp.10257-10260, 1996.
+#[95Har]  H.Harima, S.Nakashima, T.Uemura, "Raman Scattering from anisotropic LO-phonon-plasmon-coupled mode in ntype 4H- and 6H-SiC, Journal of Applied 
+#         Physics, vol. 78, pp.1996-2005, 1995.
+#[94Son]  N.T.Son, et al., "Electron effective masses and mobilities in high-purity 6H-SiC chemical vapor deposition layers", Applied Physics Letters, 
+#         vol. 65, pp.3209-3211, 1994.
+#[12Hat]  T. Hatakeyama, K. Fukuda, H.Omura, "Physical Models for SiC and Their Application to Device Simulations of SiC Insulated-Gate Bipolar Transistors",
+#         IEEE Transactions on Electron Devices, 
+#[94Sch1] W. J. Schaffer et al., "Conductivity Anisotropy in Epitaxial 6H and 4H SiC", in MRS Symposium Proceedings, Diamond, SiC and Nitride Wide Bandgap 
+#         Semiconductors, vol. 339, San Francisco, CA, USA, pp. 595-600, April 1994.
+#[08Sud]  Sudarshan Khrishnamoothy, Simulation of Wide Band-Gap Devices SiC and GaN, Mountain View, California: Synopsys, Inc., 2008.
+#[96Nil]  H.Nilsson, U. Sannemo, C. Petersson, " Monte Carlo simulation of electron transport in 4H-SiC using a two-band model with multiple minima", 
+#         Journal of Applied Physics, vol. 80, pp.3365-3369, 1996.
+#[02Lin]  H. Linewith, S. Dimitriev, "Channel-Carrier Mobility Parameters for 4H SiC MOSFETS", Proc. 23rd International Conference on Microelectronics, vol. 2, 
+#         Yugoslavia, 2002.
+#[00Kha]  I. A. Khan and J. A. Cooper, Jr., "Measurement of High Field Electron Transport in Silicon Carbide", IEEE transaction on Electron Devices, vol. 47, 
+#         pp.269-273, 2000.
+#[04Ber]  K.Bertilsson, C.Harris, H-E.Nilsson, "Calculation of lattice heating in SiC RF power devices", Solid State Electronics, vol. 48, pp.2103-2107, 2004.
+#[94Ruf]  M.Ruff, H.Miltehner, R.Helbig, "SiC Devices* Physics and Numerical Simulation", IEEE Transsaction on Electron Devices, vol. 41, pp.1040-1052, 1994. 
+#[09Tsi]  A. Tsibisov, private communication, 2009.
+#[97Gal]  Galeckas et al., "Auger recombination in 4H-SiC: Unusual temperature behavior", Applied Physics Letters, vol. 22, pp.3269-3271, 1997
+#[98Ram]  Ramungul et al., "Carrier Lifetime Extraction from a 6H-SiC High-Voltage p-i-n Rectifier Reverse Waveform", Materials Science Forum, vol. 264-268, 
+#         pp.1065-1068, 1998.
+#[97Kon]  A.O.Konstantinov, O.Wahab, N.Nordell, U.Lindefelt, "Ionization rates and critical fileds in 4H silicon carbide", Applied Physics Letters, vol.71, 
+#         pp.90-93, 1997.
+#[09Hat]  T.Hatakeyama et al., "Impact ionization coefficients of 4H silicon carbide", Applied Physics Letters, vol. 85, pp.1380-1382, 2004.
+#[92Iva]  P.A.Ivanov, V.E.Chelnokov, "Recent developments in SiC single-crystal electronics", Semiconductor Sci. Technol. , vol. 7, pp.863-880, 1992.
+#[04Kag]  S. Kagamihara et al., "Parameters required to simulate electric characteristics of SiC devices for n-type 4H-SiC", Journal of Applied Physics, 
+#         vol. 96, no. 10, pp. 5601-5606,2004
+#[97Bak]  M.Bakowski, U. Gustafsson, U. Lindefelt, "Simulation of SiC High Power Devices", Physica Satatus Solidi (a), 162, pp.421-440, 1997.
+#[09Koi]  A. Koizumi, J. Suda, and T. Kimoto, "Temperature and doping dependencies of electrical properties in Al-doped 4H-SiC epitaxial layers", Journal 
+#          of Applied Physics,vol. 106, no. 1, p. 013716, 2009.
+#[04Mat]  H.Matsuura et al., "Dependence of acceptor levels and hole mobility on acceptor density and temperature in Al-doped p-type 4H-SiC epilayers", 
+#         Journal of Applied Physics, vol. 96, pp.2708-2715, 2004
+#[05Per]  J. Pernot, S. Contreras and J. Camassel, "Electrical transport properties of aluminum implanted 4H-SiC", Journal of Applied Physics, vol. 98,
+#         no. 2, p. 023706, 2005.
+#[94Sch]  A.Shoener, Elektrische Characteriseerung von flachen und tiefen Stoerstellen in 4H- 6H- und 15R-Siliciumkarbid, Ph.D.thesis, University of 
+#         Erlangen-Nurnberg, 1994. The data is cited in [05Pen].
+#[96Sch]  A.Shoener et al., "Dependence of the alminium ionization energy on doping concentartion and compensation in 6H-SiC", Institute of Physics Conf.
+#         Series, no.142, pp.493-496, 1996
+#[96Pen]  G. Pensl et al, " Electrical properties of silicon carbide polytypes", Institute of Physics Conf.Sereies, no. 142, pp.275-280, 1996.
+#[96Sti]  Th. Stiasny, R. Helberg, "Impurities in 4H and 6H SiC crystals, characterized by thermoluminescence and thermally stimulated conductivity", 
+#         Institute of Physics Conf. Series, no.142, pp.389-392, 1996.         
+#[98Ito]  H. Itoh, T. Troffer, G. Pensl, "Coimplantation Effects on the Electrical Properties of Boron and Aluminum Acceptance in 4H-SiC", 
+#         Material Science Forum, vol. 264-268, pp.685-688, 1998.
+#[63Add]  A.Addamiano, R.M.Potter, V.Ozarow, "Photoluminescence of a-SiC", Journal of Electrochemical Society, vol. 113, pp.517-520, 1963.       
+#[77Vod]  Yu.A.Vodakov, N.Zhumaev, B.P.Zverev, G.A.Lomakina, E.N.Mokhov, V.G.Oding, V.V.Semenov, Yu.F.Simakin, "Boron-doped silicon carbide", Soviet Physics 
+#         Semiconductor, vol. 11, pp.214-217, 1977.
+#[85Ani]  M.M.Anikin, A.A.Lebedev, A.L.Syrkin, A.V.Suvorov, "Investigation of deep levels in SiC by capacitance spectroscopy methods", Soviet Physics 
+#         Semiconductors, vol. 19, pp.69-71, 1985.
+#[90Sut]  W.Suttrop, G.Pensl, P.Lang, "Boron-Related Deep Centers in 6H-SiC", Applied Physics A, vol. 51, pp.231-237, 1990.
+#[96Sti1] Th. Stiasny, R. Helberg, " The trap emptying process of low temperature thermoluminescence of 6H-SiC single crystals", Journal of Applied Physics, 
+#         vol. 79, pp.4152-4156, 1996. 
+#[96Sti2] Th. Stiasny, R. Helberg, "Impurities in 4H and 6H SiC crystals, characterized by thermoluminescence and thermally stimulated conductivity", 
+#          Int. Phys. Conf. Ser. no. 142, pp.389-392, 1996.
+#[97Sti]  Th. Stiasny, R. Helberg, "Thermoluminescence and Related Electronic Process of 4H/6H-SiC", Physica Status Solidi (a), vol. 162, pp.239-pp.249, 
+#         1997.
+
+
+
+Epsilon
+	{
+							#perp. to c-axis
+		epsilon		=	9.66		#[70Pat], ioffe database,  6H-SiC
+		#epsilon	=	9.76		#[94Nin, 05Pen], 6H-SiC+4H-SiC
+
+	}
+Epsilon_aniso
+	{
+							#parallel to c-axis
+		epsilon		=	10.03		#ioffe database, [70Pat], ratio of 1.04
+		#epsilon	=	9.98		#[94Nin], 6H-SiC
+		#epsilon	=	10.32		#[05Pen], 4H-SiC
+		#epsilon	=	10.1		#[06Zha], 4H-SiC
+	}
+
+Kappa
+	{
+							#perp. to c-axis
+		Formula		=	0
+		1/kappa		=	2.5e-3		#[70Tou1,79Bur,93Mor2 in 00Lad] , 4H-SiC+6H-SiC+3C-SiC
+		1/kappa_b	=	2.75e-4		#[70Tou1,79Bur,93Mor2 in 00Lad] , 4H-SiC+6H-SiC+3C-SiC
+		1/kappa_c	=	1.3e-6		#[70Tou1,79Bur,93Mor2 in 00Lad] , 4H-SiC+6H-SiC+3C-SiC
+
+	}
+
+Kappa_aniso						#parallel to c-axis
+	{
+		Formula		=	0
+		1/kappa		=      -0.1882		#[97Nil], [12Asa]
+		1/kappa_b	=	1.637e-3	#[97Nil], [12Asa]
+		1/kappa_c	=      -2.711e-20	#[97Nil], [12Asa]
+
+		#Formula	=	0
+		#1/kappa	=	3.57e-3		#[70Tou,79Bur,93Mor2 in 00Lad], applying the anisotropy of kappa(<0001>)/ kappa(<1-1-20>)=0.7
+		#1/kappa_b	=	3.93e-4		#[70Tou,79Bur,93Mor2 in 00Lad], applying the anisotropy of kappa(<0001>)/ kappa(<1-1-20>)=0.7
+		#1/kappa_c	=	1.86e-6		#[70Tou,79Bur,93Mor2 in 00Lad], applying the anisotropy of kappa(<0001>)/ kappa(<1-1-20>)=0.7
+	}
+
+LatticeHeatCapacity
+	{	**Lattice Heat Capacity
+		 cv		=	-2.139		#fit to the formula of [96Mot] in [00Lad]
+		 cv_b		=	 2.242e-2	#fit to the formula of [96Mot] in [00Lad]
+		 cv_c		=	-3.130e-5	#fit to the formula of [96Mot] in [00Lad]
+		 cv_d		=	 1.546e-8	#fit to the formula of [96Mot] in [00Lad]
+
+	}
+
+Bandgap
+	{
+							#4H-SiC
+		Chi0		 =	3.24		#[07Dav]
+		Bgn2Chi		 =	0.5
+		Eg0		 =	3.285		#Egx=3.265eV at 4K [64Cho][65Pat] , 3.235eV at 300K [02Lan], Ex=0.02eV [76Dub]
+		alpha		 =	0.033		#[00Lad]
+		beta		 =	1.0e5		#[00Lad]
+
+
+	}
+Slotboom
+	{
+		#Ebgn		=	0.02		#4H-SiC ntype [00Lad]
+		Nref		=	1.e+17		#4H-SiC ntype [00Lad]
+		Ebgn		 =	0.009		#4H-SiC ptype, 6H-SiC ntype, ptype [00Lad]
+	}
+
+
+JainRoulston
+	{
+		A_n		 =	 1.791E-08 # 4H-SiC n-type [99Per]
+		B_n		 =	 8.927E-07 # 4H-SiC n-type [99Per]
+		C_n		 =	 2.200E-12 # 4H-SiC n-type [99Per]
+		D_n		 =	 6.240E-12 # 4H-SiC n-type [99Per]
+		A_p		 =	-3.507E-08 # 4H-SiC p-type [99Per]
+		B_p		 =	 2.312E-06 # 4H-SiC p-type [99Per]
+		C_p		 =	 6.740E-12 # 4H-SiC p-type [99Per]
+		D_p		 =	 1.070E-12 # 4H-SiC p-type [99Per]
+
+
+		#A_n		 =	 1.500E-08 # 4H-SiC n-type [98Lin]
+		#B_n		 =	 6.008E-07 # 4H-SiC n-type [98Lin]
+		#C_n		 =	 2.930E-12 # 4H-SiC n-type [98Lin]
+		#D_n		 =	 8.740E-12 # 4H-SiC n-type [98Lin]
+		#A_p		 =	 1.300E-08 # 4H-SiC p-type [98Lin]
+		#B_p		 =	 4.965E-07 # 4H-SiC p-type [98Lin]
+		#C_p		 =	 1.150E-12 # 4H-SiC p-type [98Lin]
+		#D_p		 =	 3.870E-13 # 4H-SiC p-type [98Lin]
+
+	 }
+
+
+
+eDOSMass
+	{						#4H-SiC
+		Formula		=	1		#In sdevice, med/m0= [(6*mt)^2 * ml]^(1/3) + mm, mt = a * [Eg(0)/Eg(T)]
+		a		=	10.2429		#med/m0= Mc^(2/3) * me, Mc=3 for 4H-SiC,
+		ml		=	10.2429		#Nc(T)=2*(2pi*kb/h_Plank^2*med*T)^(3/2)= 2.5094e19 * {(med/m0)*(T/300)}^(3/2)
+		mm		=	-33.049		#the values of a, ml, and mm correspond to me(DOS effective mass of electron)/m0 = 0.401
+		Nc300		=	1.9150e19	#at T=300K [97Wel] and adjust the tempearture dependence between 300K and 1000K in [97Wel].
+
+
+		#Formula	=	2		#4H-SiC,
+		#Nc300		=	1.7193E+19	#me(DOS effective mass of electron)/m0 = 0.367 [96Per], 0.390 [96Vol], 0.394 [97Wel]
+							#at T=0K. Using the ratio between T=0K and T=300K in [97Wel], med/m0 = 0.777, 0.826,
+							#0.835 at T=300K. Correpondig Nc300 = 1.7193e19, 1.8828e19, 1.9150e19
+
+	}
+
+hDOSMass
+	{
+		Formula		=	1
+		a		=	1		#4H-SiC [97Wel],[12Hat]
+		b		=	6.92e-2
+		c		=	0.
+		d		=	0.
+		e		=	1.88e-6
+		f		=	0.
+		g		=	6.58e-4
+		h		=	0.
+		i		=	4.32e-7
+		mm		=	0.
+		Nv300		=	1.0752e20	#2(2pi*kB/h_Plank^2*m0*300)^3/2 = 2.5094e19
+
+		#Formula	=	2
+		#Nv300		=	2.5094e19	#4H-SiC, ioffe database
+		#Nv300		=	6.4747e19	#4H-SiC,
+	}
+
+ConstantMobility
+	{
+		mumax		=	950.0,	125.	  #[04Aya]
+		Exponent	=	2.4,	2.15	  #[04Aya]
+	}
+
+ConstantMobility_aniso
+	{
+		mumax		=	1140.0, 125	  #[04Aya], for electrons mu//=mu_perp/0.83 [94Sch1], for holes mu//=mu_perp
+		Exponent	=	2.4,	2.15	  #[04Aya]
+	}
+
+DopingDependence		       #perp. to c-axis
+	{
+		formula		=	1,	1
+		mumin1		=	40,	15.9	   #4H-SiC [04Aya] for electron, [94Sch1] for hole
+		mumin2		=	40,	15.9	   #4H-SiC [04Aya] for electron, [94Sch1] for hole
+		Pc		=	0,	0	   #4H-SiC [94Sch1]
+		Cr		=	1.94e17,1.76e19	   #4H-SiC [94Sch1]
+		alpha		=	0.61,	0.34	   #4H-SiC [94Sch1]
+		mu1		=	0,	0	   #4H-SiC [94Sch1]
+		Cs		=	3.43e20,6.1000e20
+		beta		=	2,	2
+
+
+	       #formula		=	2,	2
+	       #Ar_mumin	=	40     , 0	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_alm		=      -1.536 , -0.57	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_mud		=	910    , 113.5	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_ald		=      -2.397  , -2.6	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_N0		=	2.0e17 , 2.4e18	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_alN		=	0.75   , 2.9	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_a		=	0.76   , 0.69	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_ala		=	0.722  , -0.2	    #[08Sud] for electron, [12Hat] for hole
+	}
+
+
+
+DopingDependence_aniso		      #parallel to c-axis
+	{
+		formula		=	1,	1
+		mumin1		=	40,	15.9	     #4H-SiC [04Aya] for electron, [94Sch1] for hole
+		mumin2		=	40,	15.9	     #4H-SiC [04Aya] for electron, [94Sch1] for hole
+		Pc		=	0,	0	     #4H-SiC [94Sch1]
+		Cr		=	1.94e17,1.76e19	     #4H-SiC [94Sch1]
+		alpha		=	0.61,	0.34	     #4H-SiC [94Sch1]
+		mu1		=	0,	0	     #4H-SiC [94Sch1]
+		Cs		=	3.43e20,6.1000e20
+		beta		=	2,	2
+
+	       #formula		=	2,	2
+	       #Ar_mumin	=	40     , 0	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_alm		=      -1.536 , -0.57	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_mud		=	1100   , 113.5	    #for electrons mu//=mu_perp/0.83 [94Sch1], for holes mu//=mu_perpu
+	       #Ar_ald		=      -2.397  , -2.6	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_N0		=	2.0e17 , 2.4e18	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_alN		=	0.75   , 2.9	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_a		=	0.76   , 0.69	    #[08Sud] for electron, [12Hat] for hole
+	       #Ar_ala		=	0.722  , -0.2	    #[08Sud] for electron, [12Hat] for hole
+
+       }
+
+EnormalDependence		       #perp. to c-axis
+	{
+		B		=	1e6,	9.92e06	     #4H-SiC  [02Lin]
+		C		=	280,	2.95e03	     #4H-SiC  [02Lin]
+		N0		=	1,	1
+		lambda		=	0.125,	0.0317	     #4H-SiC  [02Lin]
+		k		=	1,	1
+		delta		=	5.82e14,2.0546e14
+		A		=	2,	2
+		alpha		=	0.0,	0.0
+		N1		=	1,	1
+		nu		=	1,	1
+		eta		=	5.82e30,2.055e+30
+		l_crit		=	1.0e-06,1.0e-06
+	}
+
+EnormalDependence_aniso		       #parallel to c-axis
+	{
+		B		=	1e6,	9.92e06	     #4H-SiC  [02Lin]
+		C		=	280,	2.95e03	     #4H-SiC  [02Lin]
+		N0		=	1,	1
+		lambda		=	0.125,	0.0317	     #4H-SiC  [02Lin]
+		k		=	1,	1
+		delta		=	5.82e14,2.0546e14
+		A		=	2,	2
+		alpha		=	0.0,	0.0
+		N1		=	1,	1
+		nu		=	1,	1
+		eta		=	5.82e30,2.055e+30
+		l_crit		=	1.0e-06,1.0e-06
+	}
+
+
+HighFieldDependence
+	{
+		beta0		=	1.2,	1.2	#4H-SiC [00Lad] [00Kha] for electron
+		betaexp		=	1,	1	#4H-SiC [00Lad] [00Kha] for electron
+		Vsat_Formula	=	1,	1
+		vsat0		=	2.2e+07,2.2e+07 #4H-SiC [00Lad] [00Kha] for electron
+		vsatexp		=	0.44,	0.44	#4H-SiC [00Lad] [00Kha] for electron
+
+		#beta0		=	1.0 ,	1.2	#4H-SiC [09Tsi] for electron
+		#betaexp	=	0.66,	1	#4H-SiC [09Tsi] for electron
+		#Vsat_Formula	=	1,	1
+		#vsat0		=	2.2e+07,2.2e+07 #4H-SiC [09Tsi] for electron
+		#vsatexp	=	0.87,	0.44	#4H-SiC [09Tsi] for electron
+
+
+	}
+
+HighFieldDependence_aniso
+	{
+		beta0		=	1.2,	1.2	#4H-SiC [00Lad]
+		betaexp		=	1,	1	#4H-SiC [00Lad]
+		Vsat_Formula	=	1,	1
+		vsat0		=	1.9e+07,1.9e+07 #4H-SiC [00Lad], vsat_perp./vsat_/ =1.16[96Nil], 1.17[04Ber}
+		vsatexp		=	0.44,	0.44	#4H-SiC [00Lad]
+	}
+
+
+Scharfetter
+	{
+		taumin		=	0.0,	0.0
+		taumax		=	2.50e-6, 0.5e-6 # process dependent
+		Nref		=	3.0e17, 3.0e17	# [94Ruf]
+		gamma		=	 0.3,	0.3	# [94Ruf]
+		Talpha		=	 1.72,	 1.72	# process dependent
+		Etrap		=	0.0000e+00	# trap level at mid band gap
+	}
+
+
+Auger
+	{
+		A		=	5e-31,	2e-31	#4H-SiC [97Gal]
+	       #A		=	3e-29,	3e-29	#6H-SiC [98Ram]
+		B		=	0.0,	0.0	#to disable temp.dep.
+		C		=	0.0,	0.0	#to disable temp.dep.
+		H		=	0.0,	0.0
+		N0		=	1.0e+18,1.0e+18
+	}
+
+
+
+OkutoCrowell
+	{
+		a		=	0.1   ,	 4.828e6 #4H-SiC [97Kon], for hole, adjusted to OkutoCrowell model(E//c-axis)
+		b		=	6.346e6, 1.334e7 #4H-SiC [97Kon], for hole, adjusted to OkutoCrowell model(E//c-axis)
+		c		=	0.0,	0.0	 #temperature effect disabled
+		d		=	0.0,	0.0	 #temperature effect disabled
+		gamma		=	1,	0.0
+		delta		=	2,	1.0	 #4H-SiC [97Kon]
+	}
+
+OkutoCrowell_aniso
+	{
+		a		=	0.1    , 4.828e6 #4H-SiC [97Kon], for hole, adjusted to OkutoCrowell model(E//c-axis)
+		b		=	6.346e6, 1.334e7 #4H-SiC [97Kon], for hole, adjusted to OkutoCrowell model(E//c-axis)
+		c		=	0.0,	0.0
+		d		=	0.0,	0.0
+		gamma		=	1,	0.0
+		delta		=	2,	1.0
+	}
+
+Hatakeyama
+	{
+		a_0001		=	1.76e08,3.41e08	 #4H-SiC, [09Hat]
+		a_1120		=	2.10e07,2.96e07
+		b_0001		=	3.30e07,2.50e07
+		b_1120		=	1.70e07,1.60e07
+		hbarOmega	=	0.19,	0.19
+		theta		=	1,
+	}
+
+
+Ionization
+	{
+							#4H-SiC Nitrogen hexagonal site
+		 #E_N_0		=	0.0709		#4H-SiC h [04Kag]
+		 #alpha_N	=	3.3800e-08	#4H-SiC h [04Kag]
+		 #g_N		=	2.0		#4H-SiC h
+		 #Xsec_N	=	1.0000e-12	#4H-SiC h
+
+		 #E_N_0		=	0.052		#4H-SiC h derived from [05Pen] (values averaged)
+		 #alpha_N	=	0
+
+							#4H-SiC Nitrogen cubic site
+		 #E_N_0		=	0.1237		#4H-SiC k [04Kag]
+		 #alpha_N	=	4.6500e-08	#4H-SiC k [04Kag]
+		 #g_N		=	2.0		#4H-SiC k
+		 #Xsec_N	=	1.0000e-12	#4H-SiC k
+
+		 #E_N_0		=	0.160		#4H-SiC k [09Tsi]
+		 #alpha_N	=	6.6500e-08	#4H-SiC k [09Tsi]
+
+		 #E_N_0		=	0.099		#4H-SiC k dervied from [05Pen] (values averaged)
+		 #alpha_N	=	0
+
+
+		 ##E_N_0	=	0.0860		#4H-SiC h,k lumped together at T=300K,[04Kag],[97Bak]
+		 ##alpha_N	=	3.55e-8		#4H-SiC h,k lumped together at T=300K,[04Kag],[97Bak]
+		 ##g_N		=	2.0		#4H-SiC h,k
+		 ##Xsec_N	=	1.0000e-12	#4H-SiC h,k
+
+							#4H-SiC Boron
+		 #E_B_0		 =	 0.293		#4H-SiC averaged value, 0.285-0.310 (B Conc<2e19cm-3) [96Pen],[96Sti],[98Ito]
+		 #alpha_B	 =	 0		#unkown
+		 #g_B		=	4.0
+		 #Xsec_B	=	1.0000e-12
+
+
+							#4H-SiC Al
+		 #E_Al_0	=	0.265		#4H-SiC [09Koi]
+		 #alpha_Al	=	3.60e-08	#4H-SiC [09Koi]
+		 #g_Al		=	4.0
+		 #Xsec_Al	=	1.0000e-12
+
+		 #E_Al_0	=	0.220		#4H-SiC [04Mat]
+		 #alpha_Al	=	1.90e-8		#4H-SiC [04Mat]
+
+		 #E_Al_0	=	0.205		#4H-SiC [05Per]
+		 #alpha_Al	=	1.70e-8		#4H-SiC [05Per]
+
+
+	}

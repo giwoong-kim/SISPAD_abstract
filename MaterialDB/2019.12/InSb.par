@@ -1,0 +1,143 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [05Ada] S. Adachi, "Properties of Group-IV, III-V and II-VI 
+* Semiconductors",John Wiley & Sons, Ltd, 2005.
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, "Band 
+* parameters for III-V compound semiconductors and their alloys", 
+* J. Appl. Phys., vol. 89, no. 11, pp. 5815, 2001.
+* [Ioffe] http://www.ioffe.ru/SVA/NSM/Semicond/
+
+
+Epsilon
+{ 
+  * Ratio of the permittivities of material and vacuum
+  * epsilon() = epsilon
+	
+	epsilon = 17.2	# [1] # [05Ada]
+}
+
+LatticeHeatCapacity
+{ 
+  *  lumped electron-hole-lattice heat capacity
+  * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+
+	cv	= 2.0219	# [J/(Kcm^3)] # [05Ada]
+	cv_b	= 0.0000e+00	# [J/(K^2 cm^3)]
+	cv_c	= 0.0000e+00	# [J/(K^3 cm^3)]
+	cv_d	= 0.0000e+00	# [J/(K^4 cm^3)]
+}
+
+Kappa
+{ 
+  *  Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+	Formula = 1
+	kappa	= 0.175	# [W/(K cm)] # [05Ada]
+	kappa_b	= 0.0000e+00	# [W/(K^2 cm)]
+	kappa_c	= 0.0000e+00	# [W/(K^3 cm)]
+}
+
+Bandgap
+{ * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+
+  	Chi0	= 4.6894	# [eV] # [05Ada]
+  	Bgn2Chi	= 0.5	# [1]
+  	Eg0	= 0.235	# [eV] # [01Vur]
+  	alpha	= 3.2000e-04	# [eV K^-1] # [01Vur]
+  	beta	= 1.7000e+02	# [K] # [01Vur]
+  	alpha2	= 0.0000e+00	# [eV K^-1]
+  	beta2	= 0.0000e+00	# [K]
+  	EgMin	= 1.0000e-01	# [eV]
+  	dEgMin	= 0.0000e+00	# [eV]
+  	Tpar	= 0.0000e+00	# [K]
+}
+
+eDOSMass
+{
+  * For effective mass specification Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * me/m0 = (Nc300/2.5094e19)^2/3 
+  * Nc(T) = Nc300 * (T/300)^3/2 
+
+	Nc300	= 3.7195e+16	# [cm-3] # [05Ada]
+}
+
+hDOSMass
+{
+  * For effective mass specification Formula1 (mh approximation):
+  * or Formula2 (Nv300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * mh/m0 = (Nv300/2.5094e19)^2/3 
+  * Nv(T) = Nv300 * (T/300)^3/2 
+
+	Nv300	= 6.4395e+18	# [cm-3] # [01Vur]
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+	mumax	= 7.7000e+04 ,	8.5000e+02	# [cm^2/(Vs)] # [Ioffe] 
+	Exponent	= 1.66  ,  1.8   # [1] # [Ioffe]
+}
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+	A	= 5.0000e-26 ,	5.0000e-26	# [cm^6/s] # [Ioffe] # Data for holes taken from electrons
+	B	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	C	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	H	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N0	= 1.0000e+18 ,	1.0000e+18	# [cm^(-3)]
+}
+
+RadiativeRecombination * coefficients:
+{ * R_Radiative = C * (T/Tpar)^alpha * (n p - ni_eff^2)
+  * C    
+  * alpha 
+	C	= 5.0000e-11	# [cm^3/s] # [Ioffe]
+	alpha	= 0.0000e+00	# []
+}
+
+MultiValley 
+{  
+  * Electron masse for Gamma valley is from [09Ada]. Electron 
+  * masses for L- & X-valley are copied from GaSb. Electron 
+  * energy shifts for L- & X-valley are from [01Vur]. Hole masses 
+  * obtained with 6kp gamma paramaters are from [01Vur]. 
+  * Conduction band deformation potentials for Gamma- and X-
+  * valley are from [09Ada]. Conduction band deformation 
+  * potential for L-valley is copied from GaSb.
+
+	eValley"Gamma"(m=0.013 alpha=1.0 degeneracy=1 xid=-15.0)
+	eValley"L1"(ml=1.30 mt=0.10 energy=0.695 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L2"(ml=1.30 mt=0.10 energy=0.695 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L3"(ml=1.30 mt=0.10 energy=0.695 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L4"(ml=1.30 mt=0.10 energy=0.695 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"X1"(ml=1.51 mt=0.22 energy=0.395 alpha=0.5 degeneracy=1 xiu=4.53 xid=1.56)
+	eValley"X2"(ml=1.51 mt=0.22 energy=0.395 alpha=0.5 degeneracy=1 xiu=4.53 xid=1.56)
+	eValley"X3"(ml=1.51 mt=0.22 energy=0.395 alpha=0.5 degeneracy=1 xiu=4.53 xid=1.56)
+	hValley"LH"(m=0.01496656 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(m=0.40189880 energy=0.0 alpha=0.0 degeneracy=1)
+}
+
+Schottky{
+        *Based on IEDM 2016 Short Course page 21 Source: Prof. Saraswat
+        *Affinity from ioffe
+        Pinning_CNL = 4.69
+}
+

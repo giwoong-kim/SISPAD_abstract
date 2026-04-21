@@ -1,0 +1,144 @@
+* Copyright (c) 1994-2016 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+*  Partial parameter file for GaAsSb.
+*  	Author: Nelson Braga
+*	Date: Aug 10 2016
+*  References:
+*	[1] http://www.ioffe.ru/SVA/NSM/Semicond/GaSb
+*	[2] I. Vurgaftman et. al., Band Parameters for III-V Compound Semiconductors and their alloys
+*		JAP, 89-11, pg 5815 (2001)
+
+*  Mole dependent material: GaAsSb (x=0) = GaAs
+*  Mole dependent material: GaAsSb (x=1) = GaSb
+
+
+Epsilon { 
+  *  Ratio of the permittivities of material and vacuum
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+	
+	epsilon(0)	= 12.9	# [1]
+	epsilon(1)	= 15.7	# [1]
+}
+
+LatticeHeatCapacity
+{ *  lumped electron-hole-lattice heat capacity
+
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+	
+  * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+	cv(0)	= 1.7388 		# [J/(K cm^3)]
+	cv_b(0)	= 0.0000e+00	# [J/(K^2 cm^3)]
+	cv_c(0)	= 0.0000e+00	# [J/(K^3 cm^3)]
+	cv_d(0)	= 0.0000e+00	# [J/(K^4 cm^3)]
+
+	cv(1)	= 1.4000 		# [J/(K cm^3)]
+	cv_b(1)	= 0.0000e+00	# [J/(K^2 cm^3)]
+	cv_c(1)	= 0.0000e+00	# [J/(K^3 cm^3)]
+	cv_d(1)	= 0.0000e+00	# [J/(K^4 cm^3)]
+}
+
+Kappa
+{ *  Lattice thermal conductivity
+
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+  Formula = 1
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+	kappa(0)	= 0.45			# [W/(K cm)]
+	kappa_b(0)	= 0.0000e+00	# [W/(K^2 cm)]
+	kappa_c(0)	= 0.0000e+00	# [W/(K^3 cm)]
+
+	kappa(1)	= 0.32			# [W/(K cm)]
+	kappa_b(1)	= 0.0000e+00	# [W/(K^2 cm)]
+	kappa_c(1)	= 0.0000e+00	# [W/(K^3 cm)]
+}
+
+Bandgap
+{ * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+	Tpar	= 3.0000e+02	# [K]
+  * Mole fraction dependent model.
+  * If only constant parameters are specified, those values will be
+  * used for any mole fraction instead of the interpolation below.
+  * The following interpolation polynom can be used on interval [Xmin(I),Xmax(I)]:
+  * F(X) = F(I-1)+A(I)*(X-Xmin(I))+B(I)*(X-Xmin(I))^2+C(I)*(X-Xmin(I))^3,
+  * where Xmax(I), F(I), B(I), C(I) are defined below for each interval.
+  * A(I) is calculated for a boundary condition F(Xmax(I)) = F(I).
+  *
+  * Definition of mole fraction intervals, parameters, and coefficients:
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+	Tpar	= 300	# [K]
+
+	* parameter Eg0:
+	Eg0(0)	= 1.4225	# [eV]
+	Eg0(1)	= 0.7260	# [eV]
+	B(Eg0(1)) = 1.43	# [eV]
+
+	* parameter Chi0:
+	Chi0(0)	= 4.1665	# [eV]
+	Chi0(1)	= 4.0700	# [eV]
+	B(Chi0(1)) = -0.37	# [eV]
+}
+
+eDOSMass
+{
+  * For effective mass specification Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * me/m0 = (Nc300/2.5094e19)^2/3 
+  * Nc(T) = Nc300 * (T/300)^3/2 
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+    Nc300(0)	= 4.3519e+17	# [cm-3]
+	Nc300(1)	= 2.07800e+17	# [cm-3]
+}
+
+hDOSMass
+{
+  * For effective mass specification Formula1 (mh approximation):
+  * or Formula2 (Nv300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * mh/m0 = (Nv300/2.5094e19)^2/3 
+  * Nv(T) = Nv300 * (T/300)^3/2 
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+   	Nv300(0)	= 1.2464e+19	# [cm-3] #
+	Nv300(1)	= 1.8000e+19	# [cm-3]
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+	mumax(0)	= 9.4000e+03 ,	491.5	# [cm^2/(Vs)]
+	Exponent(1)	= 2.1  ,  2.2   # [1]
+
+	mumax(1)	= 2.8000e+03 ,	4.0000e+02	# [cm^2/(Vs)]
+	Exponent(1)	= 1 ,	2.1	# [1]
+}
+
+
+
+

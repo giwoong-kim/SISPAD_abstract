@@ -1,0 +1,627 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [05Ada] S. Adachi, "Properties of Group-IV, III-V and II-VI 
+* Semiconductors",John Wiley & Sons, Ltd, 2005.
+* [09Ada] S. Adachi, "Properties of Semiconductor Alloys: 
+* Group-IV, III-V and II-VI Semiconductors", John Wiley & Sons, 
+* Ltd, 2009.
+* [07Ada] S. Adachi, "Lattice thermal conductivity of group-IV 
+* and III-V semiconductor alloys", J. Appl. Phys., vol. 102, pp. 
+* 063502, 2007.
+* [59Abr] M. S. Abrahams, R. Braunstein, F. D. Rosi, "Thermal, 
+* electrical and optical properties of (In,Ga)As alloys", J. 
+* Phys. chem. Solids, vol. 10, pp. 204, 1959.
+* [90Ara] D. G. Arasly, R. N. Ragimov, M. I. Aliev, 
+* "Characteristics of phonon scattering in GaxIn1-xAs solid 
+* solutions", Sov. Phys. Semicond., vol. 24, pp. 225, 1990.
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, "Band 
+* parameters for III-V compound semiconductors and their alloys", 
+* J. Appl. Phys., vol. 89, no. 11, pp. 5815, 2001.
+* [90Jai] S. C. Jain, J. M. McGregor, D. J. Roulston, "Band-gap 
+* narrowing in novel III-V semiconductors", J. Appl. Phys., vol. 
+* 68, no. 7, pp. 3747, 1990.
+* [78Sem] N. A. Semikolenova, I. M. Nesmelova, E. N. Khabarov, 
+* "Investigation of the impurity interaction mechanism in indium 
+* arsenide", Sov. Phys. Semicond., vol. 12, no. 10, pp. 1139, 
+* 1978.
+* [90Yao] H. Yao, A. Compaan, "Plasmons, photoluminescence, and 
+* band-gap narrowing in very heavily doped n-GaAs", Appl. Phys. 
+* Lett., vol. 57, no. 2, pp. 147, 1990.
+* [89Bor] C. Borghs et al., "Band-gap narrowing in highly doped 
+* n- and p-type GaAs studied by photoluminescence spectroscopy", 
+* J. Appl. Phys., vol. 66, no. 9, pp. 4381, 1989.
+* [80Ala] K. Alavi, R. L. Aggarwal, S. H. Groves, "Interband 
+* magnetoabsorption of In0.535Ga0.47As", Phys. Rev. B, vol. 21, 
+* no. 3, pp. 1311, 1980.
+* [00Sot] M. Sotoodeh, A. H. Khalid, A. A. Rezazadeh, "Empirical 
+* low-field mobility model for III-V compounds applicable in 
+* device simulation codes", J. Appl. Phys., vol. 87, no. 6, pp. 
+* 2890, 2000.
+* [Ioffe] http://www.ioffe.ru/SVA/NSM/Semicond/
+* [85Osa] F. Osaka, T. Mikawa, T. Kaneda, "Impact ionization 
+* coefficients of electrons and holes in (100)-oriented Ga1-
+* xInxAsyP1-y," IEEE J. Quantum Electron., vol. QE-21, pp. 1326-
+* 1338, 1985.
+
+
+Epsilon
+{ 
+  * Ratio of the permittivities of material and vacuum
+  * epsilon() = epsilon
+
+  * Interpolation from InGaAs.par
+	epsilon	= 13.642	# [1] # [05Ada]
+}
+
+LatticeHeatCapacity
+{ 
+  * lumped electron-hole-lattice heat capacity
+  * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+
+  * Interpolation from InGaAs.par   
+	cv		= 1.8724	# [J/(Kcm^3)] # [1] # [09Ada]
+	cv_b		= 0.0000e+00	# [J/(K^2*cm^3)]
+	cv_c		= 0.0000e+00	# [J/(K^3*cm^3)]
+	cv_d		= 0.0000e+00	# [J/(K^4*cm^3)]
+}
+
+Kappa
+{ 
+  * Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+	Formula = 0
+
+  * Interpolation from InGaAs.par
+	# mole-fraction dependence from [59Abr], [90Ara] and [07Ada]
+	1/kappa  = 20.1933
+	1/kappa_b  = 0.0
+	1/kappa_c  = 0.0	
+}
+
+Kappa_aniso
+{ 
+  * Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+	Formula = 0
+
+  * Interpolation from InGaAs.par
+	# mole-fraction dependence from [59Abr], [90Ara] and [07Ada]
+	1/kappa  = 20.1933
+	1/kappa_b  = 0.0
+	1/kappa_c  = 0.0	
+}
+
+Bandgap
+{
+  * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+
+  * Interpolation from InGaAs.par
+	Tpar = 0 # [K]
+	Eg0	= 0.8161	# [eV] # [01Vur] 
+	alpha	= 4.0032e-04	# [eV/K] # [01Vur] 
+	beta	= 1.4517e+02	# [K] # [01Vur] 
+	Chi0	= 4.5918		# [eV] # [05Ada]
+	EgMin	= 1.5000e-01	# [eV]
+}
+
+JainRoulston
+{
+  * deltaEg = A_i N^(1/3) + B_i N^(1/4) + C_i N^(1/2) + D_i N^(1/2)
+  * where i is n for n-type or p for p-type
+
+	A_n	= 3.0390e-08	# [eV cm] # Interpolation from fitted value based on [78Sem, 90Yao, 89Bor]
+	B_n	= 3.1150e-07	# [eV cm^(3/4)] # Interpolation from fitted value based on [78Sem, 90Yao, 89Bor]
+	C_n	= 3.3043e-12	# [eV cm^(3/2)] # Interpolation from fitted value based on [78Sem, 90Yao, 89Bor]
+	D_n	= 3.4260e-11	# [eV cm^(3/2)] # Interpolation from fitted value based on [78Sem, 90Yao, 89Bor]
+
+	A_p	= 9.2783e-09	# [eV cm] # Interpolation from fitted value based on [90Jai]
+	B_p	= 3.8100e-07	# [eV cm^(3/4)] # Interpolation from fitted value based on [90Jai]
+	C_p	= 3.0156e-12	# [eV cm^(3/2)] # Interpolation from fitted value based on [90Jai]
+	D_p	= 2.3280e-13	# [eV cm^(3/2)] # Interpolation from fitted value based on [90Jai]
+}
+
+FreeCarrierAbsorption
+{
+  * Coefficients for free carrier absorption:
+  * fcaalpha_n for electrons,
+  * fcaalpha_p for holes
+
+  * FCA = (alpha_n * n + alpha_p * p) * Light Intensity
+	fcaalpha_n   = 4.0000e-18    # [cm^2]
+	fcaalpha_p   = 8.0000e-18    # [cm^2]
+}
+
+BandstructureParameters
+{
+  * Parameters for k.p bandstructure calculation:
+
+  * Zincblende crystals:
+  * Luttinger parameters gamma_1, gamma_2, gamma_3
+  * Spin-orbit split-off energy so
+  * Matrix element parameters for TE and TM modes ep_te and ep_tm
+
+  * Wurtzite crystals:
+  * Effective mass parameters A1, A2, A3, A4, A5, A6
+  * Spin-orbit split-off energy so
+  * Crystal-field split  energy cr
+  * Matrix element parameters for TE and TM modes ep_te and ep_tm
+  *
+  *
+  * Interpolation from InGaAs.par
+	gamma_1      = 14.0315  # [1]
+	gamma_2      = 5.386   # [1]
+	gamma_3      = 6.186   # [1]
+	so   = 0.3612  # [eV]
+	ep_te        = 24.931  # [eV]
+	ep_tm        = 24.931  # [eV]
+	A1   = 0.0000e+00    # [1]
+	A2   = 0.0000e+00    # [1]
+	A3   = 0.0000e+00    # [1]
+	A4   = 0.0000e+00    # [1]
+	A5   = 0.0000e+00    # [1]
+	A6   = 0.0000e+00    # [1]
+	cr   = 0.0000e+00    # [eV]
+}
+
+QWStrain
+{
+  * Zincblende crystals:
+  *   Parameters: a_nu, a_c, b, C_12, C_11
+  *   StrainConstant eps (formula = 1) or lattice constant
+  *   a0 (formula = 2) for energy shift of quantum-well
+  *   subbands.
+  *   a0(T) = a0 + alpha (T-Tpar)
+
+  * Wurtzite crystals:
+  *   Parameters: a_c, D1, D2, D3, D4, C_13, C_33
+  *   Lattice constants a0 and c0 (formula 2 must be used)
+  *   a0(T) = a0 + alpha (T-Tpar)
+  *   c0(T) = c0 + alpha (T-Tpar)
+
+  * Default formula     = 1     # [1]
+
+  * Interpolation from InGaAs.par
+	a_nu 		= 1.0752    # [eV]
+	a_c  		= -6.0623e+00   # [eV]
+	b_shear	= -1.7530e+00   # [eV]
+	C_11 		= 9.9975 # [1e-2 GPa]
+	C_12 		= 4.9255 # [1e-2 GPa]
+	eps  		= 0.0000e+00    # [1]
+	a0   		= 5.8680e-10    # [m]
+	alpha		= 3.2758e-15    # [m/K]
+	D1		= 0.0000e+00    # [eV]
+	D2		= 0.0000e+00    # [eV]
+	D3		= 0.0000e+00    # [eV]
+	D4		= 0.0000e+00    # [eV]
+	C_13		= 0.0000e+00    # [1e-2 GPa]
+	C_33		= 0.0000e+00    # [1e-2 GPa]
+	c0		= 0.0000e+00    # [cm]
+}
+
+eDOSMass
+{
+	Formula = 2
+  * me/m0 = (Nc300/2.540e19)^2/3
+  * Nc(T) = Nc300 * (T/300)^3/2
+
+  # Reference from [09Ada]
+  * Interpolation from InGaAs.par
+	Nc300 = 2.3327e+17		#[cm-3]
+}
+
+hDOSMass
+{
+	Formula = 2
+  * mh/m0 = (Nv300/2.540e19)^2/3
+  * Nv(T) = Nv300 * (T/300)^3/2
+
+  # References from [01Vur] and [80Ala]
+  * Interpolation from InGaAs.par
+	Nv300 = 1.0886e+19		#[cm-3] 
+} 
+
+SchroedingerParameters:
+{ 
+  * For the hole masses for Schroedinger equation you can
+  * use different formulas.
+  * 0: use the isotropic density of states effective mass
+  * 1: (for materials with Si-like hole band structure)
+  *    m(k)/m0=1/(A+-sqrt(B+C*((xy)^2+(yz)^2+(zx)^2)))
+  *    where k=(x,y,z) is unit normal vector in reziprocal
+  *    space.  '+' for light hole band, '-' for heavy hole band
+  * 2: Heavy hole mass mh and light hole mass ml are
+  *    specified explicitly.
+  *    Use me as electron mass for free-carrier effect in
+  *    the refractive index model.
+  * For electron masses, the following formula options exist:
+  * 0: use the isotropic density of states effective mass
+  * 1: (for materials with Si-like hole band structure)
+  *    use the a, ml, and mm parameters from eDOSMass.
+  *    Typically, this leads to anisotropy.
+        formula = 0 ,   2       # [1]
+  * Lifting of degeneracy of bulk valleys. The value for
+  * electrons is added to the band edge for the subband
+  * ladder of lower degeneracy if positive, and subtracted
+  * from the band edge for the ladder of higher degeneracy
+  * if negative. (that is, the value of the band edge is
+  * always increased).  For holes, the value is subtracted from
+  * the band edge for the heavy hole band is positive,
+  * add added tp that of the light hole band if
+  * negative.  The signs are such that the shift always
+  * moves the band edges 'outward', away from midgap.  The
+  * gap itself is defined as the separation of the
+  * unshifted band edges and remains unaffected.
+        offset  = 0.0000e+00 ,  0.0000e+00      # [eV]
+  * Alternative to the specification of formula, offset,
+  * and masses, you can make an arbitrary number of ladder
+  * specification, 'eLadder(mz, mxy, deg, dE) and hLadder(...)
+  * Here, mz is the quantization mass, mxy an in-plane DOS mass,
+  * deg the ladder degeneracy, and dE an shift of the band edge
+  * for the ladder (non-negative; the shift is always outward,
+  * away from midgap).  When present, we solve the Schroedinger
+  * equation separately for each ladder
+
+  * Temperatures in rescaling of the mxy for eLadder and hLadder
+        ShiftTemperature        = 1.0000e+10 ,  1.0000e+10      # [K]
+
+  * Interpolation from InGaAs.par
+        A    = 4.22  # [1]
+        B    = 0.6084        # [1]
+        C    = 23.058        # [1]
+        ml   = 0.0475 # [1]
+        mh   = 0.5087  # [1]
+        me   = 0.0000e+00    # [1]
+        eoffset      = 0.0000e+00    # [eV]
+        hoffset      = 0.0000e+00    # [eV]
+}
+
+QuantumPotentialParameters
+{ 
+  * Parameters extracted for "100" orientation
+
+  # Interpolation from InGaAs.par
+  * For bulk configuration
+	gamma	= 1.7955 ,	4.5910	# [1]		
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 1 ,	1	# [1]
+	eta	= 1 ,	1	# [1]
+	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 20nm-double gate confinguration
+  *	gamma	= 1.6085 , 4.2070	# [1]		
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 10nm-double gate confinguration
+  *	gamma	= 1.7760 , 4.7280	# [1]	
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+QuantumPotentialParameters "100"
+{ 
+  * Fitted values for (100) orientation with respect to sband results
+
+  # Interpolation from InGaAs.par
+  * For bulk configuration
+	gamma	= 1.7955 ,	4.5910	# [1]		
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 1 ,	1	# [1]
+	eta	= 1 ,	1	# [1]
+	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 20nm-double gate confinguration
+  *	gamma	= 1.6085 , 4.2070	# [1]		
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 10nm-double gate confinguration
+  *	gamma	= 1.7760 , 4.7280	# [1]	
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+QuantumPotentialParameters "110"
+{ 
+  * Fitted values for (110) orientation with respect to sband results
+
+  # Interpolation from InGaAs.par
+  * For bulk configuration
+	gamma	= 1.7955 ,	3.6290	# [1]		
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 1 ,	1	# [1]
+	eta	= 1 ,	1	# [1]
+	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 20nm-double gate confinguration
+  *	gamma	= 1.6085 , 3.4330	# [1]		
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 10nm-double gate confinguration
+  *	gamma	= 1.7760 , 4.0810	# [1]	
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+QuantumPotentialParameters "111"
+{ 
+  * Parameters are copied from "100" orientation
+
+  # Interpolation from InGaAs.par
+  * For bulk configuration
+	gamma	= 1.7955 ,	4.5910	# [1]		
+	theta	= 0.5 ,	0.5	# [1]
+	xi	= 1 ,	1	# [1]
+	eta	= 1 ,	1	# [1]
+	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 20nm-double gate confinguration
+  *	gamma	= 1.6085 , 4.2070	# [1]		
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * For 10nm-double gate confinguration
+  *	gamma	= 1.7760 , 4.7280	# [1]	
+  *	theta	= 0.5 ,	0.5	# [1]
+  *	xi	= 1 ,	1	# [1]
+  *	eta	= 1 ,	1	# [1]
+  *	nu	= 0.0000e+00 ,	0.0000e+00	# [1]
+}
+
+ConstantMobility
+{ 
+  * mu_const = mumax (T/T0)^(-Exponent)
+	mumax		= 1.4000e+04 ,	320	# [cm^2/(Vs)] #[00Sot]
+	Exponent	= 1.59 ,	1.59	# [1] #[00Sot]
+}
+
+DopingDependence
+{
+  * For doping dependent mobility model three formulas
+  * can be used. Formula1 is based on Masetti et al. approximation.
+  * Formula2 uses approximation, suggested by Arora.
+	formula	= 2 ,	2	# [1]
+  * If formula=2, model suggested by Arora is used:
+  * mu_dop = muminA + mudA/(1.+(N/N00)^AA),
+  * where muminA=Ar_mumin*(T/T0)^Ar_alm; mudA = Ar_mud*(T/T0)^Ar_ald
+  * N is net doping
+  * N00=Ar_N0*(T/T0)^Ar_alN; AA = Ar_a*(T/T0)^Ar_ala
+
+	Ar_mumin 	= 3.0000e+02 ,	1.0000e+01	# [cm^2/Vs] #[00Sot]
+	Ar_alm   	= 0.0000e+00 ,	0.0000e+00 # [1] #[00Sot]
+	Ar_mud   	= 1.3700e+04 ,	3.1000e+02	# [cm^2/Vs] #[00Sot]
+	Ar_ald   	= -1.612e+00 ,	-1.623e+00	# [1] #[00Sot]
+	Ar_N0    	= 1.3000e+17 ,	4.9000e+17	# [cm^(-3)] #[00Sot]
+	Ar_alN   	= 3.6800e+00 ,	3.0000e+00	# [1] #[00Sot]
+	Ar_a     	= 4.8000e-01 ,	4.03000e-01	# [1] #[00Sot]
+	Ar_ala   	= 0.0000e+00 ,	0.0000e+00	# [1] #[00Sot]
+}
+ 
+PhuMob
+{ 
+  * Philips Unified Mobility Model:
+  * Mobility for majority carriers are calibrated based on Arora model
+
+	mumax_As  	= 1.4000e+04	# [cm^2/Vs]
+	mumin_As  	= 300.0	# [cm^2/Vs]
+	theta_As  	= 1.5900	# [1]
+	n_ref_As  	= 1.3000e+17	# [cm^(-3)]
+	alpha_As  	= 0.477	# [1]
+	mumax_P   	= 1.4000e+04	# [cm^2/Vs]
+	mumin_P   	= 300.0	# [cm^2/Vs]
+	theta_P   	= 1.5900	# [1]
+	n_ref_P   	= 1.3000e+17	# [cm^(-3)]
+	alpha_P   	= 0.477	# [1]
+	mumax_B   	= 3.2000e+02	# [cm^2/Vs]
+	mumin_B   	= 10.0	# [cm^2/Vs]
+	theta_B   	= 1.5900	# [1]
+	n_ref_B   	= 4.9000e+17	# [cm^(-3)]
+	alpha_B   	= 0.402	# [1]
+	nref_D    	= 4.0000e+20	# [cm^(-3)]
+	nref_A    	= 7.2000e+20	# [cm^(-3)]
+	cref_D    	= 0.21	# [1]
+	cref_A    	= 0.5	# [1]
+	me_over_m0	= 1	# [1]
+	mh_over_m0	= 1.258	# [1]
+	f_CW      	= 2.459	# [1]
+	f_BH      	= 3.828	# [1]
+	f_e       	= 1	# [1]
+	f_h       	= 1	# [1]
+}
+
+IALMob
+{ 
+  * Parameters calibrated with respect to sband results
+
+	EnormMinimum	= 0
+	nref_D		= 4.0e20
+	nref_A		= 7.2e20
+	cref_D		= 0.21
+	cref_A		= 0.5
+	me_over_m0		= 1.0
+	mh_over_m0		= 1.0
+	mumax 		= 1.4000e+04, 3.2000e+02	
+	mumin 		= 300.0,  10.0
+	theta 		= 1.590,  1.590
+	n_ref 		= 1.3000e+17, 4.9000e+17
+	alpha 		= 0.477,  0.402
+	S 			= 0.7,    0.7
+	S_t			= 0.0,    0.0 
+	t0			= 0.0005, 0.0005
+	p			= 4.0,    4.0
+	l_crit_c		= 1.0e+3, 1.0e+3
+	D1_inv 		= 2.70e3, 2.70e3
+	D2_inv 		= 2.70e3, 2.70e3
+	nu0_inv 		= 1.5,    1.5
+	nu1_inv 		= 1.6,    1.6
+	nu2_inv 		= 0.5,    0.5
+	alpha1_inv		= 0.0,    0.0
+	alpha2_inv		= 0.0,    0.0
+	D1_acc 		= 2.70e3, 2.70e3	
+	D2_acc 		= 2.70e3, 2.70e3	
+	nu0_acc 		= 1.5,    1.5	
+	nu1_acc 		= 1.6,    1.6
+	nu2_acc 		= 0.5,    0.5	
+	alpha1_acc		= 0.0,    0.0
+	alpha2_acc		= 0.0,    0.0
+	tcoulomb		= 0.0,    0.0
+	t1			= 0.0003, 0.0003
+	B 			= 1.00e5, 1.00e5
+	C 			= 4.50e13, 4.50e13
+	lambda 		= -0.46,    -0.46
+	k			= 1.0,    1.0
+	alpha_ph2d_A	= 1.0,    1.0
+	alpha_ph2d_D	= 1.0,    1.0
+	lambda_ph2d_A	= 1.0,    1.0
+	lambda_ph2d_D	= 1.0,    1.0
+	delta 		= 6.0e6, 6.0e6
+	lambda_sr 		= 0.8,    0.8
+	A 			= 3.0,    3.0
+	alpha_sr 		= 8.0e-15,    8.0e-15
+	nu 			= 0.32,    0.32
+	eta			= 1.0e50, 1.0e50
+	N1			= 1.0e15, 1.0e15
+	N2			= 1.0e17, 1.0e17
+	alpha_sr_A		= 1.0,    1.0
+	alpha_sr_D		= 1.0,    1.0
+	lambda_sr_A	= 1.0,    1.0
+	lambda_sr_D	= 1.0,    1.0
+	l_crit		= 1.0e-6, 1.0e-6
+}
+
+NegInterfaceChargeMobility
+{
+  * Parameters calibrated with respect to sband results
+
+	c_trans 		= 3.5000e+16 ,	3.5000e+16	# [cm^(-3)]
+	l_crit 		= 1.0000e-07 ,	1.0000e-07	# [cm]
+	mu1			= 90 ,	90	# [cm^2/Vs]
+	T_exp			= 1 ,	1	# [1]
+	c_exp			= 1.5 ,	1.5	# [1]
+	Nc_exp1		= 1 ,	1	# [1]
+	Nc_exp2		= 0.5 ,	0.5	# [1]
+	N1			= 1 ,	1	# [cm^(-3)]
+	N2			= 1 ,	1	# [cm^(-3)]
+	N_exp1		= 0.0000e+00 ,	0.0000e+00	# [1]
+	N_exp2		= 0.0000e+00 ,	0.0000e+00	# [1]
+	E0			= 1.0000e-06 ,	1.0000e-06 	# [V/cm]
+	En_exp		= 2 ,	2	# [1]
+	a_c			= 1 ,	1	# [1]
+}
+
+PosInterfaceChargeMobility
+{ 
+  * Parameters calibrated with respect to sband results
+	
+	c_trans 		= 3.5000e+16 ,	3.5000e+16	# [cm^(-3)]
+	l_crit 		= 1.0000e-07 ,	1.0000e-07	# [cm]
+	mu1			= 90 ,	90	# [cm^2/Vs]
+	T_exp			= 1 ,	1	# [1]
+	c_exp			= 1.5 ,	1.5	# [1]
+	Nc_exp1		= 1 ,	1	# [1]
+	Nc_exp2		= 0.5 ,	0.5	# [1]
+	N1			= 1 ,	1	# [cm^(-3)]
+	N2			= 1 ,	1	# [cm^(-3)]
+	N_exp1		= 0.0000e+00 ,	0.0000e+00	# [1]
+	N_exp2		= 0.0000e+00 ,	0.0000e+00	# [1]
+	E0			= 1.0000e-06 ,	1.0000e-06 	# [V/cm]
+	En_exp		= 2 ,	2	# [1]
+	a_c			= 1 ,	1	# [1]
+}
+
+#! MODEL: Temperature and Doping dependent model from sdevice
+#! MATERIAL: InGaAs
+#! EXPRESSION: 
+#! Temperature and doping dependent minority carrier lifetime is calculated using,
+#! tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+#! where,
+#! tau(T) = tau * ( (T/300)^Talpha )  
+#! or
+#! tau(T) = tau * exp( Tcoeff * ((T/300)-1) )
+#! REFERENCE: 
+#! Sentaurus Device User Guide 
+Scharfetter
+{ 
+  * relation and trap level for SRH recombination:
+  * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1e-9 ,	1e-9	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Auger
+{
+	A	= +7.0000000e-29, +7.0000000e-29 # [cm^6/s] # [Ioffe] # Data for holes taken from electrons
+	B	= +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	C	= +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	H	= +0.0000000e+00, +0.0000000e+00 # [1]
+	N0	= +1.0000000e+18, +1.0000000e+18 # [cm^-3]
+}
+
+vanOverstraetendeMan * Impact Ionization:
+{ * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+  * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+  *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+
+	a(low)	= 3.2568e+05 ,	6.3968e+05	# [1/cm] # fitted values from [85Osa]
+	a(high)	= 3.2568e+05 ,	6.3968e+05	# [1/cm]
+	b(low)	= 1.2080e+06 ,	1.5430e+06	# [V/cm] # fitted values from [85Osa]
+	b(high)	= 1.2080e+06 ,	1.5430e+06	# [V/cm]
+	E0		= 3.0000e+04 ,	3.0000e+04	# [V/cm]
+	hbarOmega	= 0.034 ,	0.034	# [eV] # [Ioffe] 
+}
+
+RadiativeRecombination
+{
+	C	= +9.6000000e-11 # [Ioffe] 
+}
+
+MultiValley 
+{  
+  * Interpolation from InGaAs.par
+
+	eValley"Gamma"(m=0.04421 energy=0.0 alpha=1.0 degeneracy=1 xid=-10.576)
+	eValley"L1"(1,1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L2"(-1,1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L3"(1,-1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L4"(1,1,-1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"X1"(1,0,0)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	eValley"X2"(0,1,0)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	eValley"X3"(0,0,1)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	hValley"LH"(m=0.04987289 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(m=0.56322414 energy=0.0 alpha=0.0 degeneracy=1)	  
+}
