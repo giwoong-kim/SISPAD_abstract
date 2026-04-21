@@ -1,0 +1,13 @@
+* Copyright (c) 1994-2017 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+Schottky{
+        *Based on IEDM 2016 Short Course page 21 Source: Prof. Saraswat
+        *Affinity from ioffe
+        Pinning_CNL = 4.69
+}
+

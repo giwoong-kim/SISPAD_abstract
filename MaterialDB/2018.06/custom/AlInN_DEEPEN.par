@@ -1,0 +1,330 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, Band parameters for III-V compound semiconductors
+* and their alloys, Journal of Applied Physics, 89, 11, 2001
+
+
+
+*  Mole dependent material: AlInN (x=0) = AlN
+*  Mole dependent material: AlInN (x=1) = InN
+
+
+Bandgap
+{ 
+	Xmax(0) = 0
+	Xmax(1) = 0.05
+	Xmax(2) = 0.08
+	Xmax(3) = 0.10
+	Xmax(4) = 0.13
+	Xmax(5) = 0.15
+	Xmax(6) = 0.18
+	Xmax(7) = 0.25
+	Xmax(8) = 0.35
+	Xmax(9) = 0.50
+	Xmax(10) = 0.65
+	Xmax(11) = 0.75
+	Xmax(12) = 0.85
+	Xmax(13) = 1.0
+
+  * parameter Chi0:	
+	Chi0(0)	= 1.9990		# [eV] #[01Vur]
+	Chi0(1)	= 1.5135				
+	B(Chi0(1))	= 14.01
+	C(Chi0(1))	= 0.0
+	Chi0(2)	= 1.5068			
+	B(Chi0(2))	= 10.60
+	C(Chi0(2))	= 0.0
+	Chi0(3)	= 1.5229			
+	B(Chi0(3))	= 9.29
+	C(Chi0(3))	= 0.0
+	Chi0(4)	= 1.5995			
+	B(Chi0(4))	= 7.67
+	C(Chi0(4))	= 0.0
+	Chi0(5)	= 1.6452			
+	B(Chi0(5))	= 7.01
+	C(Chi0(5))	= 0.0
+	Chi0(6)	= 1.7275			
+	B(Chi0(6))	= 6.23
+	C(Chi0(6))	= 0.0
+	Chi0(7)	= 1.9709			
+	B(Chi0(7))	= 4.95
+	C(Chi0(7))	= 0.0
+	Chi0(8)	= 2.3672			
+	B(Chi0(8))	= 3.92
+	C(Chi0(8))	= 0.0
+	Chi0(9)	= 3.0290			
+	B(Chi0(9))	= 3.08
+	C(Chi0(9))	= 0.0
+	Chi0(10)	= 3.7612			
+	B(Chi0(10)) = 2.54
+	C(Chi0(10)) = 0.0
+	Chi0(11)	= 4.2828			
+	B(Chi0(11)) = 2.22
+	C(Chi0(11)) = 0.0
+	Chi0(12)	= 4.8091			
+	B(Chi0(12)) = 1.96
+	C(Chi0(12)) = 0.0
+	Chi0(13)	= 5.5990				
+	B(Chi0(13)) = 0.0
+	C(Chi0(13)) = 0.0
+
+  * parameter Eg0:								
+	Eg0(0)	= 6.2300 		# [eV] #[01Vur]
+	Eg0(1)	= 5.0170			
+	B(Eg0(1))	= 19.81
+	C(Eg0(1))	= 0.0
+	Eg0(2)	= 4.6650			
+	B(Eg0(2))	= 15.35
+	C(Eg0(2))	= 0.0
+	Eg0(3)	= 4.4359			
+	B(Eg0(3))	= 13.89
+	C(Eg0(3))	= 0.0
+	Eg0(4)	= 4.1950			
+	B(Eg0(4))	= 11.74
+	C(Eg0(4))	= 0.0
+	Eg0(5)	= 4.0472		
+	B(Eg0(5))	= 10.72
+	C(Eg0(5))	= 0.0
+	Eg0(6)	= 3.7881			
+	B(Eg0(6))	= 9.91
+	C(Eg0(6))	= 0.0
+	Eg0(7)	= 3.3475		
+	B(Eg0(7))	= 8.12
+	C(Eg0(7))	= 0.0
+	Eg0(8)	= 2.8632		
+	B(Eg0(8))	= 6.43
+	C(Eg0(8))	= 0.0
+	Eg0(9)	= 2.2225		
+	B(Eg0(9))	= 5.15
+	C(Eg0(9))	= 0.0
+	Eg0(10)	= 1.6657		
+	B(Eg0(10))	= 4.52
+	C(Eg0(10))	= 0.0
+	Eg0(11)	= 1.3550		
+	B(Eg0(11))	= 4.24
+	C(Eg0(11))	= 0.0
+	Eg0(12)	= 1.1126		
+	B(Eg0(12))	= 3.87
+	C(Eg0(12))	= 0.0
+	Eg0(13)	= 0.79			
+	B(Eg0(13))	= 0.0
+	C(Eg0(13))	= 0.0
+
+  * parameter alpha:					
+	alpha(0)	= 1.7990e-03	# [eV K^-1] #[01Vur]
+	alpha(1)	= 1.8316e-03			
+	B(alpha(1)) = 0.0
+	C(alpha(1)) = 0.0
+	alpha(2)	= 1.8511e-03			
+	B(alpha(2)) = 0.0
+	C(alpha(2)) = 0.0
+	alpha(3)	= 1.8641e-03			
+	B(alpha(3)) = 0.0
+	C(alpha(3)) = 0.0
+	alpha(4)	= 1.8836e-03			
+	B(alpha(4)) = 0.0
+	C(alpha(4)) = 0.0
+	alpha(5)	= 1.8967e-03			
+	B(alpha(5)) = 0.0
+	C(alpha(5)) = 0.0
+	alpha(6)	= 1.9162e-03			
+	B(alpha(6)) = 0.0
+	C(alpha(6)) = 0.0
+	alpha(7)	= 1.9618e-03			
+	B(alpha(7)) = 0.0
+	C(alpha(7)) = 0.0
+	alpha(8)	= 2.0269e-03			
+	B(alpha(8)) = 0.0
+	C(alpha(8)) = 0.0
+	alpha(9)	= 2.1245e-03			
+	B(alpha(9)) = 0.0
+	C(alpha(9)) = 0.0
+	alpha(10)	= 2.2222e-03			
+	B(alpha(10)) = 0.0
+	C(alpha(10)) = 0.0
+	alpha(11)	= 2.2873e-03			
+	B(alpha(11)) = 0.0
+	C(alpha(11)) = 0.0
+	alpha(12)	= 2.3524e-03			
+	B(alpha(12)) = 0.0
+	C(alpha(12)) = 0.0
+	alpha(13)	= 2.4500e-03	# [eV K^-1] #[01Vur]		
+	B(alpha(13)) = 0.0
+	C(alpha(13)) = 0.0
+
+  * parameter beta:				
+	beta(0)	= 1.4620e+03	# [K] #[01Vur]	
+	beta(1)	= 1.4201e+03			
+	B(beta(1)) = 0.0
+	C(beta(1)) = 0.0
+	beta(2)	= 1.3950e+03			
+	B(beta(2)) = 0.0
+	C(beta(2)) = 0.0
+	beta(3)	= 1.3782e+03			
+	B(beta(3)) = 0.0
+	C(beta(3)) = 0.0
+	beta(4)	= 1.3531e+03			
+	B(beta(4)) = 0.0
+	C(beta(4)) = 0.0
+	beta(5)	= 1.3363e+03				
+	B(beta(5)) = 0.0
+	C(beta(5)) = 0.0
+	beta(6)	= 1.3112e+03		
+	B(beta(6)) = 0.0
+	C(beta(6)) = 0.0	
+	beta(7)	= 1.2525e+03			
+	B(beta(7)) = 0.0
+	C(beta(7)) = 0.0
+	beta(8)	= 1.1687e+03			
+	B(beta(8)) = 0.0
+	C(beta(8)) = 0.0
+	beta(9)	= 1.0430e+03			
+	B(beta(9)) = 0.0
+	C(beta(9)) = 0.0
+	beta(10)	= 9.1730e+02			
+	B(beta(10)) = 0.0
+	C(beta(10)) = 0.0
+	beta(11)	= 8.3350e+02			
+	B(beta(11)) = 0.0
+	C(beta(11)) = 0.0
+	beta(12)	= 7.4970e+02				
+	B(beta(12)) = 0.0
+	C(beta(12)) = 0.0
+	beta(13)	= 6.2400e+02	# [K] #[01Vur]	
+	B(beta(13)) = 0.0
+	C(beta(13)) = 0.0
+						
+	Tpar		= 0.0
+}
+
+
+Piezoelectric_polarization
+{
+	Xmax(0) = 0.0
+	Xmax(1) = 1.0
+
+	formula = 1
+
+	relax = 0.0
+
+  * piezoelectric coefficients for Wurtzite:
+	d11(0)	= 0.0					
+	d12(0)	= 0.0					
+	d13(0)	= 0.0					
+	d14(0)	= 0.0					
+	d15(0)	= 3.6e-10	#[03Vur]	
+	d16(0)	= 0.0					
+	d21(0)	= 0.0					
+	d22(0)	= 0.0					
+	d23(0)	= 0.0					
+	d24(0)	= 3.6e-10	#[03Vur]	
+	d25(0)	= 0.0					
+	d26(0)	= 0.0					
+	d31(0)	= -2.1e-10	#[03Vur]	
+	d32(0)	= -2.1e-10	#[03Vur]	
+	d33(0)	= 5.4e-10	#[03Vur]	
+	d34(0)	= 0.0					
+	d35(0)	= 0.0					
+	d36(0)	= 0.0	
+
+	d11(1)	= 0.0000e+00	# [cm/V]
+	d12(1)	= 0.0000e+00	# [cm/V]
+	d13(1)	= 0.0000e+00	# [cm/V]
+	d14(1)	= 0.0000e+00	# [cm/V]
+	d15(1)	= -5.500e-10	# [cm/V]
+	d16(1)	= 0.0000e+00	# [cm/V]
+	d21(1)	= 0.0000e+00	# [cm/V]
+	d22(1)	= 0.0000e+00	# [cm/V]
+	d23(1)	= 0.0000e+00	# [cm/V]
+	d24(1)	= -5.500e-10	# [cm/V]
+	d25(1)	= 0.0000e+00	# [cm/V]
+	d26(1)	= 0.0000e+00	# [cm/V]
+	d31(1)	= -3.5000e-10	# [cm/V]
+	d32(1)	= -3.5000e-10	# [cm/V]
+	d33(1)	= 7.6000e-10	# [cm/V]
+	d34(1)	= 0.0000e+00	# [cm/V]
+	d35(1)	= 0.0000e+00	# [cm/V]
+	d36(1)	= 0.0000e+00	# [cm/V]
+
+  * spontaneous polarization:
+	psp_x(0)	= 0.0	
+	psp_y(0)	= 0.0
+    	psp_z(0)	= -9.1000e-06		#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN	
+
+	psp_x(1)	= 0.0000e+00	# [C/cm^2]
+	psp_y(1)	= 0.0000e+00	# [C/cm^2]
+  	psp_z(1)	= -4.9000e-06	# [C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 					
+
+  * stiffness constants for Wurtzite AlInN:
+	c11(0)= 3.9600e+11	# [Pa] #[96Pol] experimental data
+	c12(0)= 1.3700e+11	# [Pa] #[96Pol] experimental data
+	c13(0)= 1.0800e+11	# [Pa] #[96Pol] experimental data
+	c33(0)= 3.7300e+11	# [Pa] #[96Pol] experimental data
+	c44(0)= 1.1600e+11	# [Pa] #[96Pol] experimental data
+
+	c11(1)= 2.2500e+11	# [Pa] #[11Ser] experimental data
+	c12(1)= 1.0900e+11	# [Pa] #[11Ser] experimental data
+	c13(1)= 1.0800e+11	# [Pa] #[11Ser] experimental data
+	c33(1)= 2.6500e+11	# [Pa] #[11Ser] experimental data
+	c44(1)= 5.5000e+10	# [Pa] #[11Ser] experimental data
+
+  * stiffness constants for Wurtzite AlInN:
+  *	c11(0)= 4.1020e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(0)= 1.4240e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c13(0)= 1.1010e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c33(0)= 3.8500e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(0)= 1.2290e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  *	c11(1)= 2.3380e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(1)= 1.1000e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c13(1)= 9.1600e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c33(1)= 2.3830e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(1)= 5.5400e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN
+
+  * stiffness constants for Zincblende AlInN:
+  *	c11(0)= 3.0890e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(0)= 1.6650e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(0)= 1.9600e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN  
+
+  *	c11(1)= 1.8320e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(1)= 1.1920e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(1)= 9.1500e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  * piezoelectric coefficients for Wurtzite AlInN:
+  *  	e31(0)= -6.0000e-05	#[C/cm^2] #[85Tsu] experimental data
+  * 	e32(0)= -6.0000e-05	#[C/cm^2] #[85Tsu] experimental data
+  * 	e33(0)=  1.5000e-04	#[C/cm^2] #[85Tsu] experimental data
+  * 	e15(0)= -4.8000e-05	#[C/cm^2] #[85Tsu] experimental data
+  * 	e24(0)= -4.8000e-05	#[C/cm^2] #[85Tsu] experimental data
+
+  *  	e31(1)= -5.5000e-05	#[C/cm^2] #[03Han] experimental data
+  * 	e32(1)= -5.5000e-05	#[C/cm^2] #[03Han] experimental data
+  * 	e33(1)=  9.5000e-05	#[C/cm^2] #[03Han] experimental data
+	#e15(1) and e24(1) are n/a in [03Han] reference
+
+  * piezoelectric coefficients for Wurtzite AlInN:
+    	e31(0)= -6.3000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e32(0)= -6.3000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e33(0)=  1.4600e-04	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e15(0)= -3.9000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e24(0)= -3.9000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+    	e31(1)= -5.8000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e32(1)= -5.8000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e33(1)=  1.0700e-04	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e15(1)= -4.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e24(1)= -4.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  * strain parameters:								
+    a0 =	3.189
+    a(0) = 3.112	
+    a(1) = 3.54		
+} 
+
+

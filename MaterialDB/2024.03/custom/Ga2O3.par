@@ -1,0 +1,351 @@
+* Copyright (c) 1994-2015 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+* [Lee06] S.-A. Lee, J.-Y. Hwang, J.-P. Kim, S.-Y. Jeong and C.-R. Cho, Appl. Phys. Lett. 89 (2006) 182906.
+* [Pee10] H. Peelaers and C.G. Van de Walle, Phys. Status Solidi (B) 252 (2015) 828.
+* [Guo14] Z. Guo, A. Verma, X. Wu, F. Sun, A. Hickman, T. Masui, A. Kuramata, M.Higashiwaki, D. Jena and T. Luo,
+*  Appl. Phys. Lett 106 (2014) 111909
+* [Lay01] T. S. Lay, M. Hong, J. Kwo, J. P. Mannaerts, W. H. Hung, and D. J. Huang, Solid State Electron. 45, 1679 (2001).
+* [Jan11] C. Janowitz, V. Scherer, M. Mohamed, A. Krapf, H. Dwelk, R. Manzke, Z. Galazka, R. Uecker, K. Irmscher and R. Fornari,
+*  New J. Phys. 13 (2011) 085014.
+* [Hig13] Higashiwaki, M., Sasaki, K., Kuramata, A., Masui, T. and Yamakoshi, S. (2014), Development of gallium oxide power 
+*  devices. Phys. Status Solidi A, 211: 21?26. doi:10.1002/pssa.201330197
+* [Ste15] S. I. Stepanov, V. I. Nikolaev, V. E. Bougrov, and A. E. Romanov, Rev. Adv. Mater. Sci. 44, 63 (2016)
+* [Hig16] M. Higashiwaki, K. Sasaki, H. Murakami, Y. Kumagai, A. Koukitu, A. Kuramata, T. Masui and S. Yamakoshi,
+*  Semiconductor Science and Technology. 31, 3 (2016)
+* [Mas17] M. A. Mastro, A. Kuramata, J. Calkins, J. Kim, F. Ren, and S. J. Pearton, ECS J. Solid State Sci. Technol., 
+*  6 (5) P356-P359 (2017)
+* [Gho17] Krishnendu Ghosh and Uttam Singisetti, arxiv, https://arxiv.org/abs/1705.09203 (Non peer reviewed)
+* [20Won] H. Y. Wong, Ming Xiao, Boyan Wang, Yan Ka Chiu, Xiaodong Yan, Jiahui Ma, Kohei Sasaki, Han Wang, and Yuhao Zhang,
+*  TCAD-Machine Learning Framework for Device Variation and Operating Temperature Analysis With Experimental Demonstration,
+*  IEEE Journal of the Electron Devices Society, vol. 8, pp. 992-1000, 2020
+* [20Won1 Hiu Yung Wong and Armand Tenkeu, Advanced TCAD Simulation and Calibration of Gallium Oxide Vertical Transistor,
+*  ECS Journal of Solid State Science and Technology, 9, 3, 035003, 2020
+
+
+Epsilon
+  {
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 10.0 #[1], [Hig16]
+    * epsilon = 10.05 #[1], [Pee10], 9.9-10.2
+    * epsilon = 13.6 #[1], [Lee06]
+  }
+
+Epsilon_Inf
+  {
+    * Ratio of the high frequency limit of permittivities of material and vacuum
+    * perp. to c-axis
+    epsilon_inf = 10.0 #[1], set to low frequency value
+  }
+
+Epsilon_aniso
+  {
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 10.0 #[1], set to iso value
+  }
+
+* Epsilon_Inf_aniso
+*   {
+*     * Ratio of the permittivities of material and vacuum
+*     * parallel to c-axis
+* 
+*     epsilon_inf = 10.0 #[1], set to low frequency value
+*   }
+
+* refractiveindex{...}
+* By default, for mole fraction dependency of parameters
+* of the model, the following linear interpolation is applied
+* between two materials: P = x * P(AlN) + (1-x) * P(GaN)
+* where P(m) is a parameter of material m.
+* If the parameters are specified, then its values
+* will be used instead of the interpolation.
+
+* ComplexRefractiveIndex { ... } 
+* By default, for mole fraction dependency of parameters
+* of the model, the following linear interpolation is applied
+* between two materials: P = x * P(AlN) + (1-x) * P(GaN)
+* where P(m) is a parameter of material m.
+* If the parameters are specified, then its values
+* will be used instead of the interpolation.
+
+SpectralConversion
+  { 
+    * Spectral Conversion Model
+    * No default model, user has to define.
+    * All wavelength parameters should be in nanometers.
+    * Choice of Analytic or NumericalTable selected in Physics section of region
+    *
+    * ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+    * AbsorptionScaling = float        * scale absorption
+    * EmissionScaling = float          * scale emission
+    * Analytic (
+    *   AbsorptionProfile = (
+    *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+    *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+    *      ...
+    *   )
+    *   EmissionProfile = (
+    *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+    *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+    *      ...
+    *   )
+    * )
+    * NumericalTable (
+    *   AbsorptionProfile = (
+    *      lambda0 value0
+    *      lambda1 value1
+    *      ...
+    *   )
+    *   EmissionProfile = (
+    *      lambda0 value0
+    *      lambda1 value1
+    *      ...
+    *   )
+
+    ConversionEfficiency = 1.0
+  }
+
+LatticeHeatCapacity
+  {
+    * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+    * lumped electron-hole-lattice heat capacity
+    * Specific heat 0.56 Jg-1K-1 or 0.49 Jg-1K-1 [Ste15]
+    * Density 5.95 g/cm3 [85,87,139]
+    * cv = specific heat * density = 5.95 * 0.56 J/K cm3
+    cv = 3.332 #[J/(K cm^3)], [Ste15] 
+    cv_b = 0.0000e+00 #[J/(K^2 cm^3)]
+    cv_c = 0.0000e+00 #[J/(K^3 cm^3)]
+    cv_d = 0.0000e+00 #[J/(K^4 cm^3)]
+  }
+
+Kappa
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * thermal resistivity = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * thermal conductivity = kappa + kappa_b * T + kappa_c * T^2
+
+    Formula = 1
+    kappa = 0.11 #[W/cm K], [100] direction [Hig16], [Guo14]
+    * kappa = 0.11 #[W/cm K], [100] direction [Hig16]    
+    * kappa = 0.147 #[W/cm K], [001] direction [Guo14]
+    * kappa = 0.133 #[W/cm K], [-201] direction [Guo14]
+    * kappa = 0.27 #[W/cm K], [010] direction [Guo14], [Hig16]
+    kappa_b = 0.0
+    kappa_c = 0.0
+  }
+
+Kappa_aniso
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * thermal resistivity = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * thermal conductivity = kappa + kappa_b * T + kappa_c * T^2
+
+    Formula = 1
+    kappa = 0.11 #[W/cm K], [100] direction [Hig16], [Guo14]
+    * kappa = 0.11 #[W/cm K], [100] direction [Hig16]    
+    * kappa = 0.147 #[W/cm K], [001] direction [Guo14]
+    * kappa = 0.133 #[W/cm K], [-201] direction [Guo14]
+    * kappa = 0.27 #[W/cm K], [010] direction [Guo14], [Hig16]
+    kappa_b = 0.0
+    kappa_c = 0.0
+  }
+
+* CarrierThermalConductivity {}
+
+* EnergyRelaxationTime {}
+
+* EnergyFlux {}
+
+* ThermalDiffusion {}
+
+* HeatFlux {} 
+
+* AvalancheFactors {}
+
+* TEPower {}
+
+* Ionization {} 
+
+Bandgap
+  { 
+    * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+    * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+    * an appropriate BGN model, if this BGN model is chosen in Physics section 
+    * Parameter 'Tpar' specifies the value of lattice temperature, at which parameters below are defined
+    * Chi0 is electron affinity.
+	
+    Chi0 = 3.6128 #[eV], [Lay01], 3.7eV at 300K 
+    * Bgn2Chi = 0.5 #[1] 
+    Eg0	= 5.0243 #[eV], [Jan11], 4.85eV at 300K
+    Tpar = 0.0 #[K] 
+    alpha = 4.45e-3 #[eV/K]
+    beta = 2.0e3 #[K]
+  }
+
+* FreeCarrierAbsorption{...}
+* By default, for mole fraction dependency of parameters
+* of the model, the following linear interpolation is applied
+* between two materials: P = x * P(InN) + (1-x) * P(GaN)
+* where P(m) is a parameter of material m.
+* If the parameters are specified, then its values
+* will be used instead of the interpolation.
+
+* BandstructureParameters {}
+
+* QWStrain {}
+
+eDOSMass
+  {
+    * For effective mass specificatition Formula1 (me approximation):
+    * or Formula2 (Nc300) can be used :
+    Formula = 2	#[1]
+    * Formula2:
+    * me/m0 = 0.28 = ((Nc300)/2.5094e19)^(2/3)
+    * Nc(T) = (Nc300)*((T/300))^3/2 
+ 
+    Nc300 = 3.7180e+18 #[1/cm^3] #this value is reverse-calculated based on me = 0.28*m0 (isotropic, 300K), [Jan11]
+  }
+
+* hDOSMass {}
+
+*  SchroedingerParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(AlN) + (1-x) * P(GaN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+*  QuantumPotentialParameters { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(AlN) + (1-x) * P(GaN)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+ConstantMobility:
+  { 
+    * mu_const = mumax (T/T0)^(-Exponent)
+
+    * mumax = 300, 1e-6 #[cm^2/(Vs)], [16Hig], no data for holes
+    mumax = 123, 1.0e-6 #[cm^2/(Vs)], [20Won], no data for holes
+    Exponent = 0.0, 0.0 #[1], no data
+  }
+
+* ConstantMobility_aniso{...}
+
+PhuMob: 
+  { 
+    * Philips Unified Mobility Model
+    * Data are from [20Won]
+
+    mumax_As = 52.89 #[cm^2/Vs]
+    mumin_As = 34.4 #[cm^2/Vs]
+    theta_As = 1.8 #[1]
+    n_ref_As = 2e17 #[cm^(-3)]
+    alpha_As = 0.9 #[1]
+    mumax_As = 52.89 #[cm^2/Vs]
+    mumin_As = 34.4 #[cm^2/Vs]
+    theta_P = 2.285 #[1]
+    n_ref_P = 9.2000e+16 #[cm^(-3)]
+    alpha_P = 0.711 #[1]
+    mumax_B = 4.7050e+02 #[cm^2/Vs]
+    mumin_B = 44.9 #[cm^2/Vs]
+    theta_B = 2.247 #[1]
+    n_ref_B = 2.2300e+17 #[cm^(-3)]
+    alpha_B = 0.719 # [1]
+    nref_D = 4.0000e+20 #[cm^(-3)]
+    nref_A = 7.2000e+20 #[cm^(-3)]
+    cref_D = 0.21 #[1]
+    cref_A = 0.5 #[1]
+    me_over_m0 = 1 # [1]
+    mh_over_m0 = 1.258 #[1]
+    f_CW = 2.459 #[1]
+    f_BH = 3.828 #[1]
+    f_e = 1 #[1]
+    f_h = 1 #[1]
+    alpha1_g_k = -7.2169e-01 #[1]
+  }
+
+* EnormalDependence{...}
+
+* EnormalDependence_aniso{...}
+
+* NegInterfaceChargeMobility{...}
+
+* NegInterfaceChargeMobility_aniso{...}
+
+* PosInterfaceChargeMobility{...}
+
+* PosInterfaceChargeMobility_aniso{...}
+
+* Coulomb2DMobility{...}
+
+* Coulomb2DMobility_aniso{...}
+
+HighFieldDependence:
+  {
+    * Caughey-Thomas model:
+    * mu_highfield = ( (alpha+1)*mu_lowfield ) / ( alpha + ( 1 + ( (alpha+1)*mu_lowfield*E/vsat)^beta )^(1/beta) ) 
+    * beta = beta0 (T/T0)^betaexp.
+
+    beta0 = 1.0, 1.0 #[1], no data for holes
+    betaexp = 0.0, 0.0
+    alpha = 0.0000e+00, 0.0000e+00
+
+    * For vsat either Formula1 or Formula2 can be used.
+    Vsat_Formula = 1, 1
+
+    * Formula1 for saturation velocity: vsat = vsat0 (T/T0)^(-Vsatexp)
+    vsat0 = 2e+07, 1e7 #[cm/2], no data for holes
+    vsatexp = 0.0, 0.0
+  }
+
+* HighFieldDependence_aniso{...}
+
+* TransferredElectronEffect2 {}
+
+* TransferredElectronEffect2_aniso {}
+
+vanOverstraetendeMan * Impact Ionization:
+  { 
+    * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+    * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+    *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+    * no data for holes. No data for E0 and hbaromega
+    * Data are for z-direction from [Ghosh17] and [20Won]
+    * For x-direction, a=7.9E+05/cm, b=2.92E+07V/cm
+
+    a(low) = 7.0600e+05, 7.0600e+05 #[1/cm], electron data for holes
+    a(high) = 7.0600e+05, 7.0600e+05 #[1/cm]
+    b(low) = 7.9800e+07, 7.9800e+07 #[V/cm]
+    b(high) = 7.9800e+07, 7.9800e+07 #[V/cm]
+    E0 = 4.0000e+05, 4.0000e+05 #[V/cm]
+    hbarOmega	= 0.063, 0.063 #[eV], silicon data
+  }
+
+Ionization
+  { 
+    E_As_0 = 0.052 #[eV], [20Won]
+    alpha_As = 3.398e-8 #[20Won]
+    g_As = 2 #[1]
+    Xsec_As = 1.0000e-12 #[cm^2]
+
+    E_NDopant_0	= 0.06 #[eV], [16Hig], for Sn Range 60meV to 80meV
+    g_NDopant = 2 #no reference
+  }
+
+

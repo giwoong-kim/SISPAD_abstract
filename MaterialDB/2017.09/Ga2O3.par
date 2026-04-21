@@ -1,0 +1,142 @@
+* Copyright (c) 1994-2015 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+* [Lee06] S.-A. Lee, J.-Y. Hwang, J.-P. Kim, S.-Y. Jeong and C.-R. Cho, Appl. Phys. Lett. 89 (2006) 182906.
+* [Peelaers10] H. Peelaers and C.G. Van de Walle, Phys. Status Solidi (B) 252 (2015) 828.
+* [Guo14] Z. Guo, A. Verma, X. Wu, F. Sun, A. Hickman, T. Masui, A. Kuramata, M.Higashiwaki, D. Jena and T. Luo,
+* Appl. Phys. Lett 106 (2014) 111909
+* [Lay01] T. S. Lay, M. Hong, J. Kwo, J. P. Mannaerts, W. H. Hung, and D. J. Huang, Solid State Electron. 45, 1679 (2001).
+* [Janowitz11] C. Janowitz, V. Scherer, M. Mohamed, A. Krapf, H. Dwelk, R. Manzke, Z. Galazka, R. Uecker, K. Irmscher and R. Fornari,
+* New J. Phys. 13 (2011) 085014.
+* [Higashiwaki13] Higashiwaki, M., Sasaki, K., Kuramata, A., Masui, T. and Yamakoshi, S. (2014), Development of gallium oxide power 
+* devices. Phys. Status Solidi A, 211: 21?26. doi:10.1002/pssa.201330197
+* [Stepanov15] S. I. Stepanov, V. I. Nikolaev, V. E. Bougrov, and A. E. Romanov, Rev. Adv. Mater. Sci. 44, 63 (2016)
+* [Higashiwaki16] M. Higashiwaki, K. Sasaki, H. Murakami, Y. Kumagai, A. Koukitu, A. Kuramata, T. Masui and S. Yamakoshi,
+* Semiconductor Science and Technology. 31, 3 (2016)
+* [Mastro17] M. A. Mastro, A. Kuramata, J. Calkins, J. Kim, F. Ren, and S. J. Pearton, ECS J. Solid State Sci. Technol., 
+* 6 (5) P356-P359 (2017)
+* [Ghosh17] Krishnendu Ghosh and Uttam Singisetti, arxiv, https://arxiv.org/abs/1705.09203 (Non peer reviewed)
+
+Epsilon
+  {
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+    * Other values: 9.9-10.2 [Peelaers10], 13.6 [Lee06]
+
+    epsilon = 10.0 # [Higashiwaki16]
+
+  }
+
+Kappa
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * thermal resistivity = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * thermal conductivity = kappa + kappa_b * T + kappa_c * T^2
+
+    Formula = 1
+    kappa = 0.27 # [W/cm K] [010] direction [Higashiwaki16]
+    * kappa = 0.11 # [W/cm K] [100] direction [Higashiwaki16]    
+    * kappa = 0.147 # [W/cm K] [001] direction [Guo14]
+    * kappa = 0.133 # [W/cm K] [-201] direction [Guo14]
+    * kappa = 0.27 # [W/cm K] [110] direction [Guo14]
+    kappa_b = 0.0
+    kappa_c = 0.0
+  }
+
+Bandgap
+{ * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+  * an appropriate BGN model, if this BGN model is chosen in Physics section 
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+	Chi0	= 3.7 # [eV], [Lay01] 
+	* Bgn2Chi	= 0.5	# [1] 
+	Eg0	= 4.85	# [eV], [Janowitz11]
+	Tpar	= 3.0000e+02	# [K] 
+        * no temperature support for now.
+        alpha   = 0.0
+        beta    = 0.0
+}
+
+eDOSMass
+{
+  * For effective mass specificatition Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * me/m0 = 0.28 = ((Nc300)/2.5094e19)^(2/3)
+  * Nc(T) = (Nc300)*((T/300))^3/2 
+  	* this value is reverse-calculated based on me = 0.28m0 (isotropic) [Janowitz11]
+        Nc300 = 3.7180e+18 # [300K]
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+        * no temperature support for now.
+        * no hole support for now.
+	mumax	= 300 ,	1e-6	# [cm^2/(Vs)] [Higashiwaki16] no data for hole
+	Exponent	= 0.0 ,	0.0 # NO DATA
+}
+
+HighFieldDependence:
+{ * Caughey-Thomas model:
+  * mu_highfield = ( (alpha+1)*mu_lowfield ) / 
+  *        ( alpha + ( 1 + ( (alpha+1)*mu_lowfield*E/vsat)^beta )^(1/beta) ) 
+  * beta = beta0 (T/T0)^betaexp.
+  * NO temperature dependence data
+	beta0	= 1.0 ,	1.0 # [no data for holes]
+	betaexp	= 0.0 ,	0.0
+	alpha	= 0.0000e+00 ,	0.0000e+00
+
+ * For vsat either Formula1 or Formula2 can be used.
+	Vsat_Formula	= 1 ,	1
+ * Formula1 for saturation velocity:
+ *            vsat = vsat0 (T/T0)^(-Vsatexp)
+ * (Parameter Vsat_Formula has to be not equal to 2)
+ * No data for temperature dependence [Mastro17]
+	vsat0	= 2e+07 , 1e7 # [no data for holes]
+	vsatexp	= 0.0 ,	0.0
+}
+
+vanOverstraetendeMan * Impact Ionization:
+{ * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+  * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+  *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+  * no data for holes. No data for E0 and hbaromega
+  * Electron data are for z-direction from [Ghosh17]. See Fig. 1 from [Ghosh 17]
+  * For x-direction, ax=7.9E+05/cm, bx=2.92E+07V/cm
+	a(low)	= 7.0600e+05 ,	7.0600e+05	# [1/cm] (Use electron data for holes)
+	a(high)	= 7.0600e+05 ,	7.0600e+05	# [1/cm]
+	b(low)	= 2.1000e+07 ,	2.1000e+07	# [V/cm]
+	b(high)	= 2.1000e+07 ,	2.1000e+07	# [V/cm]
+	E0	= 4.0000e+05 ,	4.0000e+05	# [V/cm]
+	hbarOmega	= 0.063 ,	0.063	# [eV] (Use silicon data)
+}
+
+Ionization
+{ * no critical doping data
+	E_NDopant_0	= 0.06	# [eV] [Higashiwaki16] for Sn. Range 60meV to 80meV
+	g_NDopant	= 2	# No reference. Guess
+
+
+}
+
+LatticeHeatCapacity
+{
+    * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+    * lumped electron-hole-lattice heat capacity
+    * Specific heat 0.56 Jg-1K-1 or 0.49 Jg-1K-1 [Stepanov15]
+    * Density 5.95 g/cm3 [85,87,139]
+    * cv = specific heat * density = 5.95 * 0.56 J/K cm3
+    cv = 3.332 #[J/(K cm^3)], 
+    cv_b = 0.0000e+00 #[J/(K^2 cm^3)]
+    cv_c = 0.0000e+00 #[J/(K^3 cm^3)]
+    cv_d = 0.0000e+00 #[J/(K^4 cm^3)]
+}

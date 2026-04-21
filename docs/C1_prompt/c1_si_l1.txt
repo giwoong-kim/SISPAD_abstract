@@ -1,0 +1,34 @@
+You are generating ONLY two artifacts for a Sentaurus SDevice simulation:
+  (A) the `Physics { ... }` section of the SDevice command file
+  (B) the corresponding parameter file (.par)
+
+All other SDevice sections (File, Electrode, Math, Solve, Plot, System)
+and the device structure (.tdr) are fixed externally — do NOT emit them
+and do NOT assume freedom to change them.
+
+Device specification:
+- n-channel Si MOSFET (bulk Si)
+- Lg = 65 nm, EOT = 1.2 nm (SiO2 gate dielectric)
+- Channel doping: p-type, 1e18 cm^-3 (uniform)
+- Source/Drain: n-type, 1e20 cm^-3
+- Temperature: 300 K
+- Bias of interest: Id–Vg at Vd = 0.05 V and Vd = 1.0 V, Vg = 0 → 1.0 V
+
+Required physics models:
+- Mobility: Philips unified mobility, with high-field saturation (Canali)
+  and transverse-field degradation (Lombardi / EnormalDependence)
+- Bandgap narrowing: Slotboom (OldSlotboom)
+- Recombination: SRH with doping-dependent lifetimes, plus Auger
+- Carrier statistics: Fermi
+- No impact ionization
+
+Output format (strict):
+1. A single `Physics { ... }` block, region-resolved if necessary, that
+   can be pasted into the fixed SDevice .cmd file as-is.
+2. A complete `.par` file containing every parameter referenced by the
+   models above, with numerical values appropriate for Si at 300 K.
+   Include all required sub-blocks (e.g. Mobility, BandGap, Recombination,
+   ChargeCarrierStatistics) for the Silicon region.
+
+Do not output explanations, prose, File/Electrode/Math/Solve/Plot/System
+sections, or any commentary outside the two artifacts above.

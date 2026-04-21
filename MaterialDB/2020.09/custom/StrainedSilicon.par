@@ -1,0 +1,1518 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* This file contains in-plane transport parameters at 300 K for silicon
+* under biaxial tensile strain present when a thin silicon film is grown
+* on top of a relaxed SiliconGermanium substrate (in-plane refers to 
+* charge transport parallel to the interface to SiliconGermanium as is 
+* the case in MOSFETs).
+* 
+* In the physics section of the Dessis command file, the Germanium
+* content of the SiliconGermanium substrate at the interface to the
+* StrainedSilicon channel has to be specified (this value determines
+* the strain) according to
+*
+*   MoleFraction  (RegionName=["Region.6"]
+*          XFraction = 0.2 Grading = 0.0 ) 
+*
+* where the material of Region.6 is StrainedSilicon.
+*
+* Band offsets and bulk mobility data are obtained from the model-solid
+* theory of Van de Walle and Monte Carlo simulations as described in
+* F. M. Bufler and W. Fichtner, Applied Physics Letters, vol. 81, No. 1,
+* pp. 82-84 (2002).
+* 
+* The present values for the parameters B, C and delta of the 
+* Darwish-type surface mobility model (THE PhuMob MODEL HAS TO BE
+* ACTIVATED in the DESSIS command file when using this parameter file!)
+* were extracted
+* in a MOS diode at a high effective field (where the Si control
+* measurements of the references below were in good agreement with
+* the universal mobility curve of Si and where the neglected effect
+* of the SiGe substrate is minimal) of around 0.7 MV/cm to reproduce 
+* the experimental data reported in
+* M. T. Currie et al., Journal of Vacuum Science & Technology B, 
+* vol. 19, no. 6, pp.2268-2279 (2001);
+* C. W. Leitz et al., Journal of Applied Physics, vol. 92, no. 7,
+* pp. 3745-3751 (2002).
+*
+* At present, the QuantumPotentialParameters cannot be parametrizied
+* as a function of strain; the values specified correspond to XFraction = 0.2.
+*
+* See also the parameter file StrainedSi_SiGe.par for a consistent set
+* of parameters for the material system described in the first paragraph.
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+	A	= 6.7000e-32 ,	7.2000e-32	# [cm^6/s]
+	B	= 2.4500e-31 ,	4.5000e-33	# [cm^6/s]
+	C	= -2.2000e-32 ,	2.6300e-32	# [cm^6/s]
+	H	= 3.46667 ,	8.25688	# [1]
+	N0	= 1.0000e+18 ,	1.0000e+18	# [cm^(-3)]
+}
+
+
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-05 ,	3.0000e-06	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	Tcoeff	= 2.55 ,	2.55	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Epsilon
+{ *  Ratio of the permittivities of material and vacuum
+
+  * epsilon() = epsilon
+  * Mole fraction dependent model.
+  * If only constant parameters are specified, those values will be
+  * used for any mole fraction instead of the interpolation below.
+  * Linear interpolation is used on the interval [0,1].
+	epsilon	= 11.7	# [1]
+}
+
+*  refractiveindex{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  LatticeHeatCapacity{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  Kappa{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+EnergyRelaxationTime
+{ *  Energy relaxation times in picoseconds
+
+        * parameter tau_w_ele:
+        Xmax(0) = 0.0000e+00    # [1]
+        tau_w_ele(0)  = 0.3   # [ps]
+        Xmax(1) = 0.1   # [1]
+        tau_w_ele(1)  = 0.32  # [ps]
+        B(tau_w_ele(1))       = 0.0000e+00    # [ps]
+        C(tau_w_ele(1))       = 0.0000e+00    # [ps]
+        Xmax(2) = 0.2   # [1]
+        tau_w_ele(2)  = 0.35  # [ps]
+        B(tau_w_ele(2))       = 0.0000e+00    # [ps]
+        C(tau_w_ele(2))       = 0.0000e+00    # [ps]
+        Xmax(3) = 0.3   # [1]
+        tau_w_ele(3)  = 0.37  # [ps]
+        B(tau_w_ele(3))       = 0.0000e+00    # [ps]
+        C(tau_w_ele(3))       = 0.0000e+00    # [ps]
+        Xmax(4) = 0.4   # [1]
+        tau_w_ele(4)  = 0.39  # [ps]
+        B(tau_w_ele(4))       = 0.0000e+00    # [ps]
+        C(tau_w_ele(4))       = 0.0000e+00    # [ps]
+        Xmax(5) = 1.0   # [1]
+        tau_w_ele(5)  = 0.39  # [ps]
+        B(tau_w_ele(5))       = 0.0000e+00    # [ps]
+        C(tau_w_ele(5))       = 0.0000e+00    # [ps]
+
+        * parameter tau_w_hol:
+        Xmax(0) = 0.0000e+00    # [1]
+        tau_w_hol(0)  = 0.11  # [ps]
+        Xmax(1) = 0.1   # [1]
+        tau_w_hol(1)  = 0.11  # [ps]
+        B(tau_w_hol(1))       = 0.0000e+00    # [ps]
+        C(tau_w_hol(1))       = 0.0000e+00    # [ps]
+        Xmax(2) = 0.2   # [1]
+        tau_w_hol(2)  = 0.12  # [ps]
+        B(tau_w_hol(2))       = 0.0000e+00    # [ps]
+        C(tau_w_hol(2))       = 0.0000e+00    # [ps]
+        Xmax(3) = 0.3   # [1]
+        tau_w_hol(3)  = 0.14  # [ps]
+        B(tau_w_hol(3))       = 0.0000e+00    # [ps]
+        C(tau_w_hol(3))       = 0.0000e+00    # [ps]
+        Xmax(4) = 0.4   # [1]
+        tau_w_hol(4)  = 0.17  # [ps]
+        B(tau_w_hol(4))       = 0.0000e+00    # [ps]
+        C(tau_w_hol(4))       = 0.0000e+00    # [ps]
+        Xmax(5) = 1.0   # [1]
+        tau_w_hol(5)  = 0.17  # [ps]
+        B(tau_w_hol(5))       = 0.0000e+00    # [ps]
+        C(tau_w_hol(5))       = 0.0000e+00    # [ps]
+}
+
+Bandgap
+{ * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with 
+  * an appropriate BGN model, if this BGN model is chosen in Physics section 
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+	Bgn2Chi	= 0.5	# [1]
+	dEg0(Bennett)	= 0.0000e+00	# [eV]
+	dEg0(Slotboom)	= 0.0000e+00	# [eV]
+	dEg0(OldSlotboom)	= 0.0000e+00	# [eV]
+	dEg0(delAlamo)	= 0.0000e+00	# [eV]
+        beta    = 0.00e+00    # [K]
+	Tpar	= 3.0000e+02	# [K]
+  * Mole fraction dependent model.
+  * If only constant parameters are specified, those values will be
+  * used for any mole fraction instead of the interpolation below.
+  * The following interpolation polynom can be used on interval [Xmin(I),Xmax(I)]:
+  * F(X) = F(I-1)+A(I)*(X-Xmin(I))+B(I)*(X-Xmin(I))^2+C(I)*(X-Xmin(I))^3,
+  * where Xmax(I), F(I), B(I), C(I) are defined below for each interval.
+  * A(I) is calculated for a boundary condition F(Xmax(I)) = F(I).
+  *
+  * Definition of mole fraction intervals, parameters, and coefficients:
+	* parameter Eg0:
+	Eg0	= 1.12	# [eV]
+	Xmax(0)	= 0.0000e+00	# [1]
+	Xmax(1)	= 0.1	# [1]
+	Eg0(1)	= 1.063	# [eV]
+	B(Eg0(1))	= 0.0000e+00	# [eV]
+	C(Eg0(1))	= 0.0000e+00	# [eV]
+	Xmax(2)	= 0.2	# [1]
+	Eg0(2)	= 1.003	# [eV]
+	B(Eg0(2))	= 0.0000e+00	# [eV]
+	C(Eg0(2))	= 0.0000e+00	# [eV]
+	Xmax(3)	= 0.3	# [1]
+	Eg0(3)	= 0.940	# [eV]
+	B(Eg0(3))	= 0.0000e+00	# [eV]
+	C(Eg0(3))	= 0.0000e+00	# [eV]
+	Xmax(4)	= 0.4	# [1]
+	Eg0(4)	= 0.875	# [eV]
+	B(Eg0(4))	= 0.0000e+00	# [eV]
+	C(Eg0(4))	= 0.0000e+00	# [eV]
+	Xmax(5)	= 1.0	# [1]
+	Eg0(5)	= 0.875	# [eV]
+	B(Eg0(5))	= 0.0000e+00	# [eV]
+	C(Eg0(5))	= 0.0000e+00	# [eV]
+
+        * parameter alpha:
+        alpha        = 0.0000e+00    # [eV K^-1]
+        Xmax(0) = 0.0000e+00    # [1]
+        Xmax(1) = 0.1   # [1]
+        alpha(1)        = 0.0000e+00    # [eV K^-1]
+        B(alpha(1))     = 0.0000e+00    # [eV K^-1]
+        C(alpha(1))     = 0.0000e+00    # [eV K^-1]
+        Xmax(2) = 0.2   # [1]
+        alpha(2)        = 0.0000e+00    # [eV K^-1]
+        B(alpha(2))     = 0.0000e+00    # [eV K^-1]
+        C(alpha(2))     = 0.0000e+00    # [eV K^-1] 
+        Xmax(3) = 0.3   # [1]
+        alpha(3)        = 0.0000e+00    # [eV K^-1]
+        B(alpha(3))     = 0.0000e+00    # [eV K^-1]
+        C(alpha(3))     = 0.0000e+00    # [eV K^-1]
+        Xmax(4) = 0.4   # [1]
+        alpha(4)        = 0.0000e+00    # [eV K^-1]
+        B(alpha(4))     = 0.0000e+00    # [eV K^-1]
+        C(alpha(4))     = 0.0000e+00    # [eV K^-1]
+        Xmax(5) = 1.0   # [1]   
+        alpha(5)        = 0.0000e+00    # [eV K^-1]
+        B(alpha(5))     = 0.0000e+00    # [eV K^-1]
+        C(alpha(5))     = 0.0000e+00    # [eV K^-1]
+
+        * parameter beta:
+        beta = 0.0000e+00    # [K]   
+        Xmax(0) = 0.0000e+00    # [1]   
+        Xmax(1) = 0.1   # [1]
+        beta(1) = 0.0000e+00    # [K]   
+        B(beta(1))      = 0.0000e+00    # [K]   
+        C(beta(1))      = 0.0000e+00    # [K]   
+        Xmax(2) = 0.2   # [1]
+        beta(2) = 0.0000e+00    # [K]   
+        B(beta(2))      = 0.0000e+00    # [K]   
+        C(beta(2))      = 0.0000e+00    # [K]   
+        Xmax(3) = 0.3   # [1]   
+        beta(3) = 0.0000e+00    # [K]   
+        B(beta(3))      = 0.0000e+00    # [K]   
+        C(beta(3))      = 0.0000e+00    # [K]   
+        Xmax(4) = 0.4   # [1]   
+        beta(4) = 0.0000e+00    # [K]   
+        B(beta(4))      = 0.0000e+00    # [K]   
+        C(beta(4))      = 0.0000e+00    # [K]   
+        Xmax(5) = 1.0   # [1]
+        beta(5) = 0.0000e+00    # [K]   
+        B(beta(5))      = 0.0000e+00    # [K]   
+        C(beta(5))      = 0.0000e+00    # [K]   
+
+	* parameter Chi0:
+	Chi0	= 4.05	# [eV]
+	Xmax(0)	= 0.0000e+00	# [1]
+	Xmax(1)	= 0.1	# [1]
+	Chi0(1)	= 4.073	# [eV]
+	B(Chi0(1))	= 0.0000e+00	# [eV]
+	C(Chi0(1))	= 0.0000e+00	# [eV]
+	Xmax(2)	= 0.2	# [1]
+	Chi0(2)	= 4.094	# [eV]
+	B(Chi0(2))	= 0.0000e+00	# [eV]
+	C(Chi0(2))	= 0.0000e+00	# [eV]
+	Xmax(3)	= 0.3	# [1]
+	Chi0(3)	= 4.118	# [eV]
+	B(Chi0(3))	= 0.0000e+00	# [eV]
+	C(Chi0(3))	= 0.0000e+00	# [eV]
+	Xmax(4)	= 0.4	# [1]
+	Chi0(4)	= 4.143	# [eV]
+	B(Chi0(4))	= 0.0000e+00	# [eV]
+	C(Chi0(4))	= 0.0000e+00	# [eV]
+	Xmax(5)	= 1.0	# [1]
+	Chi0(5)	= 4.143	# [eV]
+	B(Chi0(5))	= 0.0000e+00	# [eV]
+	C(Chi0(5))	= 0.0000e+00	# [eV]
+}
+
+
+OldSlotboom
+{ * deltaEg = dEg0 + Ebgn ( ln(N/Nref) + [ (ln(N/Nref))^2 + 0.5]^1/2 )
+  * dEg0 is defined in BandGap section 
+	Ebgn	= 9.0000e-03	# [eV]
+	Nref	= 1.0000e+17	# [cm^(-3)]
+}
+
+
+Slotboom
+{ * deltaEg = dEg0 + Ebgn ( ln(N/Nref) + [ (ln(N/Nref))^2 + 0.5]^1/2 )
+  * dEg0 is defined in BandGap section 
+	Ebgn	= 6.9200e-03	# [eV]
+	Nref	= 1.3000e+17	# [cm^(-3)]
+}
+
+delAlamo
+{ * deltaEg = dEg0 + Ebgn  ln(N/Nref) 
+  * dEg0 is defined in BandGap section 
+	Ebgn	= 0.0187	# [eV]
+	Nref	= 7.0000e+17	# [cm^(-3)]
+}
+
+Bennett
+{ * deltaEg = dEg0 + Ebgn (ln(N/Nref))^2
+  * dEg0 is defined in BandGap section 
+	Ebgn	= 6.8400e-03	# [eV]
+	Nref	= 3.1620e+18	# [cm^(-3)]
+}
+
+
+*  FreeCarrierAbsorption{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  BandstructureParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+*  QWstrain{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+
+eDOSMass
+{
+  * For effective mass specificatition Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 2	# [1]
+
+	* parameter Nc300:
+	Nc300	= 3.0000e+19    # [cm-3]
+	Xmax(0)	= 0.0000e+00	# [1]
+	Xmax(1)	= 0.1	# [1]
+	Nc300(1)	= 1.2000e+19    # [cm-3]
+	B(Nc300(1))	= 0.0000e+00	# [eV]
+	C(Nc300(1))	= 0.0000e+00	# [eV]
+	Xmax(2)	= 0.2	# [1]
+	Nc300(2)	= 1.0000e+19    # [cm-3]
+	B(Nc300(2))	= 0.0000e+00	# [eV]
+	C(Nc300(2))	= 0.0000e+00	# [eV]
+	Xmax(3)	= 0.3	# [1]
+	Nc300(3)	= 0.9900e+19    # [cm-3]
+	B(Nc300(3))	= 0.0000e+00	# [eV]
+	C(Nc300(3))	= 0.0000e+00	# [eV]
+	Xmax(4)	= 0.4	# [1]
+	Nc300(4)	= 0.9900e+19    # [cm-3]
+	B(Nc300(4))	= 0.0000e+00	# [eV]
+	C(Nc300(4))	= 0.0000e+00	# [eV]
+	Xmax(5)	= 1.0	# [1]
+	Nc300(5)	= 0.9900e+19    # [cm-3]
+	B(Nc300(5))	= 0.0000e+00	# [eV]
+	C(Nc300(5))	= 0.0000e+00	# [eV]
+}
+
+hDOSMass
+{
+  * For effective mass specificatition Formula1 (me approximation):
+  * or Formula2 (Nv300) can be used :
+	Formula	= 2	# [1]
+
+	* parameter Nv300:
+	Nv300	= 2.1000e+19    # [cm-3]
+	Xmax(0)	= 0.0000e+00	# [1]
+	Xmax(1)	= 0.1	# [1]
+	Nv300(1)	= 1.1000e+19    # [cm-3]
+	B(Nv300(1))	= 0.0000e+00	# [eV]
+	C(Nv300(1))	= 0.0000e+00	# [eV]
+	Xmax(2)	= 0.2	# [1]
+	Nv300(2)	= 0.7000e+19    # [cm-3]
+	B(Nv300(2))	= 0.0000e+00	# [eV]
+	C(Nv300(2))	= 0.0000e+00	# [eV]
+	Xmax(3)	= 0.3	# [1]
+	Nv300(3)	= 0.5300e+19    # [cm-3]
+	B(Nv300(3))	= 0.0000e+00	# [eV]
+	C(Nv300(3))	= 0.0000e+00	# [eV]
+	Xmax(4)	= 0.4	# [1]
+	Nv300(4)	= 0.4400e+19    # [cm-3]
+	B(Nv300(4))	= 0.0000e+00	# [eV]
+	C(Nv300(4))	= 0.0000e+00	# [eV]
+	Xmax(5)	= 1.0	# [1]
+	Nv300(5)	= 0.4400e+19    # [cm-3]
+	B(Nv300(5))	= 0.0000e+00	# [eV]
+	C(Nv300(5))	= 0.0000e+00	# [eV]
+}
+
+
+*  SchroedingerParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(Silicon) + (1-x) * P(Silicon)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then its values
+*  will be used instead of the interpolation.
+
+QuantumPotentialParameters
+{ * gamma:  weighting factor for quantum potential
+  * theta:  weight for quadratic term
+  * xi:     weight for quasi Fermi potential
+  * eta:    weight for electrostatic potential
+        gamma   = 1.728 , 2.7     # [1]
+        theta   = 0.5 , 0.5     # [1]
+        xi      = 1 ,   1       # [1]
+        eta     = 1 ,   1       # [1]
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+  * Mole fraction dependent model.
+  * If only constant parameters are specified, those values will be
+  * used for any mole fraction instead of the interpolation below.
+  * Linear interpolation is used on the interval [0,1].
+
+       * parameter mumax:
+       mumax        = 1445., 486.   # [cm2/(Vs)]
+       Xmax(0) = 0., 0.
+       Xmax(1)        = 0.1, 0.1     # [1]   
+       mumax(1)        = 2000., 620.     # [cm2/(Vs)]
+       B(mumax(1))     = 0. , 0. 
+       C(mumax(1))     = 0. , 0. 
+       Xmax(2)        = 0.2, 0.2     # [1]   
+       mumax(2)        = 2257., 1102.     # [cm2/(Vs)]
+       B(mumax(2))     = 0. , 0. 
+       C(mumax(2))     = 0. , 0. 
+       Xmax(3)        = 0.3, 0.3     # [1]   
+       mumax(3)        = 2283., 1747.     # [cm2/(Vs)]
+       B(mumax(3))     = 0. , 0. 
+       C(mumax(3))     = 0. , 0. 
+       Xmax(4)        = 0.4, 0.4     # [1]   
+       mumax(4)        = 2285., 2411.     # [cm2/(Vs)]
+       B(mumax(4))     = 0. , 0. 
+       C(mumax(4))     = 0. , 0. 
+       Xmax(5)        = 1.0, 1.0     # [1]   
+       mumax(5)        = 2285., 2411.     # [cm2/(Vs)]
+       B(mumax(5))     = 0. , 0. 
+       C(mumax(5))     = 0. , 0. 
+
+       * parameter Exponent:
+       Exponent     = 1.0 , 1.0
+       Xmax(0) = 0., 0.
+       Xmax(1)        = 0.1, 0.1     # [1]   
+       Exponent(1)     = 1.0 , 1.0
+       B(Exponent(1))     = 0. , 0. 
+       C(Exponent(1))     = 0. , 0. 
+       Xmax(2)        = 0.2, 0.2     # [1]   
+       Exponent(2)     = 1.0 , 1.0
+       B(Exponent(2))     = 0. , 0. 
+       C(Exponent(2))     = 0. , 0. 
+       Xmax(3)        = 0.3, 0.3     # [1]   
+       Exponent(3)     = 1.0 , 1.0
+       B(Exponent(3))     = 0. , 0. 
+       C(Exponent(3))     = 0. , 0. 
+       Xmax(4)        = 0.4, 0.4     # [1]   
+       Exponent(4)     = 1.0 , 1.0
+       B(Exponent(4))     = 0. , 0. 
+       C(Exponent(4))     = 0. , 0. 
+       Xmax(5)        = 1.0, 1.0     # [1]   
+       Exponent(5)     = 1.0 , 1.0
+       B(Exponent(5))     = 0. , 0. 
+       C(Exponent(5))     = 0. , 0. 
+}
+
+
+DopingDependence:
+{   
+        formula = 1 ,   1       # [1]   
+  * If formula=1, model suggested by Masetti et al. is used:
+  * mu_dop = mumin1 exp(-Pc/N) + (mu_const - mumin2)/(1+(N/Cr)^alpha)
+  *                             - mu1/(1+(Cs/N)^beta)
+  * with mu_const from ConstantMobility
+
+       * parameter mumin1:
+        mumin1  = 56.0 ,        46.0    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        mumin1(1)  = 71.0 ,        41.0    # [cm^2/Vs]
+        B(mumin1(1))     = 0. , 0. 
+        C(mumin1(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        mumin1(2)  = 76.0 ,        47.0    # [cm^2/Vs]
+        B(mumin1(2))     = 0. , 0. 
+        C(mumin1(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        mumin1(3)  = 76.0 ,        59.0    # [cm^2/Vs]
+        B(mumin1(3))     = 0. , 0. 
+        C(mumin1(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        mumin1(4)  = 76.0 ,        74.0    # [cm^2/Vs]
+        B(mumin1(4))     = 0. , 0. 
+        C(mumin1(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        mumin1(5)  = 76.0 ,        74.0    # [cm^2/Vs]
+        B(mumin1(5))     = 0. , 0. 
+        C(mumin1(5))     = 0. , 0. 
+
+       * parameter mumin2:
+        mumin2  = 56.0 ,        0.0000e+00    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        mumin2(1)  = 71.0 ,        0.0000e+00    # [cm^2/Vs]
+        B(mumin2(1))     = 0. , 0. 
+        C(mumin2(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        mumin2(2)  = 76.0 ,        0.0000e+00    # [cm^2/Vs]
+        B(mumin2(2))     = 0. , 0. 
+        C(mumin2(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        mumin2(3)  = 76.0 ,        0.0000e+00    # [cm^2/Vs]
+        B(mumin2(3))     = 0. , 0. 
+        C(mumin2(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        mumin2(4)  = 76.0 ,        0.0000e+00    # [cm^2/Vs]
+        B(mumin2(4))     = 0. , 0. 
+        C(mumin2(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        mumin2(5)  = 76.0 ,        0.0000e+00    # [cm^2/Vs]
+        B(mumin2(5))     = 0. , 0. 
+        C(mumin2(5))     = 0. , 0. 
+
+       * parameter mu1:
+        mu1  = 43.4 ,        29    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        mu1(1)  = 43.4 ,        29    # [cm^2/Vs]
+        B(mu1(1))     = 0. , 0. 
+        C(mu1(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        mu1(2)  = 43.4 ,        29    # [cm^2/Vs]
+        B(mu1(2))     = 0. , 0. 
+        C(mu1(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        mu1(3)  = 43.4 ,        29    # [cm^2/Vs]
+        B(mu1(3))     = 0. , 0. 
+        C(mu1(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        mu1(4)  = 43.4 ,        29    # [cm^2/Vs]
+        B(mu1(4))     = 0. , 0. 
+        C(mu1(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        mu1(5)  = 43.4 ,        29    # [cm^2/Vs]
+        B(mu1(5))     = 0. , 0. 
+        C(mu1(5))     = 0. , 0. 
+
+       * parameter Pc:
+        Pc  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        Pc(1)  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        B(Pc(1))     = 0. , 0. 
+        C(Pc(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        Pc(2)  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        B(Pc(2))     = 0. , 0. 
+        C(Pc(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        Pc(3)  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        B(Pc(3))     = 0. , 0. 
+        C(Pc(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        Pc(4)  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        B(Pc(4))     = 0. , 0. 
+        C(Pc(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        Pc(5)  = 0.0000e+00 ,        9.2300e+16    # [cm^2/Vs]
+        B(Pc(5))     = 0. , 0. 
+        C(Pc(5))     = 0. , 0. 
+
+       * parameter Cr:
+        Cr  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        Cr(1)  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        B(Cr(1))     = 0. , 0. 
+        C(Cr(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        Cr(2)  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        B(Cr(2))     = 0. , 0. 
+        C(Cr(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        Cr(3)  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        B(Cr(3))     = 0. , 0. 
+        C(Cr(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        Cr(4)  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        B(Cr(4))     = 0. , 0. 
+        C(Cr(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        Cr(5)  = 9.6800e+16 ,        2.2300e+17    # [cm^2/Vs]
+        B(Cr(5))     = 0. , 0. 
+        C(Cr(5))     = 0. , 0. 
+
+       * parameter Cs:
+        Cs  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        Cs(1)  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        B(Cs(1))     = 0. , 0. 
+        C(Cs(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        Cs(2)  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        B(Cs(2))     = 0. , 0. 
+        C(Cs(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        Cs(3)  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        B(Cs(3))     = 0. , 0. 
+        C(Cs(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        Cs(4)  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        B(Cs(4))     = 0. , 0. 
+        C(Cs(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        Cs(5)  = 3.4300e+20 ,        6.1000e+20    # [cm^2/Vs]
+        B(Cs(5))     = 0. , 0. 
+        C(Cs(5))     = 0. , 0. 
+
+       * parameter alpha:
+        alpha  = 0.68 ,        0.719    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        alpha(1)  = 0.68 ,        0.719    # [cm^2/Vs]
+        B(alpha(1))     = 0. , 0. 
+        C(alpha(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        alpha(2)  = 0.68 ,        0.719    # [cm^2/Vs]
+        B(alpha(2))     = 0. , 0. 
+        C(alpha(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        alpha(3)  = 0.68 ,        0.719    # [cm^2/Vs]
+        B(alpha(3))     = 0. , 0. 
+        C(alpha(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        alpha(4)  = 0.68 ,        0.719    # [cm^2/Vs]
+        B(alpha(4))     = 0. , 0. 
+        C(alpha(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        alpha(5)  = 0.68 ,        0.719    # [cm^2/Vs]
+        B(alpha(5))     = 0. , 0. 
+        C(alpha(5))     = 0. , 0. 
+
+       * parameter beta:
+        beta  = 2 ,        2    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        beta(1)  = 2 ,        2    # [cm^2/Vs]
+        B(beta(1))     = 0. , 0. 
+        C(beta(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        beta(2)  = 2 ,        2    # [cm^2/Vs]
+        B(beta(2))     = 0. , 0. 
+        C(beta(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        beta(3)  = 2 ,        2    # [cm^2/Vs]
+        B(beta(3))     = 0. , 0. 
+        C(beta(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        beta(4)  = 2 ,        2    # [cm^2/Vs]
+        B(beta(4))     = 0. , 0. 
+        C(beta(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        beta(5)  = 2 ,        2    # [cm^2/Vs]
+        B(beta(5))     = 0. , 0. 
+        C(beta(5))     = 0. , 0. 
+
+}   
+
+
+PhuMob:
+{   
+        mumax_As = 1445.   # [cm2/(Vs)]
+        mumin_As = 56.0     # [cm^2/Vs]
+        theta_As = 2.285 # [1]
+        n_ref_As = 9.6800e+16    # [cm^(-3)]
+        alpha_As = 0.68  # [1]
+        mumax_P = 1445.   # [cm2/(Vs)]
+        mumin_P = 56.0     # [cm^2/Vs]
+        theta_P = 2.285 # [1]
+        n_ref_P = 9.6800e+16    # [cm^(-3)]
+        alpha_P = 0.68  # [1]
+        mumax_B = 486.   # [cm2/(Vs)]
+        mumin_B = 46.0     # [cm^2/Vs]
+        theta_B = 2.247 # [1]
+        n_ref_B = 2.2300e+17    # [cm^(-3)]
+        alpha_B = 0.719 # [1]
+        nref_D = 4.0000e+20    # [cm^(-3)]
+        nref_A = 7.2000e+20    # [cm^(-3)]
+        cref_D = 0.21  # [1]
+        cref_A = 0.5   # [1]
+        me_over_m0 = 1     # [1]
+        mh_over_m0 = 1.258 # [1]
+        f_CW = 2.459 # [1]
+        f_BH = 3.828 # [1]
+
+       * mole fraction intervals
+       Xmax(0) = 0.0  0.0   # [1]
+       Xmax(1) = 0.1  0.1   # [1]   
+       Xmax(2) = 0.2  0.2   # [1]   
+       Xmax(3) = 0.3  0.3   # [1]   
+       Xmax(4) = 0.4  0.4   # [1]   
+       Xmax(5) = 1.0  1.0   # [1]   
+       
+
+       * parameter mumax_As:
+       mumax_As(1) = 2000.     # [cm2/(Vs)]
+       B(mumax_As(1))     = 0.
+       C(mumax_As(1))     = 0.
+       mumax_As(2) = 2257.     # [cm2/(Vs)]
+       B(mumax_As(2))     = 0.
+       C(mumax_As(2))     = 0.
+       mumax_As(3) = 2283.     # [cm2/(Vs)]
+       B(mumax_As(3))     = 0.
+       C(mumax_As(3))     = 0.
+       mumax_As(4) = 2285.     # [cm2/(Vs)]
+       B(mumax_As(4))     = 0.
+       C(mumax_As(4))     = 0.
+       mumax_As(5) = 2285.     # [cm2/(Vs)]
+       B(mumax_As(5))     = 0.
+       C(mumax_As(5))     = 0.
+
+       * parameter mumin_As:
+        mumin_As(1) = 71.0     # [cm^2/Vs]
+        B(mumin_As(1))     = 0.
+        C(mumin_As(1))     = 0.
+        mumin_As(2) = 76.0     # [cm^2/Vs]
+        B(mumin_As(2))     = 0.
+        C(mumin_As(2))     = 0.
+        mumin_As(3) = 76.0    # [cm^2/Vs]
+        B(mumin_As(3))     = 0.
+        C(mumin_As(3))     = 0.
+        mumin_As(4) = 76.0     # [cm^2/Vs]
+        B(mumin_As(4))     = 0.
+        C(mumin_As(4))     = 0.
+        mumin_As(5) = 76.0     # [cm^2/Vs]
+        B(mumin_As(5))     = 0.
+        C(mumin_As(5))     = 0.
+
+       * parameter theta_As:
+        theta_As(1) = 2.285 # [1]
+        B(theta_As(1))     = 0.
+        C(theta_As(1))     = 0.
+        theta_As(2) = 2.285 # [1]
+        B(theta_As(2))     = 0.
+        C(theta_As(2))     = 0.
+        theta_As(3) = 2.285 # [1]
+        B(theta_As(3))     = 0.
+        C(theta_As(3))     = 0.
+        theta_As(4) = 2.285 # [1]
+        B(theta_As(4))     = 0.
+        C(theta_As(4))     = 0.
+        theta_As(5) = 2.285 # [1]
+        B(theta_As(5))     = 0.
+        C(theta_As(5))     = 0.
+
+       * parameter n_ref_As:
+        n_ref_As(1) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_As(1))     = 0.
+        C(n_ref_As(1))     = 0.
+        n_ref_As(2) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_As(2))     = 0.
+        C(n_ref_As(2))     = 0.
+        n_ref_As(3) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_As(3))     = 0.
+        C(n_ref_As(3))     = 0.
+        n_ref_As(4) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_As(4))     = 0.
+        C(n_ref_As(4))     = 0.
+        n_ref_As(5) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_As(5))     = 0.
+        C(n_ref_As(5))     = 0.
+
+       * parameter alpha_As:
+        alpha_As(1) = 0.68  # [1]
+        B(alpha_As(1))     = 0.
+        C(alpha_As(1))     = 0.
+        alpha_As(2) = 0.68  # [1]
+        B(alpha_As(2))     = 0.
+        C(alpha_As(2))     = 0.
+        alpha_As(3) = 0.68  # [1]
+        B(alpha_As(3))     = 0.
+        C(alpha_As(3))     = 0.
+        alpha_As(4) = 0.68  # [1]
+        B(alpha_As(4))     = 0.
+        C(alpha_As(4))     = 0.
+        alpha_As(5) = 0.68  # [1]
+        B(alpha_As(5))     = 0.
+        C(alpha_As(5))     = 0.
+
+       * parameter mumax_P:
+       mumax_P(1) = 2000.     # [cm2/(Vs)]
+       B(mumax_P(1))     = 0.
+       C(mumax_P(1))     = 0.
+       mumax_P(2) = 2257.     # [cm2/(Vs)]
+       B(mumax_P(2))     = 0.
+       C(mumax_P(2))     = 0.
+       mumax_P(3) = 2283.     # [cm2/(Vs)]
+       B(mumax_P(3))     = 0.
+       C(mumax_P(3))     = 0.
+       mumax_P(4) = 2285.     # [cm2/(Vs)]
+       B(mumax_P(4))     = 0.
+       C(mumax_P(4))     = 0.
+       mumax_P(5) = 2285.     # [cm2/(Vs)]
+       B(mumax_P(5))     = 0.
+       C(mumax_P(5))     = 0.
+
+       * parameter mumin_P:
+        mumin_P(1) = 71.0     # [cm^2/Vs]
+        B(mumin_P(1))     = 0.
+        C(mumin_P(1))     = 0.
+        mumin_P(2) = 76.0     # [cm^2/Vs]
+        B(mumin_P(2))     = 0.
+        C(mumin_P(2))     = 0.
+        mumin_P(3) = 76.0    # [cm^2/Vs]
+        B(mumin_P(3))     = 0.
+        C(mumin_P(3))     = 0.
+        mumin_P(4) = 76.0     # [cm^2/Vs]
+        B(mumin_P(4))     = 0.
+        C(mumin_P(4))     = 0.
+        mumin_P(5) = 76.0     # [cm^2/Vs]
+        B(mumin_P(5))     = 0.
+        C(mumin_P(5))     = 0.
+
+       * parameter theta_P:
+        theta_P(1) = 2.285 # [1]
+        B(theta_P(1))     = 0.
+        C(theta_P(1))     = 0.
+        theta_P(2) = 2.285 # [1]
+        B(theta_P(2))     = 0.
+        C(theta_P(2))     = 0.
+        theta_P(3) = 2.285 # [1]
+        B(theta_P(3))     = 0.
+        C(theta_P(3))     = 0.
+        theta_P(4) = 2.285 # [1]
+        B(theta_P(4))     = 0.
+        C(theta_P(4))     = 0.
+        theta_P(5) = 2.285 # [1]
+        B(theta_P(5))     = 0.
+        C(theta_P(5))     = 0.
+
+       * parameter n_ref_P:
+        n_ref_P(1) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_P(1))     = 0.
+        C(n_ref_P(1))     = 0.
+        n_ref_P(2) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_P(2))     = 0.
+        C(n_ref_P(2))     = 0.
+        n_ref_P(3) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_P(3))     = 0.
+        C(n_ref_P(3))     = 0.
+        n_ref_P(4) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_P(4))     = 0.
+        C(n_ref_P(4))     = 0.
+        n_ref_P(5) = 9.6800e+16    # [cm^(-3)]
+        B(n_ref_P(5))     = 0.
+        C(n_ref_P(5))     = 0.
+
+       * parameter alpha_P:
+        alpha_P(1) = 0.68  # [1]
+        B(alpha_P(1))     = 0.
+        C(alpha_P(1))     = 0.
+        alpha_P(2) = 0.68  # [1]
+        B(alpha_P(2))     = 0.
+        C(alpha_P(2))     = 0.
+        alpha_P(3) = 0.68  # [1]
+        B(alpha_P(3))     = 0.
+        C(alpha_P(3))     = 0.
+        alpha_P(4) = 0.68  # [1]
+        B(alpha_P(4))     = 0.
+        C(alpha_P(4))     = 0.
+        alpha_P(5) = 0.68  # [1]
+        B(alpha_P(5))     = 0.
+        C(alpha_P(5))     = 0.
+
+       * parameter mumax_B:
+       mumax_B(1) = 620.     # [cm2/(Vs)]
+       B(mumax_B(1))     = 0.
+       C(mumax_B(1))     = 0.
+       mumax_B(2) = 1102.     # [cm2/(Vs)]
+       B(mumax_B(2))     = 0.
+       C(mumax_B(2))     = 0.
+       mumax_B(3) = 1747.     # [cm2/(Vs)]
+       B(mumax_B(3))     = 0.
+       C(mumax_B(3))     = 0.
+       mumax_B(4) = 2411.     # [cm2/(Vs)]
+       B(mumax_B(4))     = 0.
+       C(mumax_B(4))     = 0.
+       mumax_B(5) = 2411.     # [cm2/(Vs)]
+       B(mumax_B(5))     = 0.
+       C(mumax_B(5))     = 0.
+
+       * parameter mumin_B:
+        mumin_B(1) = 41.0     # [cm^2/Vs]
+        B(mumin_B(1))     = 0.
+        C(mumin_B(1))     = 0.
+        mumin_B(2) = 47.0     # [cm^2/Vs]
+        B(mumin_B(2))     = 0.
+        C(mumin_B(2))     = 0.
+        mumin_B(3) = 59.0    # [cm^2/Vs]
+        B(mumin_B(3))     = 0.
+        C(mumin_B(3))     = 0.
+        mumin_B(4) = 74.0     # [cm^2/Vs]
+        B(mumin_B(4))     = 0.
+        C(mumin_B(4))     = 0.
+        mumin_B(5) = 74.0     # [cm^2/Vs]
+        B(mumin_B(5))     = 0.
+        C(mumin_B(5))     = 0.
+
+       * parameter theta_B:
+        theta_B(1) = 2.247 # [1]
+        B(theta_B(1))     = 0.
+        C(theta_B(1))     = 0.
+        theta_B(2) = 2.247 # [1]
+        B(theta_B(2))     = 0.
+        C(theta_B(2))     = 0.
+        theta_B(3) = 2.247 # [1]
+        B(theta_B(3))     = 0.
+        C(theta_B(3))     = 0.
+        theta_B(4) = 2.247 # [1]
+        B(theta_B(4))     = 0.
+        C(theta_B(4))     = 0.
+        theta_B(5) = 2.247 # [1]
+        B(theta_B(5))     = 0.
+        C(theta_B(5))     = 0.
+
+       * parameter n_ref_B:
+        n_ref_B(1) = 2.2300e+17    # [cm^(-3)]
+        B(n_ref_B(1))     = 0.
+        C(n_ref_B(1))     = 0.
+        n_ref_B(2) = 2.2300e+17    # [cm^(-3)]
+        B(n_ref_B(2))     = 0.
+        C(n_ref_B(2))     = 0.
+        n_ref_B(3) = 2.2300e+17    # [cm^(-3)]
+        B(n_ref_B(3))     = 0.
+        C(n_ref_B(3))     = 0.
+        n_ref_B(4) = 2.2300e+17    # [cm^(-3)]
+        B(n_ref_B(4))     = 0.
+        C(n_ref_B(4))     = 0.
+        n_ref_B(5) = 2.2300e+17    # [cm^(-3)]
+        B(n_ref_B(5))     = 0.
+        C(n_ref_B(5))     = 0.
+
+       * parameter alpha_B:
+        alpha_B(1) = 0.719 # [1]
+        B(alpha_B(1))     = 0.
+        C(alpha_B(1))     = 0.
+        alpha_B(2) = 0.719 # [1]
+        B(alpha_B(2))     = 0.
+        C(alpha_B(2))     = 0.
+        alpha_B(3) = 0.719 # [1]
+        B(alpha_B(3))     = 0.
+        C(alpha_B(3))     = 0.
+        alpha_B(4) = 0.719 # [1]
+        B(alpha_B(4))     = 0.
+        C(alpha_B(4))     = 0.
+        alpha_B(5) = 0.719 # [1]
+        B(alpha_B(5))     = 0.
+        C(alpha_B(5))     = 0.
+
+       * parameter nref_D:
+        nref_D(1) = 4.0000e+20    # [cm^(-3)]
+        B(nref_D(1))     = 0.
+        C(nref_D(1))     = 0.
+        nref_D(2) = 4.0000e+20    # [cm^(-3)]
+        B(nref_D(2))     = 0.
+        C(nref_D(2))     = 0.
+        nref_D(3) = 4.0000e+20    # [cm^(-3)]
+        B(nref_D(3))     = 0.
+        C(nref_D(3))     = 0.
+        nref_D(4) = 4.0000e+20    # [cm^(-3)]
+        B(nref_D(4))     = 0.
+        C(nref_D(4))     = 0.
+        nref_D(5) = 4.0000e+20    # [cm^(-3)]
+        B(nref_D(5))     = 0.
+        C(nref_D(5))     = 0.
+
+       * parameter nref_A:
+        nref_A(1) = 7.2000e+20    # [cm^(-3)]
+        B(nref_A(1))     = 0.
+        C(nref_A(1))     = 0.
+        nref_A(2) = 7.2000e+20    # [cm^(-3)]
+        B(nref_A(2))     = 0.
+        C(nref_A(2))     = 0.
+        nref_A(3) = 7.2000e+20    # [cm^(-3)]
+        B(nref_A(3))     = 0.
+        C(nref_A(3))     = 0.
+        nref_A(4) = 7.2000e+20    # [cm^(-3)]
+        B(nref_A(4))     = 0.
+        C(nref_A(4))     = 0.
+        nref_A(5) = 7.2000e+20    # [cm^(-3)]
+        B(nref_A(5))     = 0.
+        C(nref_A(5))     = 0.
+
+       * parameter cref_D:
+        cref_D(1) = 0.21  # [1]
+        B(cref_D(1))     = 0.
+        C(cref_D(1))     = 0.
+        cref_D(2) = 0.21  # [1]
+        B(cref_D(2))     = 0.
+        C(cref_D(2))     = 0.
+        cref_D(3) = 0.21  # [1]
+        B(cref_D(3))     = 0.
+        C(cref_D(3))     = 0.
+        cref_D(4) = 0.21  # [1]
+        B(cref_D(4))     = 0.
+        C(cref_D(4))     = 0.
+        cref_D(5) = 0.21  # [1]
+        B(cref_D(5))     = 0.
+        C(cref_D(5))     = 0.
+
+       * parameter cref_A:
+        cref_A(1) = 0.5   # [1]
+        B(cref_A(1))     = 0.
+        C(cref_A(1))     = 0.
+        cref_A(2) = 0.5   # [1]
+        B(cref_A(2))     = 0.
+        C(cref_A(2))     = 0.
+        cref_A(3) = 0.5   # [1]
+        B(cref_A(3))     = 0.
+        C(cref_A(3))     = 0.
+        cref_A(4) = 0.5   # [1]
+        B(cref_A(4))     = 0.
+        C(cref_A(4))     = 0.
+        cref_A(5) = 0.5   # [1]
+        B(cref_A(5))     = 0.
+        C(cref_A(5))     = 0.
+
+       * parameter me_over_m0:
+        me_over_m0(1) = 1     # [1]
+        B(me_over_m0(1))     = 0.
+        C(me_over_m0(1))     = 0.
+        me_over_m0(2) = 1     # [1]
+        B(me_over_m0(2))     = 0.
+        C(me_over_m0(2))     = 0.
+        me_over_m0(3) = 1     # [1]
+        B(me_over_m0(3))     = 0.
+        C(me_over_m0(3))     = 0.
+        me_over_m0(4) = 1     # [1]
+        B(me_over_m0(4))     = 0.
+        C(me_over_m0(4))     = 0.
+        me_over_m0(5) = 1     # [1]
+        B(me_over_m0(5))     = 0.
+        C(me_over_m0(5))     = 0.
+
+       * parameter mh_over_m0:
+        mh_over_m0(1) = 1.258 # [1]
+        B(mh_over_m0(1))     = 0.
+        C(mh_over_m0(1))     = 0.
+        mh_over_m0(2) = 1.258 # [1]
+        B(mh_over_m0(2))     = 0.
+        C(mh_over_m0(2))     = 0.
+        mh_over_m0(3) = 1.258 # [1]
+        B(mh_over_m0(3))     = 0.
+        C(mh_over_m0(3))     = 0.
+        mh_over_m0(4) = 1.258 # [1]
+        B(mh_over_m0(4))     = 0.
+        C(mh_over_m0(4))     = 0.
+        mh_over_m0(5) = 1.258 # [1]
+        B(mh_over_m0(5))     = 0.
+        C(mh_over_m0(5))     = 0.
+
+       * parameter f_CW:
+        f_CW(1) = 2.459 # [1]
+        B(f_CW(1))     = 0.
+        C(f_CW(1))     = 0.
+        f_CW(2) = 2.459 # [1]
+        B(f_CW(2))     = 0.
+        C(f_CW(2))     = 0.
+        f_CW(3) = 2.459 # [1]
+        B(f_CW(3))     = 0.
+        C(f_CW(3))     = 0.
+        f_CW(4) = 2.459 # [1]
+        B(f_CW(4))     = 0.
+        C(f_CW(4))     = 0.
+        f_CW(5) = 2.459 # [1]
+        B(f_CW(5))     = 0.
+        C(f_CW(5))     = 0.
+
+       * parameter f_BH:
+        f_BH(1) = 3.828 # [1]
+        B(f_BH(1))     = 0.
+        C(f_BH(1))     = 0.
+        f_BH(2) = 3.828 # [1]
+        B(f_BH(2))     = 0.
+        C(f_BH(2))     = 0.
+        f_BH(3) = 3.828 # [1]
+        B(f_BH(3))     = 0.
+        C(f_BH(3))     = 0.
+        f_BH(4) = 3.828 # [1]
+        B(f_BH(4))     = 0.
+        C(f_BH(4))     = 0.
+        f_BH(5) = 3.828 # [1]
+        B(f_BH(5))     = 0.
+        C(f_BH(5))     = 0.
+}   
+
+
+EnormalDependence:
+{ * mu_Enorm^(-1) = mu_ac^(-1) + mu_sr^(-1)  with:
+  * mu_ac = B / Enorm + C (T/T0)^(-k) (N/N0)^lambda / Enorm^(1/3)
+  * mu_sr^-1 = Enorm^(A+alpha*n/(N+N1)^nu) / delta + Enorm^3 / eta
+  * EnormalDependence is added with factor exp(-l/l_crit), where l is
+  * the distance to the nearest point of semiconductor/insulator interface.
+  * Factor is equal to 1 if l_crit > 100. 
+
+       * parameter B:
+        B = 3.6100e+07 ,  1.5100e+07      # [cm/s]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        B(1) = 5.415e+07 ,  1.5100e+07      # [cm/s]
+        B(B(1))     = 0. , 0. 
+        C(B(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        B(2) = 7.22e+07 ,  1.5100e+07      # [cm/s]
+        B(B(2))     = 0. , 0. 
+        C(B(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        B(3) = 7.22e+07 ,  1.8120e+07      # [cm/s]
+        B(B(3))     = 0. , 0. 
+        C(B(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        B(4) = 7.22e+07 ,  2.2650e+07      # [cm/s]
+        B(B(4))     = 0. , 0. 
+        C(B(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        B(5) = 7.22e+07 ,  2.2650e+07      # [cm/s]
+        B(B(5))     = 0. , 0. 
+        C(B(5))     = 0. , 0. 
+
+       * parameter C:
+        C = 1.7000e+04 ,  4.1800e+03      # [cm^(5/3)/(V^(2/3)s)]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        C(1) = 2.5500e+04 ,  4.1800e+03      # [cm^(5/3)/(V^(2/3)s)]
+        B(C(1))     = 0. , 0. 
+        C(C(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        C(2) = 3.4000e+04 ,  4.1800e+03      # [cm^(5/3)/(V^(2/3)s)]
+        B(C(2))     = 0. , 0. 
+        C(C(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        C(3) = 3.4000e+04 ,  5.0160e+03      # [cm^(5/3)/(V^(2/3)s)]
+        B(C(3))     = 0. , 0. 
+        C(C(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        C(4) = 3.4000e+04 ,  6.2700e+03      # [cm^(5/3)/(V^(2/3)s)]
+        B(C(4))     = 0. , 0. 
+        C(C(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        C(5) = 3.4000e+04 ,  6.2700e+03      # [cm^(5/3)/(V^(2/3)s)]
+        B(C(5))     = 0. , 0. 
+        C(C(5))     = 0. , 0. 
+
+       * parameter N0:
+        N0 = 1 ,   1       # [cm^(-3)]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        N0(1) = 1 ,   1       # [cm^(-3)]
+        B(N0(1))     = 0. , 0. 
+        C(N0(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        N0(2) = 1 ,   1       # [cm^(-3)]
+        B(N0(2))     = 0. , 0. 
+        C(N0(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        N0(3) = 1 ,   1       # [cm^(-3)]
+        B(N0(3))     = 0. , 0. 
+        C(N0(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        N0(4) = 1 ,   1       # [cm^(-3)]
+        B(N0(4))     = 0. , 0. 
+        C(N0(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        N0(5) = 1 ,   1       # [cm^(-3)]
+        B(N0(5))     = 0. , 0. 
+        C(N0(5))     = 0. , 0. 
+
+       * parameter lambda:
+        lambda = 0.0233 ,       0.0119  # [1]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        lambda(1) = 0.0233 ,       0.0119  # [1]
+        B(lambda(1))     = 0. , 0. 
+        C(lambda(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        lambda(2) = 0.0233 ,       0.0119  # [1]
+        B(lambda(2))     = 0. , 0. 
+        C(lambda(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        lambda(3) = 0.0233 ,       0.0119  # [1]
+        B(lambda(3))     = 0. , 0. 
+        C(lambda(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        lambda(4) = 0.0233 ,       0.0119  # [1]
+        B(lambda(4))     = 0. , 0. 
+        C(lambda(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        lambda(5) = 0.0233 ,       0.0119  # [1]
+        B(lambda(5))     = 0. , 0. 
+        C(lambda(5))     = 0. , 0. 
+
+       * parameter k:
+        k = 1 ,   1       # [1]   
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        k(1) = 1 ,   1       # [1]   
+        B(k(1))     = 0. , 0. 
+        C(k(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        k(2) = 1 ,   1       # [1]   
+        B(k(2))     = 0. , 0. 
+        C(k(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        k(3) = 1 ,   1       # [1]   
+        B(k(3))     = 0. , 0. 
+        C(k(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        k(4) = 1 ,   1       # [1]   
+        B(k(4))     = 0. , 0. 
+        C(k(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        k(5) = 1 ,   1       # [1]   
+        B(k(5))     = 0. , 0. 
+        C(k(5))     = 0. , 0. 
+
+       * parameter delta:
+        delta = 3.5800e+18 ,  4.1000e+15      # [V/s]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        delta(1) = 5.3700e+18 ,  4.1000e+15      # [V/s]
+        B(delta(1))     = 0. , 0. 
+        C(delta(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        delta(2) = 7.1600e+18 ,  4.1000e+15      # [V/s]
+        B(delta(2))     = 0. , 0. 
+        C(delta(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        delta(3) = 7.1600e+18 ,  4.9200e+15      # [V/s]
+        B(delta(3))     = 0. , 0. 
+        C(delta(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        delta(4) = 7.1600e+18 ,  6.1500e+15      # [V/s]
+        B(delta(4))     = 0. , 0. 
+        C(delta(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        delta(5) = 7.1600e+18 ,  6.1500e+15      # [V/s]
+        B(delta(5))     = 0. , 0. 
+        C(delta(5))     = 0. , 0. 
+
+       * parameter A:
+        A = 2.58 ,   2.18       # [1]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        A(1) = 2.58 ,   2.18       # [1]
+        B(A(1))     = 0. , 0. 
+        C(A(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        A(2) = 2.58 ,   2.18       # [1]
+        B(A(2))     = 0. , 0. 
+        C(A(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        A(3) = 2.58 ,   2.18       # [1]
+        B(A(3))     = 0. , 0. 
+        C(A(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        A(4) = 2.58 ,   2.18       # [1]
+        B(A(4))     = 0. , 0. 
+        C(A(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        A(5) = 2.58 ,   2.18       # [1]
+        B(A(5))     = 0. , 0. 
+        C(A(5))     = 0. , 0. 
+
+       * parameter alpha:
+        alpha = 6.8500e-21 ,  7.8200e-21      # [1]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        alpha(1) = 6.8500e-21 ,  7.8200e-21      # [1]
+        B(alpha(1))     = 0. , 0. 
+        C(alpha(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        alpha(2) = 6.8500e-21 ,  7.8200e-21      # [1]
+        B(alpha(2))     = 0. , 0. 
+        C(alpha(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        alpha(3) = 6.8500e-21 ,  7.8200e-21      # [1]
+        B(alpha(3))     = 0. , 0. 
+        C(alpha(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        alpha(4) = 6.8500e-21 ,  7.8200e-21      # [1]
+        B(alpha(4))     = 0. , 0. 
+        C(alpha(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        alpha(5) = 6.8500e-21 ,  7.8200e-21      # [1]
+        B(alpha(5))     = 0. , 0. 
+        C(alpha(5))     = 0. , 0. 
+
+       * parameter N1:
+        N1 = 1 ,   1       # [cm^(-3)]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        N1(1) = 1 ,   1       # [cm^(-3)]
+        B(N1(1))     = 0. , 0. 
+        C(N1(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        N1(2) = 1 ,   1       # [cm^(-3)]
+        B(N1(2))     = 0. , 0. 
+        C(N1(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        N1(3) = 1 ,   1       # [cm^(-3)]
+        B(N1(3))     = 0. , 0. 
+        C(N1(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        N1(4) = 1 ,   1       # [cm^(-3)]
+        B(N1(4))     = 0. , 0. 
+        C(N1(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        N1(5) = 1 ,   1       # [cm^(-3)]
+        B(N1(5))     = 0. , 0. 
+        C(N1(5))     = 0. , 0. 
+
+       * parameter nu:
+        nu = 0.0767 ,   0.123       # [1]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        nu(1) = 0.0767 ,   0.123       # [1]
+        B(nu(1))     = 0. , 0. 
+        C(nu(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        nu(2) = 0.0767 ,   0.123       # [1]
+        B(nu(2))     = 0. , 0. 
+        C(nu(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        nu(3) = 0.0767 ,   0.123       # [1]
+        B(nu(3))     = 0. , 0. 
+        C(nu(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        nu(4) = 0.0767 ,   0.123       # [1]
+        B(nu(4))     = 0. , 0. 
+        C(nu(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        nu(5) = 0.0767 ,   0.123       # [1]
+        B(nu(5))     = 0. , 0. 
+        C(nu(5))     = 0. , 0. 
+
+       * parameter eta:
+        eta = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        eta(1) = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        B(eta(1))     = 0. , 0. 
+        C(eta(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        eta(2) = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        B(eta(2))     = 0. , 0. 
+        C(eta(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        eta(3) = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        B(eta(3))     = 0. , 0. 
+        C(eta(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        eta(4) = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        B(eta(4))     = 0. , 0. 
+        C(eta(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        eta(5) = 1.0e+300 ,  1.0e+300      # [V^2/cm*s]
+        B(eta(5))     = 0. , 0. 
+        C(eta(5))     = 0. , 0. 
+
+       * parameter l_crit:
+        l_crit = 1.0000e-06 ,  1.0000e-06      # [cm]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        l_crit(1) = 1.0000e-06 ,  1.0000e-06      # [cm]
+        B(l_crit(1))     = 0. , 0. 
+        C(l_crit(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        l_crit(2) = 1.0000e-06 ,  1.0000e-06      # [cm]
+        B(l_crit(2))     = 0. , 0. 
+        C(l_crit(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        l_crit(3) = 1.0000e-06 ,  1.0000e-06      # [cm]
+        B(l_crit(3))     = 0. , 0. 
+        C(l_crit(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        l_crit(4) = 1.0000e-06 ,  1.0000e-06      # [cm]
+        B(l_crit(4))     = 0. , 0. 
+        C(l_crit(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        l_crit(5) = 1.0000e-06 ,  1.0000e-06      # [cm]
+        B(l_crit(5))     = 0. , 0. 
+        C(l_crit(5))     = 0. , 0. 
+}   
+
+
+HighFieldDependence:
+{ * Caughey-Thomas model:
+  * mu_highfield = mu_lowfield / ( 1 + (mu_lowfield E / vsat)^beta )^1/beta
+  * beta = beta0 (T/T0)^betaexp.
+    
+ * For vsat either Formula1 or Formula2 can be used.    
+        Vsat_Formula    = 1 ,   1       # [1]   
+ * Formula1 for saturation velocity:
+ *            vsat = vsat0 (T/T0)^(-Vsatexp)
+ * (Parameter Vsat_Formula has to be not equal to 2) 
+
+       * parameter beta0:
+        beta0  = 1.20 ,        0.93    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        beta0(1)  = 1.23 ,        0.89    # [cm^2/Vs]
+        B(beta0(1))     = 0. , 0. 
+        C(beta0(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        beta0(2)  = 1.35 ,        0.80    # [cm^2/Vs]
+        B(beta0(2))     = 0. , 0. 
+        C(beta0(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        beta0(3)  = 1.45 ,        0.78    # [cm^2/Vs]
+        B(beta0(3))     = 0. , 0. 
+        C(beta0(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        beta0(4)  = 1.49 ,        0.80    # [cm^2/Vs]
+        B(beta0(4))     = 0. , 0. 
+        C(beta0(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        beta0(5)  = 1.49 ,        0.80    # [cm^2/Vs]
+        B(beta0(5))     = 0. , 0. 
+        C(beta0(5))     = 0. , 0. 
+
+       * parameter betaexp:
+        betaexp  = 1.0 ,        1.0    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        betaexp(1)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(betaexp(1))     = 0. , 0. 
+        C(betaexp(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        betaexp(2)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(betaexp(2))     = 0. , 0. 
+        C(betaexp(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        betaexp(3)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(betaexp(3))     = 0. , 0. 
+        C(betaexp(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        betaexp(4)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(betaexp(4))     = 0. , 0. 
+        C(betaexp(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        betaexp(5)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(betaexp(5))     = 0. , 0. 
+        C(betaexp(5))     = 0. , 0. 
+
+       * parameter vsat0:
+        vsat0  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        vsat0(1)  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        B(vsat0(1))     = 0. , 0. 
+        C(vsat0(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        vsat0(2)  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        B(vsat0(2))     = 0. , 0. 
+        C(vsat0(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        vsat0(3)  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        B(vsat0(3))     = 0. , 0. 
+        C(vsat0(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        vsat0(4)  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        B(vsat0(4))     = 0. , 0. 
+        C(vsat0(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        vsat0(5)  = 1.0100e+07 ,        1.0100e+07    # [cm^2/Vs]
+        B(vsat0(5))     = 0. , 0. 
+        C(vsat0(5))     = 0. , 0. 
+
+       * parameter vsatexp:
+        vsatexp  = 1.0 ,        1.0    # [cm^2/Vs]
+        Xmax(0) = 0., 0.
+        Xmax(1) = 0.1, 0.1
+        vsatexp(1)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(vsatexp(1))     = 0. , 0. 
+        C(vsatexp(1))     = 0. , 0. 
+        Xmax(2) = 0.2, 0.2
+        vsatexp(2)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(vsatexp(2))     = 0. , 0. 
+        C(vsatexp(2))     = 0. , 0. 
+        Xmax(3) = 0.3, 0.3
+        vsatexp(3)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(vsatexp(3))     = 0. , 0. 
+        C(vsatexp(3))     = 0. , 0. 
+        Xmax(4) = 0.4, 0.4
+        vsatexp(4)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(vsatexp(4))     = 0. , 0. 
+        C(vsatexp(4))     = 0. , 0. 
+        Xmax(5) = 1.0, 1.0
+        vsatexp(5)  = 1.0 ,        1.0    # [cm^2/Vs]
+        B(vsatexp(5))     = 0. , 0. 
+        C(vsatexp(5))     = 0. , 0. 
+
+}   
+

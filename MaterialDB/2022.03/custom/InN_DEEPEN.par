@@ -1,0 +1,164 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [11Ser] J. Serrano et al., Phys. Rev. Lett., 106, 205501, 2011
+* [16D25] EU project DEEPEN, deliverable D2.5
+* [03Han] A. Hangleiter et al., Appl. Phys. Lett. 83, 1169, 2003
+
+
+Piezoelectric_Polarization
+{ * The 'strain' model computes the polarization vector as follows:
+  * 
+  *   [P_x]   [psp_x                                     ]
+  *   [P_y] = [psp_y                                     ]
+  *   [P_z]   [psp_z + 2*d31*strain*(c11+c12-2*c13^2/c33)]
+  * 
+  *   strain = (1-relax)*(a0-a)/a
+  * 
+  * The 'stress' model computes the polarization vector as follows:
+  * 
+  *   [P_x]   [psp_x]   [d11 d12 d13 d14 d15 d16]   [stress_XX]
+  *   [P_y] = [psp_y] + [d21 d22 d23 d24 d25 d26] * [stress_YY]
+  *   [P_z]   [psp_z]   [d31 d32 d33 d34 d35 d36]   [stress_ZZ]
+  *                                                 [stress_YZ]
+  *                                                 [stress_XZ]
+  *                                                 [stress_XY]
+  * 
+  * Parameters:
+  * 
+  *   [psp_x]: spontaneous polarization vector,
+  *   [psp_y]  defined in crystal system [C/cm^2]
+  *   [psp_z]
+  * 
+  *   c11, c12, c13, c33: stiffness constants,
+  *                       defined in crystal system [Pa]
+  * 
+  *   a0: strained lattice constant [Angstrem]
+  *   a: unstrained lattice constant [Angstrem]
+  *   relax: relaxation parameter [1]
+  * 
+  *   d11 ... d36: piezoelectric coefficients,
+  *                defined in crystal system [cm/V]
+  * 
+  * Fields:
+  * 
+  *   [stress_XX]: stress tensor,
+  *   [stress_YY]  defined in stress system [Pa]
+  *   [stress_ZZ]
+  *   [stress_YZ]
+  *   [stress_XZ]
+  *   [stress_XY]
+  * 
+  *   [P_x]: polarization vector,
+  *   [P_y]  defined in simulation system [C/cm^2]
+  *   [P_z]
+  * 
+  * Coordinate systems:
+  * 
+  *   The simulation system is defined relative to the crystal
+  *   system.  For example:
+  * 
+  *     LatticeParameters {
+  *       X = (1, 0,  0)
+  *       Y = (0, 0, -1)
+  *     }
+  * 
+  *   The stress coordinate system is defined relative to the simulation
+  *   system.  For example:
+  * 
+  *     Physics {
+  *       Piezo (
+  *         OriKddX = (-0.96  0.28  0)
+  *         OriKddY = ( 0.28  0.96  0)
+  *         Stress = (1e9  2e9  3e9  4e9  5e9  6e9)  # [Pa]
+  *       )
+  *     }
+  * 
+  *   To compute the polarization vector, the stress tensor is first
+  *   transformed from the stress system to the crystal system.  Then
+  *   the polarization vector is evaluated according to the 'strain' or
+  *   'stress' model above.  Finally, the polarization vector is transformed
+  *   from the crystal system to the simulation system.
+  * 
+  * piezoelectric coefficients:
+	d11	= 0.0000e+00	# [cm/V]
+	d12	= 0.0000e+00	# [cm/V]
+	d13	= 0.0000e+00	# [cm/V]
+	d14	= 0.0000e+00	# [cm/V]
+	d15	= -5.500e-10	# [cm/V]
+	d16	= 0.0000e+00	# [cm/V]
+	d21	= 0.0000e+00	# [cm/V]
+	d22	= 0.0000e+00	# [cm/V]
+	d23	= 0.0000e+00	# [cm/V]
+	d24	= -5.500e-10	# [cm/V]
+	d25	= 0.0000e+00	# [cm/V]
+	d26	= 0.0000e+00	# [cm/V]
+	d31	= -3.5000e-10	# [cm/V]
+	d32	= -3.5000e-10	# [cm/V]
+	d33	= 7.6000e-10	# [cm/V]
+	d34	= 0.0000e+00	# [cm/V]
+	d35	= 0.0000e+00	# [cm/V]
+	d36	= 0.0000e+00	# [cm/V]
+   
+  * spontaneous polarization:
+	psp_x	= 0.0000e+00	# [C/cm^2]
+	psp_y	= 0.0000e+00	# [C/cm^2]
+  *	psp_z	= -4.2000e-06	# [C/cm^2]
+  	psp_z	= -4.9000e-06	# [C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  
+  * stiffness constants:
+  *	c11	= 2.2300e+11	# [Pa]
+  *	c12	= 1.1500e+11	# [Pa]
+  *	c13	= 9.2000e+10	# [Pa]
+  *	c33	= 2.2400e+11	# [Pa]
+  *	c44	= 4.8000e+10	# [Pa]
+
+  * stiffness constants for Wurtzite InN:
+	c11	= 2.2500e+11	# [Pa] #[11Ser] experimental data
+	c12	= 1.0900e+11	# [Pa] #[11Ser] experimental data
+	c13	= 1.0800e+11	# [Pa] #[11Ser] experimental data
+	c33	= 2.6500e+11	# [Pa] #[11Ser] experimental data
+	c44	= 5.5000e+10	# [Pa] #[11Ser] experimental data
+
+  * stiffness constants for Wurtzite InN:
+  *	c11	= 2.3380e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12	= 1.1000e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c13	= 9.1600e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c33	= 2.3830e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44	= 5.5400e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN
+
+  * stiffness constants for Zincblende InN:
+  *	c11	= 1.8320e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12	= 1.1920e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44	= 9.1500e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  * piezoelectric coefficients 
+  *  	e31	= -4.8586e-05	#[C/cm^2]
+  *  	e32	= -4.8586e-05	#[C/cm^2]
+  * 	e33	=  1.0629e-04	#[C/cm^2]
+  * 	e15	=  2.6512e-05	#[C/cm^2] 
+  * 	e24	=  2.6512e-05	#[C/cm^2] 
+
+  * piezoelectric coefficients for Wurtzite InN:
+  *  	e31	= -5.5000e-05	#[C/cm^2] #[03Han] experimental data
+  * 	e32	= -5.5000e-05	#[C/cm^2] #[03Han] experimental data
+  * 	e33	=  9.5000e-05	#[C/cm^2] #[03Han] experimental data
+	#e15 and e24 are n/a in [03Han] reference
+
+  * piezoelectric coefficients for Wurtzite InN:
+    	e31	= -5.8000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e32	= -5.8000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e33	=  1.0700e-04	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e15	= -4.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+   	e24	= -4.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+	
+  * strain parameters:
+	a0	= 3.189	# [Angstrem]
+	a	= 3.54	# [Angstrem]
+	relax	= 0.1	# [1]
+}

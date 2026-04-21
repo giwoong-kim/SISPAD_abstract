@@ -1,0 +1,2 @@
+I want to simulate a silicon transistor in Sentaurus. Give me the
+physics part and the parameter file.

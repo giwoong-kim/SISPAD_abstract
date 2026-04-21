@@ -1,0 +1,158 @@
+* [A] Based on Modelling of Diamond Devices with TCAD tool RADFAC_Morozzi
+* [Ioffe] http://www.ioffe.ru/SVA/NSM/Semicond/Diamond/
+
+Epsilon
+{ *  Ratio of the permittivities of material and vacuum
+
+  * epsilon() = epsilon
+	epsilon	= 5.7	# [A][1] 1e2-1e4 Hz
+}
+
+Kappa
+{ *  Lattice thermal conductivity
+
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+  Formula = 1
+	kappa=20   *[W/cm/K] [A]
+
+}
+
+
+Ionization  #[Ioffe]
+{ 
+	E_B_0   	= 0.37	# [eV]  [Ioffe]
+	alpha_B 	= 0.0000e+00	# [eV cm]
+	g_B     	= 1	# [1]
+	Xsec_B     	= 1.0000e-12	# [cm^2]
+
+	E_N_0	= 1.7	# [eV] [Ioffe]
+	alpha_N 	= 0	# [eV cm]
+	g_N	= 1	# [1]
+	Xsec_N	= 1.0000e-12	# [cm^2]
+
+	E_P_0	= 0.84	# [eV] [Ioffe]
+	alpha_P 	= 0	# [eV cm]
+	g_P	= 1	# [1]
+	Xsec_P	= 1.0000e-12	# [cm^2]
+	
+	
+	NdCrit  	= 1.0000e+22	# [cm-3]
+	NaCrit  	= 1.0000e+22	# [cm-3]
+}
+
+Bandgap   #[Ioffe]
+{ * Eg = Eg0 + dEg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * dEg0(<bgn_model_name>) is a band gap correction term.  It is used together with
+  * an appropriate BGN model, if this BGN model is chosen in Physics section
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+	Chi0	= -1.3	# [eV]
+	Bgn2Chi	= 0	# [1]
+	Eg0	= 5.486	# [eV] [Ioffe]
+	dEg0(Bennett)	= 0.0000e+00	# [eV]
+	dEg0(Slotboom)	= 0.0000e+00	# [eV]
+	dEg0(OldSlotboom)	= 0.0000e+00	# [eV]
+	dEg0(delAlamo)	= 0.0000e+00	# [eV]
+	alpha	= 0.00052	# [eV K^-1]
+	beta	= 1500	# [K]
+	alpha2	= 0.0000e+00	# [eV K^-1]
+	beta2	= 0.0000e+00	# [K]
+	EgMin	= -1.0000e+01	# [eV]
+	dEgMin	= 0.0000e+00	# [eV]
+	Tpar	= 0	# [K]
+}
+
+
+eDOSMass
+{
+  * For effective mass specification Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 1	# [1]
+  * Formula1:
+  * me/m0 = [ (6 * mt)^2 *  ml ]^(1/3) + mm
+  * mt = a[Eg(0)/Eg(T)] 
+  * Nc(T) = 2(2pi*kB/h_Planck^2*me*T)^3/2 = 2.5094e19 ((me/m0)*(T/300))^3/2 
+	a	= 0.358	# [Ioffe]
+	ml	= 1.4	# [Ioffe]
+	mm	= 0	# [Ioffe]
+}
+
+hDOSMass
+{
+  * For effective mass specification Formula1 (mh approximation):
+  * or Formula2 (Nv300) can be used :
+	Formula	= 2	# [1] [Ioffe]
+  * Formula1:
+  * mh =  m0*{[(a+bT+cT^2+dT^3+eT^4)/(1+fT+gT^2+hT^3+iT^4)]^(2/3) + mm}
+  * Nv(T) = 2(2pi*kB/h_Planck^2*mh*T)^3/2 = 2.5094e19 ((mh/m0)*(T/300))^3/2 
+
+  Nv300 = 1.79558e19
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+*	mumax	= 2326 ,	2483	# [cm^2/(Vs)] [Ioffe]
+	mumax	= 2326 ,	110	# [cm^2/(Vs)] [Verona EDL 2016]
+	Exponent	= 1.852 ,	2.859	# [1] [Ioffe]
+}
+
+
+HighFieldDependence:
+{ * Caughey-Thomas model:
+  * mu_highfield = ( (alpha+1)*mu_lowfield ) / 
+  *        ( alpha + ( 1 + ( (alpha+1)*mu_lowfield*E/vsat)^beta )^(1/beta) ) 
+  * beta = beta0 (T/T0)^betaexp.
+*<100>
+  	beta0	= 0.8 ,	0.84	# [Ioffe]
+*<111> for electron, hole unknown
+*  	beta0	= 1.1 ,	1.1	# [Ioffe]	
+*<110> for hole, electron unknown
+*  	beta0	= 1.1 ,	1.1	# [Ioffe]	
+	betaexp	= 1 ,	1	# [1]
+	alpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+
+  * Smoothing parameter for HydroHighField Caughey-Thomas model:
+  * if Tl < Tc < (1+K_dT)*Tl, then smoothing between low field mobility
+  * and HydroHighField mobility is used.
+	K_dT	= 0.2 ,	0.2	# [1]
+  * Transferred-Electron Effect:
+  * mu_highfield = (mu_lowfield+(vsat/E)*(E/E0_TrEf)^4)/(1+(E/E0_TrEf)^4)
+	E0_TrEf	= 4.0000e+03 ,	4.0000e+03	# [1]
+	Ksmooth_TrEf	= 1 ,	1	# [1]
+
+ * For vsat either Formula1 or Formula2 can be used.
+	Vsat_Formula	= 1 ,	1	# [1]
+ * Formula1 for saturation velocity:
+ *            vsat = vsat0 (T/T0)^(-Vsatexp)
+ * (Parameter Vsat_Formula has to be not equal to 2)
+*<100>
+ 	vsat0	= 1.5000e+07 ,	12650000.0	# [1]  [Ioffe]
+*<111>	for electron, hole unknown
+* 	vsat0	= 1.6000e+07 ,	1.6e7	# [1]  [Ioffe]
+*<110>	for hole, electron unknown
+* 	vsat0	= 1.1000e+07 ,	1.1e7	# [1]  [Ioffe]
+	vsatexp	= 0.44 ,	0.44	# [1] Not calibrated
+}
+
+vanOverstraetendeMan * Impact Ionization:
+{ * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+  * with alpha = gamma a  exp(-Ecrit gamma/E) for E<E0 (low) and E>E0 (high)
+  * with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+  * and Ecrit = b (default),
+  * or  Ecrit = (beta Eg)/(q lambda) (with BandgapDependence)
+	a(low)	= 1.935e8 ,	1.935e8	# [1/cm]
+	a(high)	= 1.935e8 ,	1.935e8	# [1/cm]
+	b(low)	= 7.749e+06 ,	7.749e+06	# [V/cm]
+	b(high)	= 7.749e+06 ,	7.749e+06	# [V/cm]
+}
+
+
+
+
+

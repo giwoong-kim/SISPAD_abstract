@@ -1,0 +1,433 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [05Ada] S. Adachi, "Properties of Group-IV, III-V and II-VI 
+* Semiconductors",John Wiley & Sons, Ltd, 2005.
+* [09Ada] S. Adachi, "Properties of Semiconductor Alloys: 
+* Group-IV, III-V and II-VI Semiconductors", John Wiley & Sons, 
+* Ltd, 2009.
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, "Band 
+* parameters for III-V compound semiconductors and their alloys", 
+* J. Appl. Phys., vol. 89, no. 11, pp. 5815, 2001.
+* [Ioffe] http://www.ioffe.ru/SVA/NSM/Semicond/
+* [04Pal] V. Palankovski, R. Quay, "Analysis and simulation of 
+* heterostructure devices", Springer, 2004.
+
+*  Mole dependent material: GaAsSb (x=0) = GaAs
+*  Mole dependent material: GaAsSb (x=1) = GaSb
+
+
+Epsilon
+{ 
+  * Ratio of the permittivities of material and vacuum
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+  *	epsilon(0)	= 12.9	# [1] # [Ioffe]
+  *	epsilon(1)	= 15.7	# [1] # [Ioffe]
+
+	epsilon(0)	= 12.9	# [1] # [05Ada]
+	epsilon(1)	= 15.5	# [1] # [05Ada]
+}
+
+LatticeHeatCapacity
+{ 
+  * lumped electron-hole-lattice heat capacity
+
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+	
+  * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+  *	cv(0)	= 1.7388 		# [J/(K cm^3)]
+  *	cv(1)	= 1.4000 		# [J/(K cm^3)]
+
+	cv(0)	= 1.7388 		# [J/(K cm^3)] # [09Ada] 
+	cv(1)	= 1.9314 		# [J/(K cm^3)] # [09Ada]
+
+	cv_b(0)	= 0.0000e+00	# [J/(K^2*cm^3)]
+	cv_b(1)	= 0.0000e+00	# [J/(K^2*cm^3)]
+	cv_c(0)	= 0.0000e+00	# [J/(K^3*cm^3)]
+	cv_c(1)	= 0.0000e+00	# [J/(K^3*cm^3)]
+	cv_d(0)	= 0.0000e+00	# [J/(K^4*cm^3)]
+	cv_d(1)	= 0.0000e+00	# [J/(K^4*cm^3)]
+}
+
+Kappa
+{ 
+  * Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+  * Formula = 1:
+  * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+  *	Formula = 1
+  *	Xmax(0)	= 0	# [1]
+  *	Xmax(1)	= 1	# [1]
+
+  *	kappa(0)	= 0.45			# [W/(K cm)]
+  *	kappa_b(0)	= 0.0000e+00	# [W/(K^2 cm)]
+  *	kappa_c(0)	= 0.0000e+00	# [W/(K^3 cm)]
+
+  *	kappa(1)	= 0.32			# [W/(K cm)]
+  *	kappa_b(1)	= 0.0000e+00	# [W/(K^2 cm)]
+  *	kappa_c(1)	= 0.0000e+00	# [W/(K^3 cm)]
+
+   # [Note] No experimental data available for 0<x<1. 
+   # Bowing parameter fitted according to [09Adachi]
+
+	Formula = 0
+
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+	* parameter 1/kappa:
+	1/kappa(0)	= 2.2222	# [(K cm)/W] # [09Adachi]
+	1/kappa(1)	= 2.7778	# [(K cm)/W] # [09Adachi]
+	B(1/kappa(1))	= -9.5000e+01	# [(K cm)/W] # Fitted value according to [09Adachi]
+	C(1/kappa(1))	= 0.0000e+00	# [(K cm)/W]
+
+	* parameter 1/kappa_b:
+	1/kappa_b(0)	= 0.0000e+00	# [cm/W]
+	1/kappa_b(1)	= 0.0000e+00	# [cm/W]
+	B(1/kappa_b(1))	= 0.0000e+00	# [cm/W]
+	C(1/kappa_b(1))	= 0.0000e+00	# [cm/W]
+
+	* parameter 1/kappa_c:
+	1/kappa_c(0)	= 0.0000e+00	# [cm/(W K)]
+	1/kappa_c(1)	= 0.0000e+00	# [cm/(W K)]
+	B(1/kappa_c(1))	= 0.0000e+00	# [cm/(W K)]
+	C(1/kappa_c(1))	= 0.0000e+00	# [cm/(W K)]
+}
+
+Bandgap
+{ 
+  * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+
+  *	Xmax(0)	= 0	# [1]
+  *	Xmax(1)	= 1	# [1]
+
+  *	Tpar	= 300	# [K]
+
+	* parameter Eg0:
+  *	Eg0(0)	= 1.4225	# [eV]
+  *	Eg0(1)	= 0.7260	# [eV]
+  *	B(Eg0(1)) = 1.43	# [eV]
+
+	* parameter Chi0:
+  *	Chi0(0)	= 4.1665	# [eV]
+  *	Chi0(1)	= 4.0700	# [eV]
+  *	B(Chi0(1)) = -0.37	# [eV]
+
+
+   	* parameter Eg0:
+	Tpar	= 0.0000e+00	# [K]
+	Xmax(0)	= 0.0000e+00	# [1]
+	Eg0(0)	= 1.519	# [eV] # [01Vur] 
+	Xmax(1)	= 1		# [1]
+	Eg0(1)	= 0.812	# [eV] # [01Vur] 
+	B(Eg0(1))	= 1.43	# [eV] # [01Vur] 
+	C(Eg0(1))	= 0.0000e+00	# [eV]
+
+	* parameter alpha:
+	Xmax(0)	= 0.0000e+00	# [1]	
+	alpha(0)	= 5.4050e-04	# [eV/K] # [01Vur] 
+	Xmax(1)	= 1			# [1]
+	alpha(1)	= 4.1700e-04	# [eV/K] # [01Vur] 
+	B(alpha(1))	= 0.0000e+00	# [eV/K]
+	C(alpha(1))	= 0.0000e+00	# [eV/K]
+
+	* parameter beta:
+	Xmax(0)	= 0.0000e+00	# [1]
+	beta(0)	= 2.0400e+02	# [K] # [01Vur] 
+	Xmax(1)	= 1			# [1]
+	beta(1)	= 1.4000e+02	# [K] # [01Vur] 
+	B(beta(1))	= 0.0000e+00	# [K]
+	C(beta(1))	= 0.0000e+00	# [K]
+
+	* parameter Chi0:
+	Xmax(0)	= 0.0000e+00	# [1]
+ 	Chi0(0)	= 4.1017		# [eV] # [05Ada]
+	Xmax(1)	= 1			# [1]
+	Chi0(1)	= 4.1674		# [eV] # [05Ada]
+	B(Chi0(1))	= 0.0000e+00	# [eV]
+	C(Chi0(1))	= 0.0000e+00	# [eV]
+
+	* parameter EgMin:
+	Xmax(0)	= 0.0000e+00	# [1]
+	EgMin(0)	= 1.5000e-01	# [eV]
+	Xmax(1)	= 1	# [1]
+	EgMin(1)	= 1.5000e-01	# [eV]
+	B(EgMin(1))	= 0.0000e+00	# [eV]
+	C(EgMin(1))	= 0.0000e+00	# [eV]
+}
+
+eDOSMass
+{
+  * For effective mass specification Formula1 (me approximation):
+  * or Formula2 (Nc300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * me/m0 = (Nc300/2.5094e19)^2/3 
+  * Nc(T) = Nc300 * (T/300)^3/2 
+  *	Xmax(0)	= 0	# [1]
+  *	Xmax(1)	= 1	# [1]
+  *	Nc300(0)	= 4.3519e+17	# [cm-3]
+  *	Nc300(1)	= 2.07800e+17	# [cm-3]
+
+  # Reference from [09Ada] with linear interpolation
+	Xmax (0) = 0.0
+	Xmax (1) = 0.1
+	Xmax (2) = 0.2 
+	Xmax (3) = 0.3
+	Xmax (4) = 0.4
+	Xmax (5) = 0.5
+	Xmax (6) = 0.6
+	Xmax (7) = 0.7
+	Xmax (8) = 0.8
+	Xmax (9) = 0.9
+	Xmax (10) = 1.0
+
+	Nc300(0) = 4.3519e+17		#[cm-3]
+	Nc300(1) = 4.0820e+17		#[cm-3]	
+	Nc300(2) = 3.8179e+17		#[cm-3]	
+	Nc300(3) = 3.5597e+17		#[cm-3]	
+	Nc300(4) = 3.3077e+17		#[cm-3]	
+	Nc300(5) = 3.0618e+17		#[cm-3]		
+	Nc300(6) = 2.8224e+17		#[cm-3]		
+	Nc300(7) = 2.5896e+17		#[cm-3]	
+	Nc300(8) = 2.3636e+17		#[cm-3]			
+	Nc300(9) = 2.1445e+17		#[cm-3]	
+	Nc300(10) = 1.9327e+17	#[cm-3] 
+}
+
+hDOSMass
+{
+  * For effective mass specification Formula1 (mh approximation):
+  * or Formula2 (Nv300) can be used :
+	Formula	= 2	# [1]
+  * Formula2:
+  * mh/m0 = (Nv300/2.5094e19)^2/3 
+  * Nv(T) = Nv300 * (T/300)^3/2 
+  *	Xmax(0)	= 0	# [1]
+  *	Xmax(1)	= 1	# [1]
+
+  *	Nv300(0)	= 1.2464e+19	# [cm-3]
+  *	Nv300(1)	= 1.8000e+19	# [cm-3]
+
+  # References from [01Vur]
+	Xmax (0) = 0.0
+	Xmax (1) = 0.1
+	Xmax (2) = 0.2 
+	Xmax (3) = 0.3
+	Xmax (4) = 0.4
+	Xmax (5) = 0.5
+	Xmax (6) = 0.6
+	Xmax (7) = 0.7
+	Xmax (8) = 0.8
+	Xmax (9) = 0.9
+	Xmax (10) = 1.0
+
+	Nv300(0) = 1.2464e+19		#[cm-3] 
+	Nv300(1) = 1.2175e+19		#[cm-3]	
+	Nv300(2) = 1.1840e+19		#[cm-3]	
+	Nv300(3) = 1.1459e+19		#[cm-3]	
+	Nv300(4) = 1.1036e+19		#[cm-3]	
+	Nv300(5) = 1.0573e+19		#[cm-3]		
+	Nv300(6) = 1.0075e+19		#[cm-3]		
+	Nv300(7) = 9.5467e+18		#[cm-3]
+	Nv300(8) = 8.9945e+18		#[cm-3]			
+	Nv300(9) = 8.4244e+18		#[cm-3]	
+	Nv300(10) = 7.8432e+18	#[cm-3] 
+}
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+	Xmax(0)	= 0	# [1]
+	Xmax(1)	= 1	# [1]
+
+  *	mumax(1)	= 2.8000e+03 ,	4.0000e+02	# [cm^2/(Vs)]
+  *	Exponent(1)	= 1 ,	2.1	# [1]
+
+	mumax(0)	= 9.4000e+03 ,	491.5	# [cm^2/(Vs)] # [00Sot]
+	Exponent(0)	= 2.1  ,  2.2   # [1] # [00Sot]
+  	mumax(1)	= 3.0000e+03 ,	1.0000e+03	# [cm^2/(Vs)] # [Ioffe]
+  	Exponent(1)	= 1.50 ,	1.50	# [1] # [04Pal]
+}
+
+Auger
+{
+	Xmax (0) = 0.0
+	Xmax (1) = 1.0
+
+	A (0) = +1.0000000e-30, +1.0000000e-30 # [cm^6/s] # [Ioffe] # Data for holes taken from electrons
+	A (1) = +5.0000000e-30, +5.0000000e-30 # [cm^6/s] # [Ioffe] # Data for holes taken from electrons
+	B (0) = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	B (1) = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	C (0) = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	C (1) = +0.0000000e+00, +0.0000000e+00 # [cm^6/s]
+	H (0) = +0.0000000e+00, +0.0000000e+00 # [1]
+	H (1) = +0.0000000e+00, +0.0000000e+00 # [1]
+	N0 (0) = +1.0000000e+18, +1.0000000e+18 # [cm^-3]
+	N0 (1) = +1.0000000e+18, +1.0000000e+18 # [cm^-3]
+}
+
+RadiativeRecombination
+{
+	Xmax (0) = 0.0
+	Xmax (1) = 1.0
+
+	C (0) = +7.2000000e-10 # [Ioffe] 
+	C (1) = +1.0000000e-10 # [Ioffe] 
+}
+
+MultiValley 
+{  
+  * Electron masses for Gamma valley are linearly interpolated 
+  * from [09Ada]. Electron masses and energy shifts for L- & X-
+  * valley are from [01Vur]. Hole masses obtained with 6kp gamma 
+  * paramaters are from [01Vur]. Conduction band deformation 
+  * potentials are from [09Ada].
+	Xmax (0) = 0.0
+	Xmax (1) = 0.1
+	Xmax (2) = 0.2 
+	Xmax (3) = 0.3
+	Xmax (4) = 0.4
+	Xmax (5) = 0.5
+	Xmax (6) = 0.6
+	Xmax (7) = 0.7
+	Xmax (8) = 0.8
+	Xmax (9) = 0.9
+	Xmax (10) = 1.0
+		
+	eValley"Gamma"(m=0.067 alpha=1.0 degeneracy=1 xid=-11.0)
+	eValley"L1"(1,1,1)(ml=1.90 mt=0.0754 energy=0.28448214 alpha=0.5 degeneracy=1 xiu=14.50 xid=-2.00)
+	eValley"L2"(-1,1,1)(ml=1.90 mt=0.0754 energy=0.28448214 alpha=0.5 degeneracy=1 xiu=14.50 xid=-2.00)
+	eValley"L3"(1,-1,1)(ml=1.90 mt=0.0754 energy=0.28448214 alpha=0.5 degeneracy=1 xiu=14.50 xid=-2.00)
+	eValley"L4"(1,1,-1)(ml=1.90 mt=0.0754 energy=0.28448214 alpha=0.5 degeneracy=1 xiu=14.50 xid=-2.00)
+	eValley"X1"(1,0,0)(ml=1.30 mt=0.23 energy=0.47637500 alpha=0.5 degeneracy=1 xiu=6.50 xid=1.05)
+	eValley"X2"(0,1,0)(ml=1.30 mt=0.23 energy=0.47637500 alpha=0.5 degeneracy=1 xiu=6.50 xid=1.05)
+	eValley"X3"(0,0,1)(ml=1.30 mt=0.23 energy=0.47637500 alpha=0.5 degeneracy=1 xiu=6.50 xid=1.05)
+	hValley"LH"(m=0.08302011 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(m=0.60687229 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(1)(m=0.0642 alpha=1.0 degeneracy=1 xid=-10.8)
+	eValley"L1"(1)(ml=1.84 mt=0.07786 energy=0.27964498 alpha=0.5 degeneracy=1 xiu=14.80 xid=-2.12)
+	eValley"L2"(1)(ml=1.84 mt=0.07786 energy=0.27964498 alpha=0.5 degeneracy=1 xiu=14.80 xid=-2.12)
+	eValley"L3"(1)(ml=1.84 mt=0.07786 energy=0.27964498 alpha=0.5 degeneracy=1 xiu=14.80 xid=-2.12)
+	eValley"L4"(1)(ml=1.84 mt=0.07786 energy=0.27964498 alpha=0.5 degeneracy=1 xiu=14.80 xid=-2.12)
+	eValley"X1"(1)(ml=1.321 mt=0.229 energy=0.48067603 alpha=0.5 degeneracy=1 xiu=6.496 xid=1.144)
+	eValley"X2"(1)(ml=1.321 mt=0.229 energy=0.48067603 alpha=0.5 degeneracy=1 xiu=6.496 xid=1.144)
+	eValley"X3"(1)(ml=1.321 mt=0.229 energy=0.48067603 alpha=0.5 degeneracy=1 xiu=6.496 xid=1.144)
+	hValley"LH"(1)(m=0.07879223 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(1)(m=0.59853893 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(2)(m=0.0614 alpha=1.0 degeneracy=1 xid=-10.6)
+	eValley"L1"(2)(ml=1.78 mt=0.08032 energy=0.27014951 alpha=0.5 degeneracy=1 xiu=15.10 xid=-2.24)
+	eValley"L2"(2)(ml=1.78 mt=0.08032 energy=0.27014951 alpha=0.5 degeneracy=1 xiu=15.10 xid=-2.24)
+	eValley"L3"(2)(ml=1.78 mt=0.08032 energy=0.27014951 alpha=0.5 degeneracy=1 xiu=15.10 xid=-2.24)
+	eValley"L4"(2)(ml=1.78 mt=0.08032 energy=0.27014951 alpha=0.5 degeneracy=1 xiu=15.10 xid=-2.24)
+	eValley"X1"(2)(ml=1.342 mt=0.228 energy=0.48025505 alpha=0.5 degeneracy=1 xiu=6.492 xid=1.238)
+	eValley"X2"(2)(ml=1.342 mt=0.228 energy=0.48025505 alpha=0.5 degeneracy=1 xiu=6.492 xid=1.238)
+	eValley"X3"(2)(ml=1.342 mt=0.228 energy=0.48025505 alpha=0.5 degeneracy=1 xiu=6.492 xid=1.238)
+	hValley"LH"(2)(m=0.07459251 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(2)(m=0.58848776 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(3)(m=0.0586 alpha=1.0 degeneracy=1 xid=-10.4)
+	eValley"L1"(3)(ml=1.72 mt=0.08278 energy=0.25599344 alpha=0.5 degeneracy=1 xiu=15.40 xid=-2.36)
+	eValley"L2"(3)(ml=1.72 mt=0.08278 energy=0.25599344 alpha=0.5 degeneracy=1 xiu=15.40 xid=-2.36)
+	eValley"L3"(3)(ml=1.72 mt=0.08278 energy=0.25599344 alpha=0.5 degeneracy=1 xiu=15.40 xid=-2.36)
+	eValley"L4"(3)(ml=1.72 mt=0.08278 energy=0.25599344 alpha=0.5 degeneracy=1 xiu=15.40 xid=-2.36)
+	eValley"X1"(3)(ml=1.363 mt=0.227 energy=0.47510429 alpha=0.5 degeneracy=1 xiu=6.488 xid=1.332)
+	eValley"X2"(3)(ml=1.363 mt=0.227 energy=0.47510429 alpha=0.5 degeneracy=1 xiu=6.488 xid=1.332)
+	eValley"X3"(3)(ml=1.363 mt=0.227 energy=0.47510429 alpha=0.5 degeneracy=1 xiu=6.488 xid=1.332)
+	hValley"LH"(3)(m=0.07041552 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(3)(m=0.57671843 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(4)(m=0.0558 alpha=1.0 degeneracy=1 xid=-10.2)
+	eValley"L1"(4)(ml=1.66 mt=0.08524 energy=0.23717433 alpha=0.5 degeneracy=1 xiu=15.70 xid=-2.48)
+	eValley"L2"(4)(ml=1.66 mt=0.08524 energy=0.23717433 alpha=0.5 degeneracy=1 xiu=15.70 xid=-2.48)
+	eValley"L3"(4)(ml=1.66 mt=0.08524 energy=0.23717433 alpha=0.5 degeneracy=1 xiu=15.70 xid=-2.48)
+	eValley"L4"(4)(ml=1.66 mt=0.08524 energy=0.23717433 alpha=0.5 degeneracy=1 xiu=15.70 xid=-2.48)
+	eValley"X1"(4)(ml=1.384 mt=0.226 energy=0.46521530 alpha=0.5 degeneracy=1 xiu=6.484 xid=1.426)
+	eValley"X2"(4)(ml=1.384 mt=0.226 energy=0.46521530 alpha=0.5 degeneracy=1 xiu=6.484 xid=1.426)
+	eValley"X3"(4)(ml=1.384 mt=0.226 energy=0.46521530 alpha=0.5 degeneracy=1 xiu=6.484 xid=1.426)
+	hValley"LH"(4)(m=0.06625584 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(4)(m=0.56325993 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(5)(m=0.053 alpha=1.0 degeneracy=1 xid=-10.0)
+	eValley"L1"(5)(ml=1.60 mt=0.0877 energy=0.21368962 alpha=0.5 degeneracy=1 xiu=16.00 xid=-2.60)
+	eValley"L2"(5)(ml=1.60 mt=0.0877 energy=0.21368962 alpha=0.5 degeneracy=1 xiu=16.00 xid=-2.60)
+	eValley"L3"(5)(ml=1.60 mt=0.0877 energy=0.21368962 alpha=0.5 degeneracy=1 xiu=16.00 xid=-2.60)
+	eValley"L4"(5)(ml=1.60 mt=0.0877 energy=0.21368962 alpha=0.5 degeneracy=1 xiu=16.00 xid=-2.60)
+	eValley"X1"(5)(ml=1.405 mt=0.225 energy=0.45057884 alpha=0.5 degeneracy=1 xiu=6.48 xid=1.52)
+	eValley"X2"(5)(ml=1.405 mt=0.225 energy=0.45057884 alpha=0.5 degeneracy=1 xiu=6.48 xid=1.52)
+	eValley"X3"(5)(ml=1.405 mt=0.225 energy=0.45057884 alpha=0.5 degeneracy=1 xiu=6.48 xid=1.52)
+	hValley"LH"(5)(m=0.06210807 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(5)(m=0.54817121 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(6)(m=0.0502 alpha=1.0 degeneracy=1 xid=-9.8)
+	eValley"L1"(6)(ml=1.54 mt=0.09016 energy=0.18553660 alpha=0.5 degeneracy=1 xiu=16.30 xid=-2.72)
+	eValley"L2"(6)(ml=1.54 mt=0.09016 energy=0.18553660 alpha=0.5 degeneracy=1 xiu=16.30 xid=-2.72)
+	eValley"L3"(6)(ml=1.54 mt=0.09016 energy=0.18553660 alpha=0.5 degeneracy=1 xiu=16.30 xid=-2.72)
+	eValley"L4"(6)(ml=1.54 mt=0.09016 energy=0.18553660 alpha=0.5 degeneracy=1 xiu=16.30 xid=-2.72)
+	eValley"X1"(6)(ml=1.426 mt=0.224 energy=0.43118478 alpha=0.5 degeneracy=1 xiu=6.476 xid=1.614)
+	eValley"X2"(6)(ml=1.426 mt=0.224 energy=0.43118478 alpha=0.5 degeneracy=1 xiu=6.476 xid=1.614)
+	eValley"X3"(6)(ml=1.426 mt=0.224 energy=0.43118478 alpha=0.5 degeneracy=1 xiu=6.476 xid=1.614)
+	hValley"LH"(6)(m=0.05796681 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(6)(m=0.53154047 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(7)(m=0.0474 alpha=1.0 degeneracy=1 xid=-9.6)
+	eValley"L1"(7)(ml=1.48 mt=0.09262 energy=0.15271241 alpha=0.5 degeneracy=1 xiu=16.60 xid=-2.84)
+	eValley"L2"(7)(ml=1.48 mt=0.09262 energy=0.15271241 alpha=0.5 degeneracy=1 xiu=16.60 xid=-2.84)
+	eValley"L3"(7)(ml=1.48 mt=0.09262 energy=0.15271241 alpha=0.5 degeneracy=1 xiu=16.60 xid=-2.84)
+	eValley"L4"(7)(ml=1.48 mt=0.09262 energy=0.15271241 alpha=0.5 degeneracy=1 xiu=16.60 xid=-2.84)
+	eValley"X1"(7)(ml=1.447 mt=0.223 energy=0.40702202 alpha=0.5 degeneracy=1 xiu=6.472 xid=1.708)
+	eValley"X2"(7)(ml=1.447 mt=0.223 energy=0.40702202 alpha=0.5 degeneracy=1 xiu=6.472 xid=1.708)
+	eValley"X3"(7)(ml=1.447 mt=0.223 energy=0.40702202 alpha=0.5 degeneracy=1 xiu=6.472 xid=1.708)
+	hValley"LH"(7)(m=0.05382667 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(7)(m=0.51348341 energy=0.0 alpha=0.0 degeneracy=1)
+	
+	eValley"Gamma"(8)(m=0.0446 alpha=1.0 degeneracy=1 xid=-9.4)
+	eValley"L1"(8)(ml=1.42 mt=0.09508 energy=0.11521405 alpha=0.5 degeneracy=1 xiu=16.90 xid=-2.96)
+	eValley"L2"(8)(ml=1.42 mt=0.09508 energy=0.11521405 alpha=0.5 degeneracy=1 xiu=16.90 xid=-2.96)
+	eValley"L3"(8)(ml=1.42 mt=0.09508 energy=0.11521405 alpha=0.5 degeneracy=1 xiu=16.90 xid=-2.96)
+	eValley"L4"(8)(ml=1.42 mt=0.09508 energy=0.11521405 alpha=0.5 degeneracy=1 xiu=16.90 xid=-2.96)
+	eValley"X1"(8)(ml=1.468 mt=0.222 energy=0.37807834 alpha=0.5 degeneracy=1 xiu=6.468 xid=1.802)
+	eValley"X2"(8)(ml=1.468 mt=0.222 energy=0.37807834 alpha=0.5 degeneracy=1 xiu=6.468 xid=1.802)
+	eValley"X3"(8)(ml=1.468 mt=0.222 energy=0.37807834 alpha=0.5 degeneracy=1 xiu=6.468 xid=1.802)
+	hValley"LH"(8)(m=0.04968224 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(8)(m=0.49414029 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(9)(m=0.0418 alpha=1.0 degeneracy=1 xid=-9.2)
+	eValley"L1"(9)(ml=1.36 mt=0.09754 energy=0.07303831 alpha=0.5 degeneracy=1 xiu=17.20 xid=-3.08)
+	eValley"L2"(9)(ml=1.36 mt=0.09754 energy=0.07303831 alpha=0.5 degeneracy=1 xiu=17.20 xid=-3.08)
+	eValley"L3"(9)(ml=1.36 mt=0.09754 energy=0.07303831 alpha=0.5 degeneracy=1 xiu=17.20 xid=-3.08)
+	eValley"L4"(9)(ml=1.36 mt=0.09754 energy=0.07303831 alpha=0.5 degeneracy=1 xiu=17.20 xid=-3.08)
+	eValley"X1"(9)(ml=1.489 mt=0.221 energy=0.34434028 alpha=0.5 degeneracy=1 xiu=6.464 xid=1.896)
+	eValley"X2"(9)(ml=1.489 mt=0.221 energy=0.34434028 alpha=0.5 degeneracy=1 xiu=6.464 xid=1.896)
+	eValley"X3"(9)(ml=1.489 mt=0.221 energy=0.34434028 alpha=0.5 degeneracy=1 xiu=6.464 xid=1.896)
+	hValley"LH"(9)(m=0.04552808 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(9)(m=0.47367212 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(10)(m=0.039 alpha=1.0 degeneracy=1 xid=-9.0)
+	eValley"L1"(10)(ml=1.30 mt=0.10 energy=0.02618182 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L2"(10)(ml=1.30 mt=0.10 energy=0.02618182 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L3"(10)(ml=1.30 mt=0.10 energy=0.02618182 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"L4"(10)(ml=1.30 mt=0.10 energy=0.02618182 alpha=0.5 degeneracy=1 xiu=17.50 xid=-3.20)
+	eValley"X1"(10)(ml=1.51 mt=0.22 energy=0.30579292 alpha=0.5 degeneracy=1 xiu=6.46 xid=1.99)
+	eValley"X2"(10)(ml=1.51 mt=0.22 energy=0.30579292 alpha=0.5 degeneracy=1 xiu=6.46 xid=1.99)
+	eValley"X3"(10)(ml=1.51 mt=0.22 energy=0.30579292 alpha=0.5 degeneracy=1 xiu=6.46 xid=1.99)
+	hValley"LH"(10)(m=0.04135875 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(10)(m=0.45225600 energy=0.0 alpha=0.0 degeneracy=1)	 	  	  	  			  	  	  
+}
+
+

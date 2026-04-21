@@ -1,0 +1,157 @@
+* Copyright (c) 1994-2014 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+*******************************************************************************
+*                             Model Parameters:                               *
+*******************************************************************************
+
+**************************** Thermal Conductivity: ****************************
+*******************************************************************************
+
+Kappa
+{ *  Lattice thermal conductivity
+* kappa(Si) = 1 / ( Si_a + Si_b * T + Si_c * T^2 )
+	Si_a	= 0.22	# [K cm/W]
+	Si_b	= 0     # [cm/W]
+	Si_c	= 0	# [cm/(W K)]
+}
+
+
+*************** Bandgap / Bandgap Narrowing / Intrinsic Density: **************
+* nieff = ni exp( deltaEg/(2 kT) ), ni = (Nc(T) Nv(T))^(1/2) exp( -Eg/(2kT) ) * 
+*******************************************************************************
+
+	Bandgap *temperature dependent*
+	{ * Eg = Eg0 - alpha T^2 / (beta + T)
+		alpha	= 3.3000e-04	# [eV K^-1]
+		beta	= 0.0000e+00	# [K]
+	}
+
+OldSlotboom
+{ * deltaEg = Ebgn ( ln(N/Nref) + [ (ln(N/Nref))^2 + 0.5]^1/2 )
+	Eg0	= 3.1	# [eV]
+	*Eg0	= 3.0	# [eV] [recent]
+	Ebgn	= 9.0000e-03	# [eV]
+	Nref	= 1.0000e+17	# [cm^(-3)]
+}
+
+**** Effective Densities of States: ****
+	*   Nc(T) = 2.540e19 ( me(T) T )^3/2   *
+	*   Nv(T) = 2.540e19 ( mh(T) T )^3/2   *
+
+	**** Density of State Masses: ****
+	eDOSMass
+	{ * me = [ (6 * mt)^2 *  ml ]^(1/3)
+		* mt = a Eg(0)/Eg(T) m0
+		a	= 0.0625	# [1]
+		*a	= 50.0625	# [1]
+		ml	= 1.5	# [1]
+		*ml	= 50.5	# [1]
+	}
+
+	hDOSMass
+	{ * mh = [(a+bT+cT^2+dT^3+eT^4)/(1+fT+gT^2+hT^3+iT^4)]^(2/3) m0
+		a	= 1	# [1]
+		b	= 0	# [K^-1]
+		c	= 0	# [K^-2]
+		d	= 0	# [K^-3]
+		e	= 0	# [K^-4]
+		f	= 0	# [K^-1]
+		g	= 0	# [K^-2]
+		h	= 0	# [K^-3]
+		i	= 0	# [K^-4]
+	}
+
+
+*****************************  Mobility Models: *******************************
+* mu_lowfield^(-1) = mu_dop(mu_max)^(-1) + mu_Enorm^(-1) + mu_cc^(-1)         *
+* Variable = electron value ,   hole value      # [units]                     *
+*******************************************************************************
+
+ConstantMobility:
+{ * mu_const = mumax (T/T0)^(-Exponent)
+	*mumax	= 380 ,	70	# [cm^2/(Vs)]
+	*mumax	= 415 ,	99	# [cm^2/(Vs)] [Cree] E perp c
+	mumax	= 85 ,	99	# [cm^2/(Vs)] [Cree] E || c
+	*Exponent	= 3 ,	3	# [1]
+	Exponent	= 2 ,	2	# [Cree]
+}
+
+DopingDependence:
+{ * mu_dop = mumin1 exp(-Pc/N) + (mu_const - mumin2)/(1+(N/Cr)^alpha)
+  *                             - mu1/(1+(Cs/N)^beta)
+  * with mu_const from ConstantMobility
+	*mumin1	= 20 ,  	5	        # [cm^2/Vs]
+	mumin1	= 0 ,  		6.8	        # [cm^2/Vs] [Cree]
+	mumin2	= 0.00 ,	0.0000e+00	# [cm^2/Vs]
+	mu1	= 0.00 ,	0.00	        # [cm^2/Vs]
+	Pc	= 0.0000e+00 ,	0.00	        # [cm^3]
+	*Cr	= 4.50e+17 ,	1.00e+19	# [cm^3]
+	Cr	= 1.11e+18 ,	2.10e+19	# [cm^3] [Cree]
+	Cs	= 3.4300e+20 ,	6.1000e+20	# [cm^3]
+	*alpha	= 0.45 ,	0.5	# [1]
+	alpha	= 0.59 ,	0.31	# [Cree]
+	beta	= 2 ,		2	# [1]
+}
+
+HighFieldDependence:
+{ * mu_highfield = mu_lowfield / ( 1 + (mu_lowfield E / vsat)^beta )^1/beta
+  * beta = beta0 (T/T0)^betaexp; vsat = vsat0 (T/T0)^(-Vsatexp);
+	*beta0	= 1.109 ,	1.213	# [1]
+	beta0	= 1.00 ,	1.213	# [R.M.]
+	betaexp	= 0.66 ,	0.17	# [1]
+	*vsat0	= 2.00e+07 ,	2.00e+7 # [1]  E perp c
+	vsat0	= 2.00e+07 ,	2.00e+7 # [R.M.] E || c
+	vsatexp	= 0.87 ,	0.52	# [1]
+}
+
+
+
+**************************  Recombination Models: *****************************
+* Variable = electron value ,   hole value      # [units]                     *
+*******************************************************************************
+
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma )
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-07 ,	2.0000e-08	# [s]
+       	Nref	= 3.0000e+17 ,	3.0000e+17	# [cm^(-3)]
+	gamma	= 0.3 ,	0.3	# [1]
+	Talpha	= -1.5000e+00 ,	-1.5000e+00	# [1]
+	Tcoeff	= 2.55 ,	2.55	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = A + B (T/T0) + C (T/T0)^2
+	A	= 2.8000e-31 ,	9.9000e-32	# [cm^6/s]
+	B	= 0.00    ,	0.00    	# [cm^6/s]
+	C	= 0.00 ,	0.00    	# [cm^6/s]
+}
+
+
+vanOverstraetendeMan * Impact Ionization:
+{ * G_impact = alpha_n n v_drift_n  +  alpha_p p v_drift_p
+  * with alpha = gamma a  exp(-b gamma/E) for E<E0 (low) and E>E0 (high)
+  *  with gamma = tanh(hbarOmega/(2kT0)) / tanh(hbarOmega/(2kT))
+
+	*	E || c
+***********************************************************
+	a(low)	= 1.6600e+06 ,	5.1800e+06	# [1/cm]
+	a(high)= 1.6600e+06 ,	5.1800e+06	# [1/cm]
+	b(low)	= 1.2730e+07 ,	1.4000e+07	# [V/cm]
+	b(high)= 1.2730e+07 ,	1.4000e+07	# [V/cm]
+        E0	= 4.0000e+05 ,	4.0000e+05	# [V/cm]
+	hbarOmega	= 0.063	# [eV]
+        *hbarOmega	= 1000	# [eV]
+}
+
+

@@ -1,0 +1,538 @@
+* Copyright (c) 1994-2019 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+*  Epsilon{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Epsilon_Inf{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Epsilon_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Epsilon_Inf_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  refractiveindex{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  ComplexRefractiveIndex { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+* SpectralConversion
+* { * Spectral Conversion Model
+*   No default model, user has to define.
+*   All wavelength parameters should be in nanometers.
+*   Choice of Analytic or NumericalTable selected in Physics section of region
+*  
+*   ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+*   AbsorptionScaling = float        * scale absorption
+*   EmissionScaling = float          * scale emission
+*   Analytic (
+*     AbsorptionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*     EmissionProfile = (
+*        Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+*        Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+*        ...
+*     )
+*   )
+*   NumericalTable (
+*     AbsorptionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+*     EmissionProfile = (
+*        lambda0 value0
+*        lambda1 value1
+*        ...
+*     )
+
+*   ConversionEfficiency = 1.0
+* }
+
+
+*  LatticeHeatCapacity{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Kappa{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Kappa_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  EnergyRelaxationTime{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Bandgap{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  OldSlotboom { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Slotboom { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  delAlamo { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Bennett { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+JainRoulston
+{ * deltaEg = A_i N^(1/3) + B_i N^(1/4) + C_i N^(1/2) + D_i N^(1/2)
+  * where i is n for n-type or p for p-type
+  * Mole fraction dependent model.
+  * If only constant parameters are specified, those values will be
+  * used for any mole fraction instead of the interpolation below.
+  * Linear interpolation is used on the interval [0,1].
+	A_n(0)	= 0.0000e+00	# [eV cm]
+	A_n(1)	= 0.0000e+00	# [eV cm]
+	B_n(0)	= 0.0000e+00	# [eV cm^(3/4)]
+	B_n(1)	= 0.0000e+00	# [eV cm^(3/4)]
+	C_n(0)	= 0.0000e+00	# [eV cm^(3/2)]
+	C_n(1)	= 0.0000e+00	# [eV cm^(3/2)]
+	D_n(0)	= 0.0000e+00	# [eV cm^(3/2)]
+	D_n(1)	= 0.0000e+00	# [eV cm^(3/2)]
+	A_p(0)	= 0.0000e+00	# [eV cm]
+	A_p(1)	= 0.0000e+00	# [eV cm]
+	B_p(0)	= 0.0000e+00	# [eV cm^(3/4)]
+	B_p(1)	= 0.0000e+00	# [eV cm^(3/4)]
+	C_p(0)	= 0.0000e+00	# [eV cm^(3/2)]
+	C_p(1)	= 0.0000e+00	# [eV cm^(3/2)]
+	D_p(0)	= 0.0000e+00	# [eV cm^(3/2)]
+	D_p(1)	= 0.0000e+00	# [eV cm^(3/2)]
+}
+
+
+*  FreeCarrierAbsorption{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  BandstructureParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  QWstrain{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  eDOSMass{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  hDOSMass{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  SchroedingerParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  QuantumPotentialParameters { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  ConstantMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  ConstantMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  DopingDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  DopingDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  PhuMob{...} 
+*  Philips Unified Mobility Model:
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  BalMob{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  BalMob_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  EnormalDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  ThinLayerMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  ThinLayerMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  IALMob{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  IALMob_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  EffectiveStressModel{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  NegInterfaceChargeMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  NegInterfaceChargeMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  PosInterfaceChargeMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  PosInterfaceChargeMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Coulomb2DMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Coulomb2DMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  BTCSMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  BTCSMobility_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  HighFieldDependence{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  HighFieldDependence_aniso{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  SHEDistribution{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Radiative Recombination Model{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  MLDAQMModel { ... } 
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  LatticeParameters{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  Piezoelectric_Polarization{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+
+
+*  StressMobility{...}
+*  By default, for mole fraction dependency of parameters
+*  of the model, the following linear interpolation is applied
+*  between two materials: P = x * P(GaAs) + (1-x) * P(GaP)
+*  where P(m) is a parameter of material m.
+*  If the parameters are specified, then their values
+*  will be used instead of the interpolation.
+

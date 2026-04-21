@@ -1,0 +1,273 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [16D25] EU project DEEPEN, deliverable D2.5
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, Band parameters for III-V compound semiconductors
+* and their alloys, Journal of Applied Physics, 89, 11, 2001
+* [03Vur] I. Vurgaftman, L. R. Ram-Mohan, Band parameters for III-V compound semiconductors
+* and their alloys, Journal of Applied Physics, 94, 6, 2003 
+* [96Pol] A. Polian et al., J. Appl. Phys. 79, 3343, 1996
+* [85Tsu] K. Tsubouchi, N. Mikoshiba, IEEE TRans. Sonics Ultrason., SU-32, 634, 1985
+* [96Pol] A. Polian et al., J. Appl. Phys. 79, 3343, 1996
+* [09Mos] D. Moss et al., J. Phys. D: Appl. Phys. 42, 115412, 2009
+* [15Wit] P. Witczak et al., Semicond. Sci. Technol. 30, 035008, 2015
+
+
+* Mole dependent material: AlGaN (x=0) = GaN
+* Mole dependent material: AlGaN (x=1) = AlN
+
+
+Bandgap
+{ 
+	Xmax(0) = 0.0
+	Xmax(1) = 1.0
+
+	Chi0(0) 	= 3.922
+	Chi0(1) 	= 1.999				
+  *	B(Chi0(1))	= -0.35
+	B(Chi0(1))	= 0.78	#[16D25] DEEPEN deliverable D2.5
+	C(Chi0(1))	= 0.0
+								
+	Eg0(0)	= 3.507	#[01Vur]
+	Eg0(1)	= 6.23 	#[01Vur]		
+  *	B(Eg0(1))	= 0.7
+	B(Eg0(1))	= 0.94	#[16D25] DEEPEN deliverable D2.5
+	C(Eg0(1))	= 0.0
+					
+	alpha(0)	= 9.09e-04		#[01Vur]		
+	alpha(1)	= 1.799e-03	#[01Vur]		
+	B(alpha(1))	= 0.0
+	C(alpha(1))	= 0.0
+				
+	beta(0)	= 8.30e+02		#[01Vur]			
+	beta(1)	= 1.4620e+03	#[01Vur]		
+	B(beta(1))	= 0.0
+	C(beta(1))	= 0.0
+				
+	Tpar	= 0.0
+}
+
+
+Piezoelectric_polarization
+{
+	Xmax(0) = 0.0
+	Xmax(1) = 1.0
+
+	formula = 1
+
+	relax = 0.0
+
+  * piezoelectric coefficients for Wurtzite:
+	d11(0)	= 0.0					
+	d12(0)	= 0.0					
+	d13(0)	= 0.0					
+	d14(0)	= 0.0					
+	d15(0)	= 3.1e-10	#[03Vur]	
+	d16(0)	= 0.0					
+	d21(0)	= 0.0					
+	d22(0)	= 0.0					
+	d23(0)	= 0.0					
+	d24(0)	= 3.1e-10	#[03Vur]	
+	d25(0)	= 0.0					
+	d26(0)	= 0.0					
+	d31(0)	= -1.6e-10	#[03Vur]	
+	d32(0)	= -1.6e-10	#[03Vur]	
+	d33(0)	= 3.1e-10	#[03Vur]	
+	d34(0)	= 0.0					
+	d35(0)	= 0.0					
+	d36(0)	= 0.0
+		
+	d11(1)	= 0.0					
+	d12(1)	= 0.0					
+	d13(1)	= 0.0					
+	d14(1)	= 0.0					
+	d15(1)	= 3.6e-10	#[03Vur]	
+	d16(1)	= 0.0					
+	d21(1)	= 0.0					
+	d22(1)	= 0.0					
+	d23(1)	= 0.0					
+	d24(1)	= 3.6e-10	#[03Vur]	
+	d25(1)	= 0.0					
+	d26(1)	= 0.0					
+	d31(1)	= -2.1e-10	#[03Vur]	
+	d32(1)	= -2.1e-10	#[03Vur]	
+	d33(1)	= 5.4e-10	#[03Vur]	
+	d34(1)	= 0.0					
+	d35(1)	= 0.0					
+	d36(1)	= 0.0		
+
+  * spontaneous polarization:
+	psp_x(0)	= 0.0	
+	psp_y(0)	= 0.0
+  *	psp_z(0)	= -3.4000e-06
+
+  	psp_z(0)	= -4.0000e-06		# [C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+	psp_x(1)	= 0.0	
+	psp_y(1)	= 0.0
+  *	psp_z(1)	= -9.0000e-06
+  *	B(psp_z(1))	= -2.10e-06	
+  *	C(psp_z(1))	= 0.0
+
+    	psp_z(1)	= -9.1000e-06		#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN					
+
+  * stiffness constants:
+  *	c11(0) = 3.90e11
+  *	c12(0) = 1.45e11
+  *	c13(0) = 1.06e11
+  *	c14(0) = 0.0
+  *	c15(0) = 0.0	
+  *	c16(0) = 0.0	
+  *	c21(0) = 1.45e11
+  *	c22(0) = 3.90e11
+  *	c23(0) = 1.06e11
+  *	c24(0) = 0.0
+  *	c25(0) = 0.0	
+  *	c26(0) = 0.0	
+  *	c31(0) = 1.06e11
+  *	c32(0) = 1.06e11
+  *	c33(0) = 3.98e11
+  *	c34(0) = 0.0
+  *	c35(0) = 0.0	
+  *	c36(0) = 0.0	
+  *	c41(0) = 0.0
+  *	c42(0) = 0.0
+  *	c43(0) = 0.0
+  *	c44(0) = 1.05e11
+  *	c45(0) = 0.0	
+  *	c46(0) = 0.0	
+  *	c51(0) = 0.0
+  *	c52(0) = 0.0
+  *	c53(0) = 0.0
+  *	c54(0) = 0.0
+  *	c55(0) = 1.05e11	
+  *	c56(0) = 0.0	
+  *	c61(0) = 0.0
+  *	c62(0) = 0.0
+  *	c63(0) = 0.0
+  *	c64(0) = 0.0
+  *	c65(0) = 0.0
+  *	c66(0) = 1.23e11
+
+  *	c11(1) = 3.96e11
+  *	c12(1) = 1.37e11
+  *	c13(1) = 1.08e11
+  *	c14(1) = 0.0
+  *	c15(1) = 0.0	
+  *	c16(1) = 0.0	
+  *	c21(1) = 1.37e11
+  *	c22(1) = 3.96e11
+  *	c23(1) = 1.08e11
+  *	c24(1) = 0.0
+  *	c25(1) = 0.0	
+  *	c26(1) = 0.0	
+  *	c31(1) = 1.08e11
+  *	c32(1) = 1.08e11
+  *	c33(1) = 3.73e11
+  *	c34(1) = 0.0
+  *	c35(1) = 0.0	
+  *	c36(1) = 0.0	
+  *	c41(1) = 0.0
+  *	c42(1) = 0.0
+  *	c43(1) = 0.0
+  *	c44(1) = 1.16e11
+  *	c45(1) = 0.0	
+  *	c46(1) = 0.0	
+  *	c51(1) = 0.0
+  *	c52(1) = 0.0
+  *	c53(1) = 0.0
+  *	c54(1) = 0.0
+  *	c55(1) = 1.16e11	
+  *	c56(1) = 0.0	
+  *	c61(1) = 0.0
+  *	c62(1) = 0.0
+  *	c63(1) = 0.0
+  *	c64(1) = 0.0
+  *	c65(1) = 0.0
+  *	c66(1) = 1.30e11	
+
+  * stiffness constants for Wurtzite AlGaN:
+	c11(0) = 3.9000e+11	# [Pa] #[96Pol] experimental data
+	c12(0) = 1.4500e+11	# [Pa] #[96Pol] experimental data
+	c13(0) = 1.0600e+11	# [Pa] #[96Pol] experimental data
+	c33(0) = 3.9800e+11	# [Pa] #[96Pol] experimental data
+	c44(0) = 1.0500e+11	# [Pa] #[96Pol] experimental data
+
+	c11(1)= 3.9600e+11	# [Pa] #[96Pol] experimental data
+	c12(1)= 1.3700e+11	# [Pa] #[96Pol] experimental data
+	c13(1)= 1.0800e+11	# [Pa] #[96Pol] experimental data
+	c33(1)= 3.7300e+11	# [Pa] #[96Pol] experimental data
+	c44(1)= 1.1600e+11	# [Pa] #[96Pol] experimental data
+
+  * stiffness constants for Wurtzite AlGaN:
+  *	c11(0)= 3.6860e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(0)= 1.3160e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c13(0)= 9.5700e+10	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c33(0)= 4.0620e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(0)= 1.0170e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN
+
+  *	c11(1)= 4.1020e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(1)= 1.4240e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c13(1)= 1.1010e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c33(1)= 3.8500e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(1)= 1.2290e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  * stiffness constants for Zincblende AlGaN:
+  *	c11(0)= 2.8860e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(0)= 1.5410e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(0)= 1.6600e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN
+
+  *	c11(1)= 3.0890e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c12(1)= 1.6650e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  *	c44(1)= 1.9600e+11	# [Pa] #[16D25] calculated with HSE06-DFT, DEEPEN  
+
+
+  * piezoelectric coefficients 					
+  *	e31(0)	= -5.2964e-05	#[C/cm^2]
+  *	e32(0)	= -5.2964e-05	#[C/cm^2]
+  *	e33(0)	= 8.9841e-05	#[C/cm^2]
+  *	e15(0)	= 3.2689e-05	#[C/cm^2] 	
+  *	e24(0)	= 3.2689e-05	#[C/cm^2] 	
+
+  *	e31(1)	= -5.3838e-05	#[C/cm^2]
+  *	e32(1)	= -5.3838e-05	#[C/cm^2]
+  *	e33(1)	= 1.5672e-04	#[C/cm^2] 				
+  *	e15(1)	= 4.1938e-05	#[C/cm^2] 
+  *	e24(1)	= 4.1938e-05	#[C/cm^2] 
+
+  * piezoelectric coefficients for Wurtzite AlGaN:
+    	e31(0)= -4.1000e-05	#[C/cm^2] #[15Wit] experimental data
+   	e32(0)= -4.1000e-05	#[C/cm^2] #[15Wit] experimental data
+   	e33(0)=  8.6000e-05	#[C/cm^2] #[15Wit] experimental data
+   	e15(0)= -3.6000e-05	#[C/cm^2] #[15Wit] experimental data
+   	e24(0)= -3.6000e-05	#[C/cm^2] #[15Wit] experimental data
+
+    	e31(1)= -6.0000e-05	#[C/cm^2] #[85Tsu] experimental data
+   	e32(1)= -6.0000e-05	#[C/cm^2] #[85Tsu] experimental data
+   	e33(1)=  1.5000e-04	#[C/cm^2] #[85Tsu] experimental data
+   	e15(1)= -4.8000e-05	#[C/cm^2] #[85Tsu] experimental data
+   	e24(1)= -4.8000e-05	#[C/cm^2] #[85Tsu] experimental data
+
+  * piezoelectric coefficients for Wurtzite AlGaN:
+  *  	e31(0)= -4.4000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e32(0)= -4.4000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e33(0)=  7.4000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e15(0)= -3.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e24(0)= -3.2000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  *  	e31(1)= -6.3000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e32(1)= -6.3000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e33(1)=  1.4600e-04	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e15(1)= -3.9000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+  * 	e24(1)= -3.9000e-05	#[C/cm^2] #[16D25] calculated with HSE06-DFT, DEEPEN 
+
+  * strain parameters:								
+    a0 =	3.189
+    a(0) = 3.189	
+    a(1) = 3.112		
+} 

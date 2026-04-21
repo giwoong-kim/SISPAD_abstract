@@ -1,0 +1,598 @@
+* Copyright (c) 1994-2015 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+*  Mole dependent material: AlInGaN (x=0,y=0) = GaN
+*  Mole dependent material: AlInGaN (x=1,y=0) = AlN
+*  Mole dependent material: AlInGaN (x=0,y=1) = InN
+
+*  Epsilon{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Epsilon_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  refractiveindex{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  ComplexRefractiveIndex { ... } 
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+SpectralConversion
+{ * Spectral Conversion Model
+  * No default model, user has to define.
+  * All wavelength parameters should be in nanometers.
+  * Choice of Analytic or NumericalTable selected in Physics section of region
+  *
+  * ConversionEfficiency = float     * ratio of absorbed photons that are reemitted.
+  * AbsorptionScaling = float        * scale absorption
+  * EmissionScaling = float          * scale emission
+  * Analytic (
+  *   AbsorptionProfile = (
+  *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+  *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+  *      ...
+  *   )
+  *   EmissionProfile = (
+  *      Gaussian(lambda0 sigma peakvalue dc_offset lambda_range0 lambda_range1)
+  *      Lorentzian(lambda0 width peakvalue dc_offset lambda_range0 lambda_range1)
+  *      ...
+  *   )
+  * )
+  * NumericalTable (
+  *   AbsorptionProfile = (
+  *      lambda0 value0
+  *      lambda1 value1
+  *      ...
+  *   )
+  *   EmissionProfile = (
+  *      lambda0 value0
+  *      lambda1 value1
+  *      ...
+  *   )
+
+  ConversionEfficiency = 1.0
+}
+
+*  LatticeHeatCapacity{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Kappa{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Kappa_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnergyRelaxationTime{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Bandgap{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  FreeCarrierAbsorption{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  BandstructureParameters{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  QWstrain{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  eDOSMass{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  hDOSMass{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  SchroedingerParameters{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  QuantumPotentialParameters { ... } 
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  ConstantMobility{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  ConstantMobility_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  DopingDependence{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  DopingDependence_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  PhuMob{...} 
+*  Philips Unified Mobility Model:
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence "100" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence_aniso "100" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence "110" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence_aniso "110" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence "111" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  EnormalDependence_aniso "111" {...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  NegInterfaceChargeMobility{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  NegInterfaceChargeMobility_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  PosInterfaceChargeMobility{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  PosInterfaceChargeMobility_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Coulomb2DMobility{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  Coulomb2DMobility_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  HighFieldDependence{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*  HighFieldDependence_aniso{...}
+*  The following interpolation between the side materials is used
+*  to compute the value of a parameter P:
+*      P(AlInGaN)(x,y) =
+*          w0 * P(AlGaN)(x0) +
+*          w1 * P(AlInN)(x1) +
+*          w2 * P(InGaN)(x2)
+*  where:
+*      x0: projection of (x,y) onto AlGaN side material
+*      x1: projection of (x,y) onto AlInN side material
+*      x2: projection of (x,y) onto InGaN side material
+*  The weights w0, w1, w2 are nonnegative, and w0+w1+w2=1.
+
+
+*******************************************************************
+*  Parameters for the recombination models below were taken 
+*  from GaAs and require calibration for accurate simulations
+*******************************************************************
+Scharfetter * relation and trap level for SRH recombination:
+{ * tau = taumin + ( taumax - taumin ) / ( 1 + ( N/Nref )^gamma)
+  * tau(T) = tau * ( (T/300)^Talpha )          (TempDep)
+  * tau(T) = tau * exp( Tcoeff * ((T/300)-1) ) (ExpTempDep)
+	taumin	= 0.0000e+00 ,	0.0000e+00	# [s]
+	taumax	= 1.0000e-09 ,	1.0000e-09	# [s]
+	Nref	= 1.0000e+16 ,	1.0000e+16	# [cm^(-3)]
+	gamma	= 1 ,	1	# [1]
+	Talpha	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Tcoeff	= 0.0000e+00 ,	0.0000e+00	# [1]
+	Etrap	= 0.0000e+00	# [eV]
+}
+
+Auger * coefficients:
+{ * R_Auger = ( C_n n + C_p p ) ( n p - ni_eff^2)
+  * with C_n,p = (A + B (T/T0) + C (T/T0)^2) (1 + H exp(-{n,p}/N0))
+	A	= 1.0000e-30 ,	1.0000e-30	# [cm^6/s]
+	B	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	C	= 0.0000e+00 ,	0.0000e+00	# [cm^6/s]
+	H	= 0.0000e+00 ,	0.0000e+00	# [1]
+	N0	= 1.0000e+18 ,	1.0000e+18	# [cm^(-3)]
+}
+
+RadiativeRecombination * coefficients:
+{ * R_Radiative = C (n p - ni_eff^2)
+	C	= 2.0000e-10	# [cm^3/s]
+}

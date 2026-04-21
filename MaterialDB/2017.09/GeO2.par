@@ -1,0 +1,93 @@
+* Copyright (c) 1994-2017 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+* [11Tak] S. Takagi, Dielectrics in Nanosystems -and- Graphene, Ge/III-V, Nanowires and Emerging Materials
+* for Post CMOS Applications 3, ECS Transactions, Vol. 35, Issue 3, 2011, 
+
+Epsilon
+  { 
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 5.7 #[1], [11Tak]
+  }
+
+Epsilon_Inf
+  { 
+    * Ratio of the high frequency limit of permittivities of material and vacuum
+    * epsilon_inf() = epsilon_inf
+
+    epsilon_inf = 5.7 #[1], see static epsilon
+  }
+
+Epsilon_aniso
+  { 
+    * Ratio of the permittivities of material and vacuum
+    * epsilon() = epsilon
+
+    epsilon = 5.7 #[1], see isotropic epsilon
+  }
+
+Epsilon_Inf_aniso
+  { 
+    * Ratio of the high frequency limit of permittivities of material and vacuum
+    * epsilon_inf() = epsilon_inf
+
+    epsilon_inf	= 5.7 #[1], see static epsilon
+  }
+
+LatticeHeatCapacity
+  { 
+    * lumped electron-hole-lattice heat capacity
+    * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+
+    cv = 1.67 #[J/(K cm^3)], set to the value of SiO2
+
+    cv_b = 0.0000e+00 # [J/(K^2 cm^3)]
+    cv_c = 0.0000e+00 # [J/(K^3 cm^3)]
+    cv_d = 0.0000e+00 # [J/(K^4 cm^3)]
+  }
+
+Kappa
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+    Formula = 1
+    kappa = 0.014 # [W/(K cm)], set to the value of SiO2
+    kappa_b = 0.0000e+00 # [W/(K^2 cm)]
+    kappa_c = 0.0000e+00 # [W/(K^3 cm)]
+  }
+
+Kappa_aniso
+  { 
+    * Lattice thermal conductivity
+    * Formula = 0:
+    * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+    * Formula = 1:
+    * kappa() = kappa + kappa_b * T + kappa_c * T^2 
+
+    Formula = 1
+    kappa = 0.014 # [W/(K cm)], set to the value of SiO2
+    kappa_b = 0.0000e+00 # [W/(K^2 cm)]
+    kappa_c = 0.0000e+00 # [W/(K^3 cm)]
+  }
+
+Bandgap
+  { 
+    * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+    * Parameter 'Tpar' specifies the value of lattice 
+    * temperature, at which parameters below are defined
+    * Chi0 is electron affinity.
+
+    Eg0 = 2.8 #[eV]
+  }
+
+

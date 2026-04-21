@@ -1,0 +1,167 @@
+* Copyright (c) 1994-2018 Synopsys, Inc.
+* This parameter file and the associated documentation are proprietary
+* to Synopsys, Inc.  This parameter file may only be used in accordance
+* with the terms and conditions of a written license agreement with
+* Synopsys, Inc.  All other use, reproduction, or distribution of this
+* parameter file is strictly prohibited.
+
+
+* [05Ada] S. Adachi, "Properties of Group-IV, III-V and II-VI 
+* Semiconductors",John Wiley & Sons, Ltd, 2005.
+* [09Ada] S. Adachi, "Properties of Semiconductor Alloys: 
+* Group-IV, III-V and II-VI Semiconductors", John Wiley & Sons, 
+* Ltd, 2009.
+* [07Ada] S. Adachi, "Lattice thermal conductivity of group-IV 
+* and III-V semiconductor alloys", J. Appl. Phys., vol. 102, pp. 
+* 063502, 2007.
+* [01Vur] I. Vurgaftman, J. R. Meyer, L. R. Ram-Mohan, "Band 
+* parameters for III-V compound semiconductors and their alloys", 
+* J. Appl. Phys., vol. 89, no. 11, pp. 5815, 2001.
+* [00Sot] M. Sotoodeh, A. H. Khalid, A. A. Rezazadeh, "Empirical 
+* low-field mobility model for III-V compounds applicable in 
+* device simulation codes", J. Appl. Phys., vol. 87, no. 6, pp. 
+* 2890, 2000.
+
+* Mole dependent material: In52Al48As(x)_In53Ga47As(1-x) (x=0) = In53Ga47As
+* Mole dependent material: In52Al48As(x)_In53Ga47As(1-x) (x=1) = In52Al48As
+
+
+Epsilon
+{ 
+  * Ratio of the permittivities of material and vacuum
+  * epsilon() = epsilon
+
+	epsilon(0)	= 13.642	# [1] # [05Ada]
+  	epsilon(1)	= 12.2648	# [1] # [05Ada]
+}
+
+LatticeHeatCapacity
+{ 
+  * lumped electron-hole-lattice heat capacity
+  * cv() = cv + cv_b * T + cv_c * T^2 + cv_d * T^3 
+
+	cv(0)		= 1.8724	# [J/(Kcm^3)] # [1] # [09Ada]
+	cv_b(0)	= 0.0000e+00	# [J/(K^2*cm^3)]
+	cv_c(0)	= 0.0000e+00	# [J/(K^3*cm^3)]
+	cv_d(0)	= 0.0000e+00	# [J/(K^4*cm^3)]
+
+	cv(1)		= 1.8314	# [J/(K cm^3)] # [09Ada]
+	cv_b(1)	= 0.0000e+00	# [J/(K^2*cm^3)]
+	cv_c(1)	= 0.0000e+00	# [J/(K^3*cm^3)]
+	cv_d(1)	= 0.0000e+00	# [J/(K^4*cm^3)]
+}
+
+Kappa
+{ 
+  * Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+	Formula = 0
+
+  * See In53Ga47As.par and In52Al48As.par 
+	1/kappa(0)  = 20.1933
+	1/kappa_b(0)  = 0.0
+	1/kappa_c(0)  = 0.0
+
+	1/kappa(1) = 6.0048		# [07Ada]
+	1/kappa_b(1)	= 0.0000e+00	# [cm/W]
+	1/kappa_c(1)	= 0.0000e+00	# [cm/(W K)]
+}
+
+Kappa_aniso
+{ 
+  * Lattice thermal conductivity
+  * Formula = 0:
+  * kappa() = 1 / ( 1/kappa + 1/kappa_b * T + 1/kappa_c * T^2 )
+
+	Formula = 0
+
+  * See In53Ga47As.par and In52Al48As.par 
+	1/kappa(0)  = 20.1933
+	1/kappa_b(0)  = 0.0
+	1/kappa_c(0)  = 0.0
+
+	1/kappa(1) = 6.0048		# [07Ada]
+	1/kappa_b(1)	= 0.0000e+00	# [cm/W]
+	1/kappa_c(1)	= 0.0000e+00	# [cm/(W K)]
+}
+
+Bandgap
+{
+  * Eg = Eg0 + alpha Tpar^2 / (beta + Tpar) - alpha T^2 / (beta + T)
+  * Parameter 'Tpar' specifies the value of lattice 
+  * temperature, at which parameters below are defined
+  * Chi0 is electron affinity.
+
+  	Tpar = 0 # [K]
+	Eg0(0)	= 0.8161	# [eV] # [01Vur] 
+	alpha(0)	= 4.0032e-04	# [eV/K] # [01Vur] 
+	beta(0)	= 1.4517e+02	# [K] # [01Vur] 
+	Chi0(0)	= 4.5918		# [eV] # [05Ada]
+	EgMin(0)	= 1.5000e-01	# [eV]
+
+ 	Eg0(1)	= 1.52964	# [eV] # [01Vur]
+	alpha(1)	= 5.6832e-04	# [eV/K] # [01Vur]
+	beta(1)	= 3.0276e+02	# [K] # [01Vur]
+	Chi0(1)	= 4.2688	# [eV] # Derived and interpolated from [05Ada] with Chi=4.3112 at T=300K
+	EgMin(1)	= 1.5000e-01	# [eV]
+}
+
+eDOSMass
+{
+	Formula = 2
+  * me/m0 = (Nc300/2.540e19)^2/3
+  * Nc(T) = Nc300 * (T/300)^3/2
+
+  * See In53Ga47As.par and In52Al48As.par 
+	Nc300(0) = 2.3327e+17		#[cm-3]
+	Nc300(1) = 4.8481e+17		#[cm-3]
+}
+
+hDOSMass
+{
+	Formula = 2
+  * mh/m0 = (Nv300/2.540e19)^2/3
+  * Nv(T) = Nv300 * (T/300)^3/2
+
+  * See In53Ga47As.par and In52Al48As.par 
+	Nv300(0) = 1.0886e+19		#[cm-3] 
+	Nv300(1) = 1.3041e+19		#[cm-3] 
+} 
+
+ConstantMobility
+{ 
+  * mu_const = mumax (T/T0)^(-Exponent)
+	mumax(0)	= 1.4000e+04 ,	320	# [cm^2/(Vs)] #[00Sot]
+	Exponent(0)= 1.59 ,	1.59	# [1] #[00Sot]
+
+	mumax(1) 	= 4.8000e+03 ,	371.6	# [cm^2/(Vs)]	# electron mobility from [00Sot]; hole mobility obtained with linear interpolation from InAlAs.par
+	Exponent(1)= 1.8244  ,  2.2712   # [1] # [00Sot]
+}
+
+MultiValley 
+{  
+  * See In53Ga47As.par and In52Al48As.par 
+	eValley"Gamma"(m=0.04421 energy=0.0 alpha=1.0 degeneracy=1 xid=-10.576)
+	eValley"L1"(1,1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L2"(-1,1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L3"(1,-1,1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"L4"(1,1,-1)(ml=1.2322 mt=0.061938 energy=0.54908892 alpha=0.5 degeneracy=1 xiu=14.5 xid=-2)
+	eValley"X1"(1,0,0)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	eValley"X2"(0,1,0)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	eValley"X3"(0,0,1)(ml=1.2099 mt=0.1929 energy=0.53335 alpha=0.5 degeneracy=1 xiu=5.016 xid=1.3362)
+	hValley"LH"(m=0.04987289 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(m=0.56322414 energy=0.0 alpha=0.0 degeneracy=1)
+
+	eValley"Gamma"(1)(m=0.072 energy=0.0 alpha=1.0 degeneracy=1 xid=-8.0112)
+	eValley"L1"(1)(ml=0.9664 mt=0.098 energy=0.2376703 alpha=0.5 degeneracy=1 xiu=14.5 xid=-3.056)
+	eValley"L2"(1)(ml=0.9664 mt=0.098 energy=0.2376703 alpha=0.5 degeneracy=1 xiu=14.5 xid=-3.056)
+	eValley"L3"(1)(ml=0.9664 mt=0.098 energy=0.2376703 alpha=0.5 degeneracy=1 xiu=14.5 xid=-3.056)
+	eValley"L4"(1)(ml=0.9664 mt=0.098 energy=0.2376703 alpha=0.5 degeneracy=1 xiu=14.5 xid=-3.056)
+	eValley"X1"(1)(ml=1.0532 mt=0.1888 energy=0.303979 alpha=0.5 degeneracy=1 xiu=5.236 xid=1.4028)
+	eValley"X2"(1)(ml=1.0532 mt=0.1888 energy=0.303979 alpha=0.5 degeneracy=1 xiu=5.236 xid=1.4028)
+	eValley"X3"(1)(ml=1.0532 mt=0.1888 energy=0.303979 alpha=0.5 degeneracy=1 xiu=5.236 xid=1.4028)
+	hValley"LH"(1)(m=0.09600850 energy=0.0 alpha=0.0 degeneracy=1)
+	hValley"HH"(1)(m=0.62147539 energy=0.0 alpha=0.0 degeneracy=1)	  
+}

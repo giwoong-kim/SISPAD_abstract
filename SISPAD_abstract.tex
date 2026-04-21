@@ -14,6 +14,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{lipsum}
 \usepackage{xcolor}
+\usepackage{tikz}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -37,11 +38,11 @@
 % 저자 정보를 정의하는 부분
 \author{
 \begin{tabular}{c@{\hspace{0.4cm}}c@{\hspace{0.4cm}}c@{\hspace{0.4cm}}c}
-\small Shinbin Kim$^{*}$ & \small Giung Kim$^{*}$ & \small Dae-Hwan Kang$^{\dagger}$ & \small Jiwon Lee$^{\dagger}$ \\
-\small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} & \small\textit{Semicond. Eng. Dept.} \\
+\small Shinbin Kim$^{*}$ & \small Giung Kim$^{*}$ & \small Jiwon Lee$^{\dagger}$ & \small Dae-Hwan Kang$^{\dagger}$ \\
+\small\textit{Dept. of Semicond. Eng.} & \small\textit{Dept. of Semicond. Eng.} & \small\textit{Dept. of Semicond. Eng.} & \small\textit{Dept. of Semicond. Eng.} \\
 \small\textit{POSTECH} & \small\textit{POSTECH} & \small\textit{POSTECH} & \small\textit{POSTECH} \\
 \small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea & \small Pohang, Rep. of Korea \\
-\small\href{mailto:sinbin0701@postech.ac.kr}{sinbin0701@postech.ac.kr} & \small\href{mailto:giung0408@postech.ac.kr}{giung0408@postech.ac.kr} & \small\href{mailto:daehwankang@postech.ac.kr}{daehwankang@postech.ac.kr} & \small\href{mailto:jiwonlee@postech.ac.kr}{jiwonlee@postech.ac.kr}
+\small\href{mailto:sinbin0701@postech.ac.kr}{sinbin0701@postech.ac.kr} & \small\href{mailto:giung0408@postech.ac.kr}{giung0408@postech.ac.kr} & \small\href{mailto:jiwonlee@postech.ac.kr}{jiwonlee@postech.ac.kr} & \small\href{mailto:daehwankang@postech.ac.kr}{daehwankang@postech.ac.kr}
 \end{tabular}
 \thanks{$^{*}$These authors contributed equally to this work.}
 \thanks{$^{\dagger}$Corresponding authors.}
@@ -67,7 +68,7 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \section{Proposed Framework}
 \input{sections/03_proposed_framework}
 
-\section{Result}
+\section{Experimental Validations of PhysAgent}
 \input{sections/04_result}
 
 \section{Conclusion}
@@ -80,11 +81,7 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \setlength{\abovecaptionskip}{2pt}
 \setlength{\belowcaptionskip}{2pt}
 
-\begin{figure}[!h]
-    \centerline{\includegraphics[width=0.85\columnwidth]{Fig/ontology_fig1.png}}
-    \caption{Ontology system architecture.}
-    \label{fig:ontology}
-\end{figure}
+\input{Fig/table1_ontology.tex}
 
 \begin{figure}[!h]
     \centerline{\includegraphics[width=\columnwidth]{Fig/framework_small.png}}
@@ -92,24 +89,20 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
     \label{fig:framework}
 \end{figure}
 
-\begin{figure}[!h]
-    \centerline{\includegraphics[width=0.85\columnwidth]{Fig/expansion.validation_model.jpg}}
-    \caption{Expansion and validation workflow.}
-    \label{fig:expansion}
-\end{figure}
+\input{Fig/fig_exp1.tex}
 
 \begin{figure}[!h]
     \centering
-    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Experiment 1 --- SiC, GaN, IGZO parameter files vs library models]}}}
-    \caption{Experiment 1: Material-specific parameter file generation.}
-    \label{fig:exp1}
-\end{figure}
-
-\begin{figure}[!h]
-    \centering
-    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Experiment 2 --- baseline vs PhysAgent ablation results]}}}
-    \caption{Experiment 2: Ablation study comparing baseline LLM and PhysAgent.}
+    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Model selection accuracy and parameter match rate of PhysAgent vs Sentaurus library across 34 semiconductor materials]}}}
+    \caption{Reproduction of the Sentaurus library: PhysAgent vs library across 34 materials.}
     \label{fig:exp2}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Id--Vg overlay of PhysAgent-generated a-IGZO TFT vs digitized published measurement]}}}
+    \caption{Extension beyond the library: a-IGZO TFT Id--Vg from PhysAgent-generated deck vs published measurement.}
+    \label{fig:exp3}
 \end{figure}
 
 \begin{thebibliography}{00}
