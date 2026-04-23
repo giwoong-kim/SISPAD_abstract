@@ -81,15 +81,24 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \setlength{\abovecaptionskip}{2pt}
 \setlength{\belowcaptionskip}{2pt}
 
-\input{Fig/table1_ontology.tex}
+\begin{figure}[!h]
+    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_1.png}}
+    \caption{TCAD physics ontology: node and edge types capturing inter-model dependencies.}
+    \label{fig:ontology}
+\end{figure}
 
 \begin{figure}[!h]
-    \centerline{\includegraphics[width=\columnwidth]{Fig/framework_small.png}}
+    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_2.png}}
     \caption{PhysAgent framework: LLM agents access the ontology graph via MCP tool calls to generate physically grounded parameter files.}
     \label{fig:framework}
 \end{figure}
 
-\input{Fig/fig_exp1.tex}
+\begin{figure}[!h]
+    \centering
+    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Mode $\times$ prompt-level comparison on Si nMOSFET---syntactic failure modes and coverage dependence on prompt specificity]}}}
+    \caption{Successful TCAD execution: mode and prompt-level comparison on Si nMOSFET.}
+    \label{fig:exp1}
+\end{figure}
 
 \begin{figure}[!h]
     \centering
