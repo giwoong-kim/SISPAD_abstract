@@ -83,14 +83,8 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 
 \begin{figure}[!h]
     \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_1.png}}
-    \caption{TCAD physics ontology: node and edge types capturing inter-model dependencies.}
+    \caption{TCAD physics ontology (678 equations, 1{,}631 parameters, 216 physical models, 30 literature references): node and edge types capturing inter-model dependencies.}
     \label{fig:ontology}
-\end{figure}
-
-\begin{figure}[!h]
-    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_2.png}}
-    \caption{PhysAgent framework: LLM agents access the ontology graph via MCP tool calls to generate physically grounded parameter files.}
-    \label{fig:framework}
 \end{figure}
 
 \begin{figure}[!h]
@@ -112,22 +106,21 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \end{figure}
 
 \begin{figure}[!h]
-    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_4.png}}
-    \caption{PhysAgent workflow for ontology-grounded \texttt{.par} file generation: chapter-level equations, parameter templates, and material-specific reference values are assembled through \texttt{ontology\_get\_chapter}, \texttt{ontology\_get\_syntax}, and \texttt{ontology\_get\_reference}, illustrated for the Bandgap and HighFieldDependence blocks.}
+    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_3.png}}
+    \caption{PhysAgent framework and ontology-grounded \texttt{.par} file generation: \texttt{ontology\_overview} scopes the required subgraph; \texttt{ontology\_get\_chapter} supplies the governing equations; \texttt{ontology\_get\_syntax} provides the SDevice syntax template; \texttt{ontology\_get\_reference} injects material-specific values with per-parameter citation tags. Example: Silicon Bandgap block.}
     \label{fig:exp2}
 \end{figure}
 
 \begin{thebibliography}{00}
-\bibitem{dtco} Z. Ji \textit{et al.}, ``Toward reliability- and variability-aware design-technology co-optimization at advanced nodes,'' \textit{IEEE Trans. Electron Devices}, vol.~71, no.~1, pp.~138--150, 2024.
+\bibitem{dtco} Z.~Ji \textit{et al.}, ``Toward reliability- and variability-aware design-technology co-optimization in advanced nodes,'' \textit{IEEE Trans. Electron Devices}, vol.~71, no.~1, pp.~138--150, Jan.~2024.
 \bibitem{synopsys_tcad} Synopsys, ``Sentaurus TCAD,'' 2025. [Online]. Available: https://www.synopsys.com/manufacturing/tcad.html
 \bibitem{nguyen} L.~M.~L. Nguyen, A.~Lu, and H.~Y.~Wong, ``TCAD structure input file generation using large language model,'' in \textit{Proc. SISPAD}, 2024, pp.~1--4.
 \bibitem{chattcad} Z.~Zhang, S.~Nassif, and M.~Tahoori, ``ChatTCAD: Leveraging large language models for automated TCAD simulation file generation,'' in \textit{Proc. ISVLSI}, 2025, pp.~1--6.
 \bibitem{malts} J.~Dou \textit{et al.}, ``MALTS: A multi-agent large language model-based layout-to-TCAD structure synthesizer,'' in \textit{Proc. ISEDA}, 2025, pp.~795--800.
 \bibitem{agentictcad} G.~Fan \textit{et al.}, ``AgenticTCAD: A LLM-based multi-agent framework for automated TCAD code generation and device optimization,'' \textit{arXiv:2512.23742}, 2026.
-\bibitem{ontology_tcad} PhysAgent Team, ``TCAD Physics Ontology,'' 2026. [Online]. Available: \url{https://ontology-tcad.vercel.app/}
+\bibitem{ontology_tcad} S.~Kim and G.~Kim, ``TCAD Physics Ontology,'' 2026. [Online]. Available: \url{https://ontology-tcad.vercel.app/}
 \bibitem{bludau1974} W.~Bludau, A.~Onton, and W.~Heinke, ``Temperature dependence of the band gap of silicon,'' \textit{J. Appl. Phys.}, vol.~45, no.~4, pp.~1846--1848, Apr.~1974.
 \bibitem{varshni1967} Y.~P. Varshni, ``Temperature dependence of the energy gap in semiconductors,'' \textit{Physica}, vol.~34, no.~1, pp.~149--154, 1967.
-\bibitem{lang1996} D.~V. Lang and C.~Henrich, ``Silicon electron-affinity measurement,'' 1996.
 \end{thebibliography}
 
 \end{document}
