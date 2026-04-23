@@ -62,9 +62,6 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \section{Introduction}
 \input{sections/01_introduction}
 
-\section{Related Work}
-\input{sections/02_related_work}
-
 \section{Proposed Framework}
 \input{sections/03_proposed_framework}
 
@@ -96,18 +93,18 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
         \toprule
         Mode & t1 & t2 & t3 & t4 & t5 & t6 & t7 & t8 & t9 & t10 & Dominant failure \\
         \midrule
-        \texttt{no\_source}    & K & K & K & K & K & K & K & K & K & K & Hallucinated keyword \\
-        \texttt{manual}        & V & M & V & V & V & M & M & M & V & M & Malformed syntax \\
-        \begin{tabular}[t]{@{}l@{}}PhysAgent\\(\texttt{ontology\_mcp})\end{tabular} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & All pass \\
+        {\color{red}(i)}~\texttt{no\_source}    & K & K & K & K & K & K & K & K & K & K & Hallucinated keyword \\
+        {\color{red}(ii)}~\texttt{{\color{red}SDevice} manual}        & V & M & V & V & V & M & M & M & V & M & Malformed syntax \\
+        \begin{tabular}[t]{@{}l@{}}{\color{red}(iii)}~PhysAgent\\(\texttt{ontology\_mcp})\end{tabular} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & All pass \\
         \bottomrule
     \end{tabular}
-    \caption{Successful TCAD execution: raw trial-by-trial outcomes (t1--t10, not aggregated) across knowledge-source modes on a Si nMOSFET. K: hallucinated keyword; V: invalid value; M: malformed syntax/section.}
+    \caption{Trial-by-trial outcomes (t1--t10, not aggregated) across three knowledge-source modes on a Si nMOSFET. \textbf{K} (hallucinated keyword): the LLM emits names drawn from foreign simulators---SPICE/BSIM (\texttt{epsilon\_r}, \texttt{Bgap0}), Silvaco Atlas (\texttt{taun0}, \texttt{taup0})---or fabricated symbols (\texttt{dEg\_dT}, \texttt{Model=\dots}), none of which exist in SDevice syntax. \textbf{V} (invalid value): valid keyword but parameter value outside the physically admissible range or in an unsupported format. \textbf{M} (malformed syntax): correct keywords assembled into \texttt{.par} blocks with missing required fields or reordered sections that the SDevice parser rejects.}
     \label{fig:exp1}
 \end{figure}
 
 \begin{figure}[!h]
-    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_3.png}}
-    \caption{PhysAgent framework and ontology-grounded \texttt{.par} file generation: \texttt{ontology\_overview} scopes the required subgraph; \texttt{ontology\_get\_chapter} supplies the governing equations; \texttt{ontology\_get\_syntax} provides the SDevice syntax template; \texttt{ontology\_get\_reference} injects material-specific values with per-parameter citation tags. Example: Silicon Bandgap block.}
+    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_3.jpg}}
+    \caption{PhysAgent framework and ontology-grounded \texttt{.par} file generation: \texttt{ontology\_overview} {\color{red}maps the overall node/edge structure}; \texttt{ontology\_get\_chapter} supplies the governing equations; \texttt{ontology\_get\_syntax} provides the SDevice syntax template; \texttt{ontology\_get\_reference} injects material-specific values with per-parameter citation tags. Example: Silicon Bandgap block.}
     \label{fig:exp2}
 \end{figure}
 
@@ -120,7 +117,7 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 \bibitem{agentictcad} G.~Fan \textit{et al.}, ``AgenticTCAD: A LLM-based multi-agent framework for automated TCAD code generation and device optimization,'' \textit{arXiv:2512.23742}, 2026.
 \bibitem{ontology_tcad} S.~Kim and G.~Kim, ``TCAD Physics Ontology,'' 2026. [Online]. Available: \url{https://ontology-tcad.vercel.app/}
 \bibitem{bludau1974} W.~Bludau, A.~Onton, and W.~Heinke, ``Temperature dependence of the band gap of silicon,'' \textit{J. Appl. Phys.}, vol.~45, no.~4, pp.~1846--1848, Apr.~1974.
-\bibitem{varshni1967} Y.~P. Varshni, ``Temperature dependence of the energy gap in semiconductors,'' \textit{Physica}, vol.~34, no.~1, pp.~149--154, 1967.
+\bibitem{ioffe_nsm} Ioffe Inst., ``NSM Archive: Silicon,'' [Online]. Available: \url{https://www.ioffe.ru/SVA/NSM/Semicond/Si/}. [Accessed: Apr.~23, 2026].
 \end{thebibliography}
 
 \end{document}
