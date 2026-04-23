@@ -19,7 +19,8 @@
 | Phase 2 | 🟡 Parser-pass metric scope 명시 (M4 방어) | ✅ 완료 |
 | Phase 2 | 🟡 결론에 수치 반영 (10/10 vs 0/10, 71\%) | ✅ 완료 |
 | Phase 2 | 🟡 Fig 3 caption에 "raw trial-by-trial" 명시 (M5 방어) | ✅ 완료 |
-| Phase 3 | 🟢 Ontology 규모 정량화 | ⏳ 대기 |
+| Phase 3 | 🟢 Ontology 규모 정량화 (M8) | ✅ 완료 (Fig 1 caption) |
+| Phase 3 | 🟢 전체 ontology 토큰 수 실측 (400K → 458K) | ✅ 완료 (3.B) |
 | Phase 3 | 🟢 Reproducibility 1-liner | ⏳ 대기 |
 | Phase 3 | 🟢 Hallucinated keyword 예시 | ⏳ 대기 |
 | Phase 3 | 🟢 분산 리포트 | ⏳ 대기 |
