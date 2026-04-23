@@ -95,23 +95,26 @@ TCAD, ontology, physics-informed modeling, parameter file generation, domain kno
 
 \begin{figure}[!h]
     \centering
-    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Mode $\times$ prompt-level comparison on Si nMOSFET---syntactic failure modes and coverage dependence on prompt specificity]}}}
-    \caption{Successful TCAD execution: mode and prompt-level comparison on Si nMOSFET.}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular}{@{}l*{10}{c}l@{}}
+        \toprule
+        Mode & t1 & t2 & t3 & t4 & t5 & t6 & t7 & t8 & t9 & t10 & Dominant failure \\
+        \midrule
+        \texttt{no\_source}    & K & K & K & K & K & K & K & K & K & K & Hallucinated keyword \\
+        \texttt{manual}        & V & M & V & V & V & M & M & M & V & M & Malformed syntax \\
+        \begin{tabular}[t]{@{}l@{}}PhysAgent\\(\texttt{ontology\_mcp})\end{tabular} & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & All pass \\
+        \bottomrule
+    \end{tabular}
+    \caption{Successful TCAD execution: trial-wise (t1--t10) outcomes across knowledge-source modes on a Si nMOSFET. K: hallucinated keyword; V: invalid value; M: malformed syntax/section.}
     \label{fig:exp1}
 \end{figure}
 
 \begin{figure}[!h]
-    \centering
-    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Model selection accuracy and parameter match rate of PhysAgent vs Sentaurus library across 34 semiconductor materials]}}}
-    \caption{Reproduction of the Sentaurus library: PhysAgent vs library across 34 materials.}
+    \centerline{\includegraphics[width=\columnwidth]{Fig/Fig_4.png}}
+    \caption{PhysAgent workflow for ontology-grounded \texttt{.par} file generation: chapter-level equations, parameter templates, and material-specific reference values are assembled through \texttt{ontology\_get\_chapter}, \texttt{ontology\_get\_syntax}, and \texttt{ontology\_get\_reference}, illustrated for the Bandgap and HighFieldDependence blocks.}
     \label{fig:exp2}
-\end{figure}
-
-\begin{figure}[!h]
-    \centering
-    \fbox{\parbox[c][2cm][c]{0.85\columnwidth}{\centering\scriptsize\textit{[Placeholder: Id--Vg overlay of PhysAgent-generated a-IGZO TFT vs digitized published measurement]}}}
-    \caption{Extension beyond the library: a-IGZO TFT Id--Vg from PhysAgent-generated deck vs published measurement.}
-    \label{fig:exp3}
 \end{figure}
 
 \begin{thebibliography}{00}
